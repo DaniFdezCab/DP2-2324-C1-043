@@ -22,6 +22,8 @@
 
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.callofduty.com/es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link1" action="https://www.goldsgym.com/"/>
+            <acme:menu-suboption code="master.menu.anonymous.favourite-link3" action="https://www.youtube.com/watch?v=stgdmw8PcRY"/>
+
 
 		</acme:menu-option>
 
