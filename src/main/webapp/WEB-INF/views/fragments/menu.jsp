@@ -24,6 +24,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link1" action="https://www.goldsgym.com/"/>
             <acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="https://www.fortnite.com/?lang=es-ES"/>
             <acme:menu-suboption code="master.menu.anonymous.favourite-link3" action="https://www.youtube.com/watch?v=stgdmw8PcRY"/>
+            <acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://www.suno.ai"/>
 
 
 		</acme:menu-option>
