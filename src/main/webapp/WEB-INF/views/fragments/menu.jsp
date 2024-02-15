@@ -16,7 +16,7 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:menu-bar code="master.menu.home">https://github.com/DaniFdezCab/DP2-2324-C1-043/pull/3/conflict?name=src%252Fmain%252Fwebapp%252FWEB-INF%252Fviews%252Ffragments%252Fmenu.jsp&ancestor_oid=c978f8edeafd2138aa477a14808256a64dd16304&base_oid=ccb9e306c0d01626333e27babe06e94a69d7d6fd&head_oid=bf38029da3f8cbf49be5619ff7b0fba1d0d2bccf
+<acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 
