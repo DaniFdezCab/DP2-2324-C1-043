@@ -1,0 +1,80 @@
+ANALYSIS REPORT D01
+
+
+INFORMACIÓN DE GRUPO 
+ 
+ 
+ 
+Group:  C1.043   
+ 
+ 
+Repository:  https://github.com/DaniFdezCab/DP2-2324-C1-043.git 
+ 
+ 
+ 
+Student #1 
+UVUS:  danfercab  
+Contact: danfercab@alum.us.es 
+ 
+ 	Student #2 
+UVUS:  alvmarmun1  
+Contact: alvmarmun1@alum.us.es 
+ 
+   
+Student #3 
+UVUS:  pabberima   
+Contact: pabberima@alum.us.es
+ 
+ 	Student #4 
+ UVUS:  alepingar   
+Contact: alepingar@alum.us.es 
+
+Student #5 
+UVUS:  fracapgar1   
+Contact: fracapgar1@alum.us.es 
+ 
+ 
+Date:  Sevilla Febrero 15,02, 2024 
+
+
+TABLA DE CONTENIDO
+
+Portada……………………………………………………………….1
+Resumen Ejecutivo……………………………………………….3
+Tabla de Revisiones………………………………………………4
+Introducción………………………………………………………..5
+Contenido………………………………………………………….6
+Conclusiones………………………………………………………7
+Bibliografía………………………………………………………….8
+
+RESUMEN EJECUTIVO
+
+El presente informe detalla el análisis realizado para modificar la vista en la pantalla de anonymous para incluir una opción que redireccione a la página de inicio de un sitio web favorito.
+Se proporcionan detalles sobre las conclusiones del análisis y las decisiones tomadas.
+
+
+
+TABLA DE REVISIONES
+
+Revisión	Fecha	Descripción
+1	2024-02-15	Creación del requisito D01
+2	2024-02-16	Revisión del requisito D01
+
+
+INTRODUCCIÓN
+
+El presente informe proporciona un análisis detallado para modificar la vista en la pantalla de anonymous según lo especificado. Se describen los pasos seguidos para llevar a cabo el análisis y se establece la estructura del documento.
+
+CONTENIDO
+
+El requisito consiste en modificar el menú anonymous para que muestre una opción que dirija al usuario a la página de inicio de su sitio web favorito. Además, se especifica que el título de esta opción debe estar estructurado de manera específica, incluyendo el número de identificación del usuario (DNI, NIE o pasaporte), su apellido y su nombre.
+Se debe agregar una nueva opción al menú existente, lo que implica cambios en la interfaz de usuario.
+
+CONCLUSIONES
+
+El análisis detallado llevado a cabo permitió comprender levemente la estructura del proyecto y los pasos necesarios para cumplir con el requisito especificado. Se tomaron decisiones fundamentadas para satisfacer los criterios de modificación del menú anonymous.
+
+
+BIBLIOGRAFÍA
+
+Intencionalmente en blanco.
