@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
+- Álvaro Martín Muñoz (alvmarmun1@alum.us.es)
+- Daniel Fernández Caballero (danfercab@alum.us.es)
+- Alexander Picón Garrote (alepingar@alum.us.es)
+- Francisco Capote García (fracapgar1@alum.us.es)
+- Pablo Bermudez Imaz (pabberima@alum.us.es)
