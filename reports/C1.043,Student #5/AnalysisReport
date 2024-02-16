@@ -49,15 +49,16 @@ Bibliografía………………………………………………………….
 
 RESUMEN EJECUTIVO
 
-El presente informe detalla el análisis realizado para modificar la vista en la pantalla de anonymous para incluir una opción que redireccione a la página de inicio de un sitio web favorito. Se proporcionan detalles sobre las conclusiones del análisis y las decisiones tomadas.
+El presente informe detalla el análisis realizado para modificar la vista en la pantalla de anonymous para incluir una opción que redireccione a la página de inicio de un sitio web favorito.
+Se proporcionan detalles sobre las conclusiones del análisis y las decisiones tomadas.
 
 
 
 TABLA DE REVISIONES
 
 Revisión	Fecha	Descripción
-1	2024-02-14	Creación del requisito
-2	2024-02-15	Revisión del requisito
+1	2024-02-15	Creación del requisito D01
+2	2024-02-16	Revisión del requisito D01
 
 
 INTRODUCCIÓN
@@ -71,7 +72,7 @@ Se debe agregar una nueva opción al menú existente, lo que implica cambios en 
 
 CONCLUSIONES
 
-El análisis detallado llevado a cabo permitió comprender levemente la estructura del proyecto y los pasos necesarios para cumplir con el requisito especificado. Se tomaron decisiones fundamentadas para satisfacer los criterios de modificación del menú anónimo.
+El análisis detallado llevado a cabo permitió comprender levemente la estructura del proyecto y los pasos necesarios para cumplir con el requisito especificado. Se tomaron decisiones fundamentadas para satisfacer los criterios de modificación del menú anonymous.
 
 
 BIBLIOGRAFÍA
