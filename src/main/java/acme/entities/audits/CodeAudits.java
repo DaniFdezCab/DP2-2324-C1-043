@@ -38,7 +38,7 @@ public class CodeAudits extends AbstractEntity {
 	private String				type;
 
 	@Size(max = 101)
-	private String				proposedCorrectiveActions;
+	private String				proposedCorrectiveActions;// Lista da error
 
 	private int					mark;
 
