@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -42,19 +41,18 @@ public class Invoice extends AbstractEntity {
 	private Date				registrationTime;
 
 	@Future
-	@Min(value = 1)
-	private Integer				dueDate;
+	private Date				dueDate;
 
 	@Positive
-	private int					quantity;
+	private Integer				quantity;
 
 	@Positive
-	private double				tax;
+	private Double				tax;
 
 
-	private double totalAmount() {
+	private Double getTotalAmount() {
 		return this.quantity + this.tax;
-	};
+	}
 
 
 	@URL

@@ -10,8 +10,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -37,15 +37,15 @@ public class Claim extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Size(max = 76)
+	@Length(max = 76)
 	private String				heading;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 101)
 	private String				description;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 101)
 	private String				department;
 
 	@Email
