@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -25,6 +27,10 @@ import lombok.Setter;
 public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+
+	@ManyToOne
+	@JoinColumn(name = "sponsor_id")
+	private Sponsor				sponsor;
 
 	// Attributes
 	@NotBlank

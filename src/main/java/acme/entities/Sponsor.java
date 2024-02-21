@@ -4,6 +4,7 @@ package acme.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -19,8 +20,10 @@ public class Sponsor extends AbstractEntity {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToMany(mappedBy = "sponsor")
 	private List<Invoice>		invoices;
 
+	@OneToMany(mappedBy = "sponsor")
 	private List<Sponsorship>	sponsorships;
 
 
