@@ -29,7 +29,7 @@ public class Invoice extends AbstractEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "sponsor_id")
-	private Sponsor				sponsor;
+	private SponsorDashboard	sponsor;
 
 	// Attributes
 	@NotBlank
