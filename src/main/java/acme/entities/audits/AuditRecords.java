@@ -36,15 +36,28 @@ public class AuditRecords extends AbstractEntity {
 	@Past
 	private Date				auditPeriodEnd;// al menos una hora ?
 
+
+	public boolean haPasadoAlMenosUnaHora() {
+
+		// Calcular la diferencia en milisegundos
+		long diferencia = this.auditPeriodEnd.getTime() - this.auditPeriodStart.getTime();
+
+		// Convertir la diferencia a horas
+		long horas = diferencia / (1000 * 60 * 60);
+
+		// Devolver true si han pasado al menos una hora
+		return horas >= 1;
+	}
+
+
 	@NotBlank
-	@Pattern(regexp = "^(A\\+|A|B|C|F|F-)$")// record?
-	private String				mark;
+	private Mark		mark;
 
 	@ManyToOne
-	private CodeAudits			codeAudits;
+	private CodeAudits	codeAudits;
 
 	@URL
-	private String				furtherInformation;
+	private String		furtherInformation;
 
 
 	// Constructors, getters, setters, hashCode, equals, etc.
