@@ -2,14 +2,16 @@
 package acme.entities.projects;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,16 +24,17 @@ public class UserStory extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				description;
 
-	@Min(0)
-	@NotNull
+	@PositiveOrZero
 	private int					estimatedCost;
 
 	@NotBlank
@@ -43,6 +46,14 @@ public class UserStory extends AbstractEntity {
 
 	@URL
 	@Length(max = 255)
-	private String				optionalLink;
+	private String				url;
+
+	@ManyToOne
+	@NotNull
+	private Project				project;
+
+	@ManyToOne
+	@NotNull
+	private Manager				manager;
 
 }

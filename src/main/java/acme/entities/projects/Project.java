@@ -23,26 +23,28 @@ public class Project extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	// Attributes -------------------------------------------------------------
+
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
 	@NotBlank
 	private String				code;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				title;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				summary;
 
 	private boolean				fatalErrors			= false;
 
 	@Min(0)
-	private int					cost;
+	private float				cost;
 
 	@URL
 	@Length(max = 255)
-	private String				optionalLink;
+	private String				url;
 
 }
