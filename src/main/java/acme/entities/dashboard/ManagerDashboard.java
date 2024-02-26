@@ -21,7 +21,6 @@ public class ManagerDashboard extends AbstractEntity {
 
 	@PositiveOrZero
 	private int					totalUserStories;
-	//average, deviation, minimum, and maximum estimated cost of the user stories
 
 	@PositiveOrZero
 	private double				averageCostUserStories;
