@@ -2,12 +2,13 @@
 package acme.entities.sponsorships;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
@@ -19,6 +20,7 @@ import javax.validation.constraints.Positive;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,8 +35,10 @@ public class Sponsorship extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@ManyToOne
-	@JoinColumn(name = "sponsor_id")
-	private SponsorDashboard	sponsor;
+	private Project				project;
+
+	@OneToMany
+	private List<Invoice>		invoice;
 
 	//Attributes --------------------------
 
@@ -47,11 +51,11 @@ public class Sponsorship extends AbstractEntity {
 	private Date				moment;
 
 	@Future
-	@Min(value = 1)
+	@Min(value = 31)
 	private Integer				duration;
 
 	@Positive
-	private double				amount;
+	private Integer				amount;
 
 	@NotBlank
 	@Pattern(regexp = "Financial|In kind")

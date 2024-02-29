@@ -21,10 +21,10 @@ public class SponsorDashboard extends AbstractEntity {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@OneToMany(mappedBy = "sponsor")
+	@OneToMany
 	private List<Invoice>		invoices;
 
-	@OneToMany(mappedBy = "sponsor")
+	@OneToMany
 	private List<Sponsorship>	sponsorships;
 
 
