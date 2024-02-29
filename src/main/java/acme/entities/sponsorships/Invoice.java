@@ -6,13 +6,13 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -27,10 +27,6 @@ public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	@JoinColumn(name = "sponsor_id")
-	private SponsorDashboard	sponsor;
-
 	// Attributes
 	@NotBlank
 	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
@@ -41,12 +37,13 @@ public class Invoice extends AbstractEntity {
 	private Date				registrationTime;
 
 	@Future
+	@Min(value = 31)
 	private Date				dueDate;
 
 	@Positive
 	private Integer				quantity;
 
-	@Positive
+	@PositiveOrZero
 	private Double				tax;
 
 
