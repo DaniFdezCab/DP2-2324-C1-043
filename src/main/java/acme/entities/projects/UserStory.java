@@ -38,7 +38,7 @@ public class UserStory extends AbstractEntity {
 	private int					estimatedCost;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				acceptanceCriteria;
 
 	@NotNull

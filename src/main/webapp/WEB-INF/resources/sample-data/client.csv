@@ -1,0 +1,3 @@
+key,identification,company-name,type,email,optional-link,key:user-account
+client-01,CLI-1234,Company1,COMPANY,client01@gmail.com,null,user-account-client-01
+client-02,CLI-5678,Company2,INDIVIDUAL,client02@gmail.com,null,user-account-client-02
