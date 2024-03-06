@@ -1,9 +1,11 @@
 
-package acme.entities;
+package acme.entities.sponsorships;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -12,15 +14,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Sponsor extends AbstractEntity {
+public class SponsorDashboard extends AbstractEntity {
 
 	/**
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<Invoice>		invoices;
 
+	@OneToMany
 	private List<Sponsorship>	sponsorships;
 
 
@@ -66,6 +70,26 @@ public class Sponsor extends AbstractEntity {
 
 	public int getMaximumQuantityOfInvoices() {
 		return this.invoices.stream().mapToInt(Invoice::getQuantity).max().orElse(0);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(this.invoices, this.sponsorships);
+		return result;
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
+		SponsorDashboard other = (SponsorDashboard) obj;
+		return Objects.equals(this.invoices, other.invoices) && Objects.equals(this.sponsorships, other.sponsorships);
 	}
 
 }

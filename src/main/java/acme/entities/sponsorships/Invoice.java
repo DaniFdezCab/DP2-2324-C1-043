@@ -1,5 +1,5 @@
 
-package acme.entities;
+package acme.entities.sponsorships;
 
 import java.sql.Date;
 import java.util.Objects;
@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -36,19 +37,19 @@ public class Invoice extends AbstractEntity {
 	private Date				registrationTime;
 
 	@Future
-	@Min(value = 1)
-	private Integer				dueDate;
+	@Min(value = 31)
+	private Date				dueDate;
 
 	@Positive
-	private int					quantity;
+	private Integer				quantity;
 
-	@Positive
-	private double				tax;
+	@PositiveOrZero
+	private Double				tax;
 
 
-	private double totalAmount() {
+	private Double getTotalAmount() {
 		return this.quantity + this.tax;
-	};
+	}
 
 
 	@URL
