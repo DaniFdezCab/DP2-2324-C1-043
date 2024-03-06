@@ -33,7 +33,7 @@ public class SponsorDashboard extends AbstractEntity {
 	}
 
 	public int getTotalSponsorshipsWithLink() {
-		return (int) this.sponsorships.stream().filter(sponsorship -> sponsorship.getOptionalLink() != null && !sponsorship.getOptionalLink().isEmpty()).count();
+		return (int) this.sponsorships.stream().filter(sponsorship -> sponsorship.getMoreInfo() != null && !sponsorship.getMoreInfo().isEmpty()).count();
 	}
 
 	public double getAverageAmountOfSponsorships() {
