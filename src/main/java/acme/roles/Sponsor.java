@@ -1,5 +1,5 @@
 
-package acme.entities.sponsorships;
+package acme.roles;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;

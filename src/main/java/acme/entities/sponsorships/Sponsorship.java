@@ -2,12 +2,10 @@
 package acme.entities.sponsorships;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -39,9 +37,6 @@ public class Sponsorship extends AbstractEntity {
 
 	@ManyToOne(optional = false)
 	private Project				project;
-
-	@OneToMany
-	private List<Invoice>		invoice;
 
 	//Attributes --------------------------
 
