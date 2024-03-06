@@ -58,7 +58,6 @@ public class Project extends AbstractEntity {
 	@NotNull
 	private Manager				manager;
 
-	@OneToMany(mappedBy = "project")
-	private List<Contract>		contract;
+
 
 }
