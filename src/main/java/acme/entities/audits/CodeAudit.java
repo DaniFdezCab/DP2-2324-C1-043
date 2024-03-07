@@ -2,17 +2,21 @@
 package acme.entities.audits;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -22,7 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class CodeAudits extends AbstractEntity {
+public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -33,28 +37,42 @@ public class CodeAudits extends AbstractEntity {
 	private String				code;
 
 	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				executionDate;
 
-	private String				type;
+	private Type				type;
 
-	@Size(max = 101)
-	private String				proposedCorrectiveActions;// Lista da error
+	@Length(max = 100)
+	private String				proposedCorrectiveActions;
 
-	private int					mark;
+	@NotNull
+	private Mark				mark;
 
 
-	public void computeMark(final List<CodeAudits> auditingRecords) {
-		if (auditingRecords.isEmpty())
-			this.mark = 0;
-		return;
+	public static Mark moda(final List<Mark> lista) {
+		// Crear un mapa para almacenar las frecuencias de cada valor
+		Map<Mark, Integer> frecuencias = new HashMap<>();
+		for (Mark valor : lista)
+			frecuencias.put(valor, frecuencias.getOrDefault(valor, 0) + 1);
+
+		// Encontrar el valor con la mayor frecuencia
+		Mark moda = null;
+		int frecuenciaMaxima = 0;
+		for (Map.Entry<Mark, Integer> entrada : frecuencias.entrySet())
+			if (entrada.getValue() > frecuenciaMaxima) {
+				frecuenciaMaxima = entrada.getValue();
+				moda = entrada.getKey();
+			}
+
+		// Devolver la moda
+		return moda;
 	}
 
 
-	@OneToMany(mappedBy = "codeAudits")
-	private List<AuditRecords>	auditRecords;
-
 	@URL
-	private String				optionalLink;
+	@Length(max = 255)
+	private String optionalLink;
 
 	// Constructors, getters, setters, hashCode, equals, etc.
 
@@ -75,7 +93,7 @@ public class CodeAudits extends AbstractEntity {
 			return false;
 		if (this.getClass() != obj.getClass())
 			return false;
-		CodeAudits other = (CodeAudits) obj;
+		CodeAudit other = (CodeAudit) obj;
 		return Objects.equals(this.code, other.code) && Objects.equals(this.executionDate, other.executionDate) && Objects.equals(this.optionalLink, other.optionalLink) && this.mark == other.mark
 			&& Objects.equals(this.proposedCorrectiveActions, other.proposedCorrectiveActions) && Objects.equals(this.type, other.type);
 	}
