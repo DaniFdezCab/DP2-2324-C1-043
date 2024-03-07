@@ -28,7 +28,7 @@ public class Invoice extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	private Sponsorship			sponsorship;
 
 	// Attributes
