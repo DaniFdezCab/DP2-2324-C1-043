@@ -48,12 +48,10 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 255)
 	private String				url;
 
-	@ManyToOne
-	@NotNull
+	@ManyToOne(optional = false)
 	private Project				project;
 
-	@ManyToOne
-	@NotNull
+	@ManyToOne(optional = false)
 	private Manager				manager;
 
 }

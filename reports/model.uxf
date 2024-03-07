@@ -248,7 +248,7 @@ bg=green</panel_attributes>
       <x>987</x>
       <y>259</y>
       <w>238</w>
-      <h>91</h>
+      <h>105</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 UserStory
@@ -256,6 +256,7 @@ UserStory
 + title: String {NotBlank, Length &lt; 76}
 + description: String {NotBlank, Length &lt; 101}
 + estimatedCost: int {NotNull, min = 0}
++ priority: Priority
 + acceptanceCriteria: String {NotBlank, Length &lt; 101}
 + url: String {NotBlank, Length &lt; 255}
 bg=green</panel_attributes>
@@ -347,5 +348,23 @@ m1=0..n
 m2=1
 &lt; created by</panel_attributes>
     <additional_attributes>300.0;70.0;300.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>112</y>
+      <w>70</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Priority
+--
++ MUST
++ SHOULD
++ COULD
++ WONT
+bg=orange</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
