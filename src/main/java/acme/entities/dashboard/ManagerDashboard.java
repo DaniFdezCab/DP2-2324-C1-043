@@ -19,6 +19,7 @@ public class ManagerDashboard extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
+	// TODO: Implementar estos atributos de forma compleja a través de los servicios.
 	@PositiveOrZero
 	private int					totalUserStories;
 
