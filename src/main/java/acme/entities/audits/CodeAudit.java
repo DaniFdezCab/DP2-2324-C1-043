@@ -9,11 +9,14 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -23,7 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class CodeAudits extends AbstractEntity {
+public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -34,13 +37,16 @@ public class CodeAudits extends AbstractEntity {
 	private String				code;
 
 	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				executionDate;
 
 	private Type				type;
 
-	@Size(max = 101)
-	private String				proposedCorrectiveActions;// Lista da error
+	@Length(max = 100)
+	private String				proposedCorrectiveActions;
 
+	@NotNull
 	private Mark				mark;
 
 
@@ -65,6 +71,7 @@ public class CodeAudits extends AbstractEntity {
 
 
 	@URL
+	@Length(max = 255)
 	private String optionalLink;
 
 	// Constructors, getters, setters, hashCode, equals, etc.
@@ -86,7 +93,7 @@ public class CodeAudits extends AbstractEntity {
 			return false;
 		if (this.getClass() != obj.getClass())
 			return false;
-		CodeAudits other = (CodeAudits) obj;
+		CodeAudit other = (CodeAudit) obj;
 		return Objects.equals(this.code, other.code) && Objects.equals(this.executionDate, other.executionDate) && Objects.equals(this.optionalLink, other.optionalLink) && this.mark == other.mark
 			&& Objects.equals(this.proposedCorrectiveActions, other.proposedCorrectiveActions) && Objects.equals(this.type, other.type);
 	}

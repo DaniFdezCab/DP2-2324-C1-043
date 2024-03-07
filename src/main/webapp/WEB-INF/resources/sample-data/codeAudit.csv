@@ -1,0 +1,11 @@
+key,code,executionDate,type,proposedCorrectiveActions,mark,optionalLink
+codeAudit-01,AAA-001,2022/07/29 23:59,STATIC,"hola,ejemplo",A,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+codeAudit-02,AAA-002,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
+codeAudit-03,ZZZ-999,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
+codeAudit-04,MMM-500,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",C,https://www.ejemplo.com
+codeAudit-05,BBB-222,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
+codeAudit-06,YYY-800,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",A_PLUS,https://www.ejemplo.com
+codeAudit-07,AAA-003,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw,hiwifhawifohaw,ifhiowhfiwifwfhi,fihwofhjia,woh",B,https://www.ejemplo.com
+codeAudit-08,AAA-004,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw",B,https://www.ejemplo.com
+codeAudit-09,AAA-005,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",F_MINOR,https://www.ejemplo.com
+codeAudit-10,AAA-006,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com

@@ -1,0 +1,9 @@
+key,instantiationMoment,title,description,priority,status,duration,optionalLink
+objetive-01,2022/07/29 23:59,titulo,descripcion,HIGH,1,10,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+objetive-02,2022/07/29 23:59,dhiuawiuadwgyuwagyiuafwgoyiugiuwfagiuwfagiuwfagiufwwfgiuwuwgifawgifuwifugwa,descripcion,HIGH,1,10,http://www.url.com
+objetive-03,2022/07/29 23:59,titulo,dhiuawiuadwgyuwagyiuafwgoyiugiuwfagiuwfagiuwfagiufwwfgiuwuwgifawfsafasfggawdfwafascvvvvvvgifuwifugwa,HIGH,1,10,http://www.url.com
+objetive-04,2022/07/29 23:59,titulo,descripcion,LOW,1,10,http://www.url.com
+objetive-05,2022/07/29 23:59,titulo,descripcion,MEDIUM,1,10,http://www.url.com
+objetive-06,2022/07/29 23:59,titulo,descripcion,HIGH,0,10,http://www.url.com
+objetive-07,2022/07/29 23:59,titulo,descripcion,HIGH,1,0,http://www.url.com
+objetive-08,2022/07/29 23:59,titulo,descripcion,HIGH,1,99990,http://www.url.com
