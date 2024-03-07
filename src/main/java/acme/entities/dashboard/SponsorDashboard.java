@@ -2,6 +2,7 @@
 package acme.entities.dashboard;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -19,25 +20,35 @@ public class SponsorDashboard extends AbstractEntity {
 
 	// Attributes 
 
-	private Integer				numberInvoicesTaxed;
+	@PositiveOrZero
+	private int					numberInvoicesTaxed;
 
-	private Integer				numberSponsorshipsLinked;
+	@PositiveOrZero
+	private int					numberSponsorshipsLinked;
 
-	private Double				averageI;
+	@PositiveOrZero
+	private double				averageI;
 
-	private Double				deviationI;
+	@PositiveOrZero
+	private double				deviationI;
 
-	private Integer				minimumI;
+	@PositiveOrZero
+	private int					minimumI;
 
-	private Integer				maximumI;
+	@PositiveOrZero
+	private int					maximumI;
 
-	private Double				averageS;
+	@PositiveOrZero
+	private double				averageS;
 
-	private Double				deviationS;
+	@PositiveOrZero
+	private double				deviationS;
 
-	private Integer				minimumS;
+	@PositiveOrZero
+	private int					minimumS;
 
-	private Integer				maximumS;
+	@PositiveOrZero
+	private int					maximumS;
 
 	// Las operaciones se realizan en el servicio
 
