@@ -1,0 +1,4 @@
+key,code,startMoment,endMoment,location,instructor,email,link,key:training_module
+training_session-01,TS-ABA011,2018/04/25 16:00,2022/02/25 17:30,Sevilla/Spain/Europe,Connor McGreggor,mcgg@alum.us.es,http://www.unit-conversion.info/texttools/random-string-generator/,training_module-01
+training_session-02,TS-Y998,2021/06/19 21:39,2022/01/03 21:39,L,this is a sample text of 76 characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ±lkjÃ],pabberima@alum.us.es,null,training_module-02
+training_session-03,TS-IX647,2001/06/19 21:39,2012/01/03 21:39,this is a sample text of 76 characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ±lkj€~,I,pablo.bermudez.medina@gmail.com,,training_module-03

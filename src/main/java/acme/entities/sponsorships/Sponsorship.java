@@ -60,6 +60,7 @@ public class Sponsorship extends AbstractEntity {
 	private String				type;
 
 	@Email
+	@Length(max = 255)
 	private String				emailContact;
 
 	@URL

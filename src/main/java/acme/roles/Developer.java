@@ -8,34 +8,34 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
+import acme.client.data.AbstractRole;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Sponsor extends AbstractEntity {
+public class Developer extends AbstractRole {
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 1L;
 
 	@NotBlank
-	@Length(max = 75)
-	private String				name;
+	@Length(max = 76)
+	private String				degree;
 
 	@NotBlank
-	@Length(max = 100)
-	private String				benefits;
+	@Length(max = 101)
+	private String				specialisation;
+
+	@NotBlank
+	@Length(max = 101)
+	private String				skills;
+
+	@NotBlank
+	@Email
+	private String				email;
 
 	@URL
-	@Length(max = 255)
-	private String				moreInfo;
-
-	@Email
-	@Length(max = 255)
-	private String				emailContact;
+	private String				link;
 
 }
