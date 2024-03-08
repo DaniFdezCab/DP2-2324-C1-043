@@ -7,10 +7,14 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -20,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class AuditRecords extends AbstractEntity {
+public class AuditRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -31,10 +35,14 @@ public class AuditRecords extends AbstractEntity {
 	private String				code;
 
 	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				auditPeriodStart;
 
 	@Past
-	private Date				auditPeriodEnd;// al menos una hora ?
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				auditPeriodEnd;
 
 
 	public boolean haPasadoAlMenosUnaHora() {
@@ -50,13 +58,14 @@ public class AuditRecords extends AbstractEntity {
 	}
 
 
-	@NotBlank
+	@NotNull
 	private Mark		mark;
 
 	@ManyToOne
-	private CodeAudits	codeAudits;
+	private CodeAudit	codeAudit;
 
 	@URL
+	@Length(max = 255)
 	private String		furtherInformation;
 
 
@@ -65,7 +74,7 @@ public class AuditRecords extends AbstractEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(this.auditPeriodEnd, this.auditPeriodStart, this.code, this.codeAudits, this.furtherInformation, this.mark);
+		result = prime * result + Objects.hash(this.auditPeriodEnd, this.auditPeriodStart, this.code, this.codeAudit, this.furtherInformation, this.mark);
 		return result;
 	}
 
@@ -77,8 +86,8 @@ public class AuditRecords extends AbstractEntity {
 			return false;
 		if (this.getClass() != obj.getClass())
 			return false;
-		AuditRecords other = (AuditRecords) obj;
-		return Objects.equals(this.auditPeriodEnd, other.auditPeriodEnd) && Objects.equals(this.auditPeriodStart, other.auditPeriodStart) && Objects.equals(this.code, other.code) && Objects.equals(this.codeAudits, other.codeAudits)
+		AuditRecord other = (AuditRecord) obj;
+		return Objects.equals(this.auditPeriodEnd, other.auditPeriodEnd) && Objects.equals(this.auditPeriodStart, other.auditPeriodStart) && Objects.equals(this.code, other.code) && Objects.equals(this.codeAudit, other.codeAudit)
 			&& Objects.equals(this.furtherInformation, other.furtherInformation) && Objects.equals(this.mark, other.mark);
 	}
 }

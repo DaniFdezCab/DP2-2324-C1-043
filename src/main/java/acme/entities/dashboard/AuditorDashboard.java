@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class ManagerDashboard extends AbstractEntity {
+public class AuditorDashboard extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -20,30 +20,30 @@ public class ManagerDashboard extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 	@PositiveOrZero
-	private int					totalUserStories;
+	private int					totalCodeAudits;
 
 	@PositiveOrZero
-	private double				averageCostUserStories;
+	private double				averageAuditRecords;
 
 	@PositiveOrZero
-	private double				deviationCostUserStories;
+	private double				deviationAuditRecords;
 
 	@PositiveOrZero
-	private double				minimumCostUserStories;
+	private double				minimumAuditRecords;
 
 	@PositiveOrZero
-	private double				maximumCostUserStories;
+	private double				maximumAuditRecords;
 
 	@PositiveOrZero
-	private double				averageCostProjects;
+	private double				averagePeriodAuditRecords;
 
 	@PositiveOrZero
-	private double				deviationCostProjects;
+	private double				deviationPeriodAuditRecords;
 
 	@PositiveOrZero
-	private double				minimumCostProjects;
+	private double				minimumPeriodAuditRecords;
 
 	@PositiveOrZero
-	private double				maximumCostProjects;
+	private double				maximumPeriodAuditRecords;
 
 }

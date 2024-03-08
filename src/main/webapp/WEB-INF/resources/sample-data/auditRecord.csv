@@ -1,0 +1,11 @@
+key,code,auditPeriodStart,auditPeriodEnd,mark,key:code-audit,furtherInformation
+auditRecord-01,AU-0001-001,2022/07/29 23:59,2022/07/29 23:59,A,codeAudit-01,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+auditRecord-02,AU-0001-002,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-10,AU-9999-999,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-03,AU-5000-500,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-04,AU-0001-003,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-05,AU-0010-010,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-06,AU-8000-800,2022/07/29 23:59,2022/07/29 23:59,C,codeAudit-02,https://www.ejemplo.com
+auditRecord-07,AU-0001-004,2022/07/29 23:59,2022/07/29 23:59,A_PLUS,codeAudit-02,https://www.ejemplo.com
+auditRecord-08,AU-0001-005,2022/07/29 23:59,2022/07/29 23:59,F_MINOR,codeAudit-02,https://www.ejemplo.com
+auditRecord-09,AU-0001-006,2022/07/29 23:59,2022/07/29 23:59,B,codeAudit-02,null
