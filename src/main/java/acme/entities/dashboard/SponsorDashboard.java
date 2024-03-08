@@ -20,6 +20,7 @@ public class SponsorDashboard extends AbstractEntity {
 
 	// Attributes 
 
+	// TODO: Implementar estos atributos de forma compleja a través de los servicios.
 	@PositiveOrZero
 	private int					numberInvoicesTaxed;
 
@@ -49,7 +50,5 @@ public class SponsorDashboard extends AbstractEntity {
 
 	@PositiveOrZero
 	private int					maximumS;
-
-	// Las operaciones se realizan en el servicio
 
 }
