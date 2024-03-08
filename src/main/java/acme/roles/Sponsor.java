@@ -31,9 +31,11 @@ public class Sponsor extends AbstractEntity {
 	private String				benefits;
 
 	@URL
+	@Length(max = 255)
 	private String				moreInfo;
 
 	@Email
+	@Length(max = 255)
 	private String				emailContact;
 
 }
