@@ -1,5 +1,5 @@
 key,record-id,completeness,comment,registration-moment,responsible-person,key:contract
-progress-log-01,PG-A-1234,1,T,2022/07/29 23:59,R,contract-01
+progress-log-01,PG-A-1234,1,T,2000/01/01 00:00,R,contract-01
 progress-log-02,PG-BB-5678,42,ThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacomThisisacom,2022/07/28 12:00,ResponsiblResponsiblResponsiblResponsiblResponsiblResponsiblResponsiblRespo,contract-02
 progress-log-03,PG-C-9012,17,"""$%&""""""""@ñ·#¿?""",2022/07/27 08:30,"""$%&""""""""@ñ·#¿?""",contract-03
 progress-log-04,PG-DD-3456,91,這是一個項目,2022/07/26 18:45,這是一個項目,contract-04
