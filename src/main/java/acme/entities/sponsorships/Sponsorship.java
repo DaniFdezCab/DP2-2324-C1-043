@@ -1,22 +1,21 @@
 
 package acme.entities.sponsorships;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -34,11 +33,10 @@ public class Sponsorship extends AbstractEntity {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	private Project				project;
+	// Relationships ----------------------------------------------------------
 
-	@OneToMany
-	private List<Invoice>		invoice;
+	@ManyToOne(optional = false)
+	private Project				project;
 
 	//Attributes --------------------------
 
@@ -48,11 +46,11 @@ public class Sponsorship extends AbstractEntity {
 	private String				code;
 
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@Future
-	@Min(value = 31)
-	private Integer				duration;
+	@Min(value = 1)
+	private float				duration;
 
 	@Positive
 	private Integer				amount;
@@ -62,31 +60,10 @@ public class Sponsorship extends AbstractEntity {
 	private String				type;
 
 	@Email
-	private String				optionalContact;
+	private String				emailContact;
 
 	@URL
-	private String				optionalLink;
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(this.amount, this.code, this.duration, this.moment, this.optionalContact, this.optionalLink, this.type);
-		return result;
-	}
-
-	@Override
-	public boolean equals(final Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
-		Sponsorship other = (Sponsorship) obj;
-		return Double.doubleToLongBits(this.amount) == Double.doubleToLongBits(other.amount) && Objects.equals(this.code, other.code) && Objects.equals(this.duration, other.duration) && Objects.equals(this.moment, other.moment)
-			&& Objects.equals(this.optionalContact, other.optionalContact) && Objects.equals(this.optionalLink, other.optionalLink) && Objects.equals(this.type, other.type);
-	}
+	@Length(max = 255)
+	private String				moreInfo;
 
 }

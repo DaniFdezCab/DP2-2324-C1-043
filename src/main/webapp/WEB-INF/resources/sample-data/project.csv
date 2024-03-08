@@ -20,3 +20,4 @@ project-18,AAQ-1000,Example Project,This is an example,750.38,http://www.example
 project-19,AAR-1000,Example Project,This is an example,18.45,null,manager-01
 project-20,AAS-1000,Example Project,This is an example,18.45,ftp://user:pass@acmeUser,manager-01
 project-21,AAT-1000,Example Project,This is an example,18.45,http://www.exampleproject.com/?user=danfercab,manager-01
+project-22,AAU-1000,Example Project,This is an example,18.45,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111,manager-01
