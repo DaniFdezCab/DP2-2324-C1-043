@@ -1,0 +1,6 @@
+key,key:userAccount,certifications,optionalLink,firm,professionalID
+auditor-01,user-account-auditor-01,"Certification1, Certification2",http://www.url.com,UOPP,1234567891234567891234567
+auditor-02,user-account-auditor-02,Certification3,http://www.url.com,SAAI,2234567891234567891234567
+auditor-03,user-account-auditor-02,Certification3,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111,SAAI,2234567891234567891234567
+auditor-04,user-account-auditor-02,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw,hiwifhawifohaw,ifhiowhfiwifwfhi,fihwofhjia,woh",http://www.url.com,SAAI,2234567891234567891234567
+auditor-05,user-account-auditor-02,Certification3,http://www.url.com,APAPAOSDOASDASDASODFOASFPASFPSFIAPFIKASPFJAPFJASPJFPASFPIFSPSFPAKJIPAIFKWPA,2234567891234567891234567

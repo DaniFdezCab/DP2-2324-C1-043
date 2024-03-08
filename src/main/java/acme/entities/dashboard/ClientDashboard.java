@@ -15,12 +15,12 @@ public class ClientDashboard extends AbstractForm {
 
 	// Attributes
 
-	Integer						totalNumberOfProgressLogs;
-	Integer						completeness;
-	Double						averageBudget;
-	Double						deviationBudget;
-	Double						minimumBudget;
-	Double						maximumBudget;
+	int							totalNumberOfProgressLogs;
+	int							completeness;
+	float						averageBudget;
+	float						deviationBudget;
+	float						minimumBudget;
+	float						maximumBudget;
 
 	// Las operaciones se realizan en el servicio.
 
