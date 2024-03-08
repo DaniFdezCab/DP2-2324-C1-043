@@ -1,56 +1,48 @@
 
-package acme.entities.claims;
-
-import java.util.Date;
+package acme.roles;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
+import acme.client.data.AbstractRole;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class Claim extends AbstractEntity {
+public class Client extends AbstractRole {
 
-	/**
-	 * 
-	 */
+	// Serialisation identifier
+
 	private static final long	serialVersionUID	= 1L;
 
-	@NotBlank
-	@Pattern(regexp = "C-[0-9]{4}")
-	@Column(unique = true)
-	private String				code;
+	// Attributes
 
-	@Past
-	private Date				instantiationMoment;
+	@Column(unique = true)
+	@NotBlank
+	@Pattern(regexp = "CLI-[0-9]{4}")
+	private String				identification;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				heading;
+	private String				companyName;
 
-	@NotBlank
-	@Length(max = 100)
-	private String				description;
-
-	@NotBlank
-	@Length(max = 100)
-	private String				department;
+	// @NotBlank
+	private ClientType			type;
 
 	@Email
-	private String				optionalEmailAddress;
+	@NotBlank
+	@Length(max = 100)
+	private String				email;
 
 	@URL
+	@Length(max = 255)
 	private String				optionalLink;
-
 }

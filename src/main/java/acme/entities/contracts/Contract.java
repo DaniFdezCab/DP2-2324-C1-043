@@ -1,5 +1,5 @@
 
-package acme.entities.sponsorships;
+package acme.entities.contracts;
 
 import java.util.Date;
 
@@ -8,15 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.projects.Project;
@@ -26,44 +25,45 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Sponsorship extends AbstractEntity {
 
-	/**
-	 * 
-	 */
+public class Contract extends AbstractEntity {
+
+	// Serialisation identifier
+
 	private static final long	serialVersionUID	= 1L;
 
-	// Relationships ----------------------------------------------------------
+	// Relationships
 
 	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
 	private Project				project;
 
-	//Attributes --------------------------
+	// Attributes
 
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				moment;
-
-	@Min(value = 1)
-	private float				duration;
-
-	@Positive
-	private Integer				amount;
+	private Date				instantiationMoment;
 
 	@NotBlank
-	@Pattern(regexp = "Financial|In kind")
-	private String				type;
+	@Length(max = 75)
+	private String				providerName;
 
-	@Email
-	private String				emailContact;
+	@NotBlank
+	@Length(max = 75)
+	private String				customerName;
 
-	@URL
-	@Length(max = 255)
-	private String				moreInfo;
+	@NotBlank
+	@Length(max = 100)
+	private String				goals;
+
+	// Less than or equal to project cost (Hay que realizarlo en el servicio)
+	@Min(0)
+	private Double				budget;
 
 }
