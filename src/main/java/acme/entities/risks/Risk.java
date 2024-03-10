@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -38,9 +36,7 @@ public class Risk extends AbstractEntity {
 	@NotBlank
 	private String				reference;
 
-	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	@NotNull
 	private Date				date;
 
 	@Positive

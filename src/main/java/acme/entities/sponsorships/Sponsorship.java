@@ -1,14 +1,15 @@
 
 package acme.entities.sponsorships;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
@@ -33,10 +34,11 @@ public class Sponsorship extends AbstractEntity {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	// Relationships ----------------------------------------------------------
-
-	@ManyToOne(optional = false)
+	@ManyToOne
 	private Project				project;
+
+	@OneToMany
+	private List<Invoice>		invoice;
 
 	//Attributes --------------------------
 
@@ -46,11 +48,11 @@ public class Sponsorship extends AbstractEntity {
 	private String				code;
 
 	@Past
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@Min(value = 1)
-	private float				duration;
+	@Future
+	@Min(value = 31)
+	private Integer				duration;
 
 	@Positive
 	private Integer				amount;
@@ -64,7 +66,6 @@ public class Sponsorship extends AbstractEntity {
 	private String				emailContact;
 
 	@URL
-	@Length(max = 255)
-	private String				moreInfo;
+	private String				optionalLink;
 
 }

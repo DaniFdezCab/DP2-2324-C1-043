@@ -3,7 +3,6 @@ package acme.entities.projects;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
@@ -39,7 +38,7 @@ public class UserStory extends AbstractEntity {
 	private int					estimatedCost;
 
 	@NotBlank
-	@Length(max = 100)
+	@Length(max = 101)
 	private String				acceptanceCriteria;
 
 	@NotNull
@@ -49,12 +48,12 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 255)
 	private String				url;
 
-	@ManyToOne(optional = false)
-	@Valid
+	@ManyToOne
+	@NotNull
 	private Project				project;
 
-	@ManyToOne(optional = false)
-	@Valid
+	@ManyToOne
+	@NotNull
 	private Manager				manager;
 
 }
