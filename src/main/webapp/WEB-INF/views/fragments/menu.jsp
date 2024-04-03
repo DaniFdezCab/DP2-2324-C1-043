@@ -45,7 +45,15 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">			
+			<acme:menu-suboption code="master.menu.developer.my-trainingModules" action="/developer/training-module/list-mine"/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/dashboard/show"/>
+		</acme:menu-option>
+		
+		
 	</acme:menu-left>
+	
 
 	<acme:menu-right>
 		<acme:menu-option code="master.menu.sign-up" action="/anonymous/user-account/create" access="isAnonymous()"/>
