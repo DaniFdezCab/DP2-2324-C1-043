@@ -48,6 +48,8 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.manager = Projects
 master.menu.consumer.myProjects = My Projects
+master.menu.consumer.myPublishedProjects = My Published Projects
+
 
 
 # master.menu.user-account ####################################################

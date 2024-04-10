@@ -16,3 +16,5 @@ manager.project.list.label.summary = Descripción
 manager.project.list.label.cost = Coste
 manager.project.list.label.url = Enlace
 
+manager.application.form.button.update = Update
+

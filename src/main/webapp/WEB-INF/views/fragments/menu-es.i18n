@@ -48,6 +48,7 @@ master.menu.consumer.favourite-link = Enlace favorito
 
 master.menu.manager = Proyectos
 master.menu.consumer.myProjects = Mis Proyectos
+master.menu.consumer.myPublishedProjects = Mis Proyectos Publicados
 
 # master.menu.user-account ####################################################
 

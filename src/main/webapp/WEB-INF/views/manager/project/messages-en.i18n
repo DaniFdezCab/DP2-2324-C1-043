@@ -19,7 +19,7 @@ manager.project.list.title = Listing of applications
 # manager.application.form.label.status = Status:
 # manager.application.form.label.new-status = Change status to:
 
-# manager.application.form.button.update = Update
+manager.application.form.button.update = Update
 
 manager.project.list.label.code = Code
 manager.project.list.label.title = Title

@@ -48,6 +48,8 @@ public class Project extends AbstractEntity {
 	 */
 	private boolean				fatalErrors			= false;
 
+	private boolean				published			= false;
+
 	@PositiveOrZero
 	private double				cost;
 
