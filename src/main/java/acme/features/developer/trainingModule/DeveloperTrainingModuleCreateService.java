@@ -12,6 +12,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
+import acme.entities.trainings.DifficultyLevel;
 import acme.entities.trainings.TrainingModule;
 import acme.roles.Developer;
 
@@ -37,6 +38,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
 
 		object = new TrainingModule();
+		object.setDifficultyLevel(DifficultyLevel.BASIC);
 		object.setCreationMoment(currentDate);
 		object.setNotPublished(true);
 		object.setDeveloper(developer);
@@ -91,9 +93,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
+		SelectChoices difficulty;
+		difficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+
 		dataset = super.unbind(object, "code", "details", "creationMoment", "link", "totalTime", "notPublished");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("difficultyLevel", difficulty);
 
 		super.getResponse().addData(dataset);
 	}

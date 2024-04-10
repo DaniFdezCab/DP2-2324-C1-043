@@ -1,37 +1,34 @@
 
-package acme.features.developer.trainingModule;
+package acme.features.any;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
-import acme.entities.trainings.DifficultyLevel;
 import acme.entities.trainings.TrainingModule;
-import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleShowService extends AbstractService<Developer, TrainingModule> {
+public class AnyTrainingModuleShowService extends AbstractService<Any, TrainingModule> {
 
 	@Autowired
-	protected DeveloperTrainingModuleRepository repository;
+	private AnyTrainingModuleRepository repository;
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int id;
 		TrainingModule module;
-		Developer developer;
 
-		masterId = super.getRequest().getData("id", int.class);
-		module = this.repository.findOneTrainingModuleById(masterId);
-		developer = module == null ? null : module.getDeveloper();
-		status = super.getRequest().getPrincipal().hasRole(developer) || module != null;
+		id = super.getRequest().getData("id", int.class);
+		module = this.repository.findOneTrainingModuleById(id);
+		status = module != null && !module.getNotPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -57,13 +54,9 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 
-		SelectChoices difficulty;
-		difficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-
 		dataset = super.unbind(object, "code", "details", "creationMoment", "link", "totalTime", "notPublished");
 		dataset.put("projectId", object.getProject().getTitle());
 		dataset.put("projects", choices);
-		dataset.put("difficultyLevel", difficulty);
 
 		super.getResponse().addData(dataset);
 	}

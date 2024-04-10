@@ -20,6 +20,7 @@
 	<acme:input-textbox code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
 	<acme:input-integer code="developer.training-module.form.label.totalTime" path="totalTime"/>
+	<acme:input-select code="developer.training-module.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevel}"/>
 	<jstl:if test="${_command == 'show' && notPublished == false}">
 		<acme:input-textbox code="developer.training-module.label.projectId" path="projectId"/>
 	</jstl:if>	
