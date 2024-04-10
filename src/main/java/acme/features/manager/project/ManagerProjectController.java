@@ -31,7 +31,8 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("listPublished", this.listPublishedService);
+
+		super.addCustomCommand("listPublished", "list", this.listPublishedService);
 	}
 
 }
