@@ -1,5 +1,5 @@
 
-package acme.entities.dashboard;
+package acme.forms;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.PositiveOrZero;
