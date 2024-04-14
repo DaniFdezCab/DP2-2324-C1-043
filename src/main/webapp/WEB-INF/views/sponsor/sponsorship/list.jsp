@@ -21,6 +21,6 @@
 	<acme:list-column code="sponsor.sponsorship.list.label.duration" path="duration" width="10%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.amount" path="amount" width="20%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="20%"/>	
-	<acme:list-column code="sponsor.sponsorship.list.label.emailContact" path="emailContact" width="10%"/>	
+	<acme:list-column code="sponsor.sponsorship.list.label.emailContact" path="emailContact" width="20%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.moreInfo" path="moreInfo" width="10%"/>		
 </acme:list>
