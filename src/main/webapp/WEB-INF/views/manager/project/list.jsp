@@ -22,3 +22,7 @@
 	<acme:list-column code="manager.project.list.label.cost" path="cost" width="10%"/>
 	<acme:list-column code="manager.project.list.label.url" path="url" width="15%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+    <acme:button code="manager.project.list.button.create-form" action="/manager/project/create"/>
+</jstl:if>

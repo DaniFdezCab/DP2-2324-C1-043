@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-# manager.application.form.title = Application form
+manager.project.form.title = Project form
 manager.project.list.title = Listing of applications
 
 # manager.application.form.label.reference = Reference:
@@ -19,7 +19,9 @@ manager.project.list.title = Listing of applications
 # manager.application.form.label.status = Status:
 # manager.application.form.label.new-status = Change status to:
 
-manager.application.form.button.update = Update
+manager.project.form.button.update = Update
+manager.project.form.button.delete = Delete
+manager.project.form.button.publish = Publish
 
 manager.project.list.label.code = Code
 manager.project.list.label.title = Title

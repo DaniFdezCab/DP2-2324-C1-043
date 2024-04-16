@@ -17,13 +17,19 @@
 
 
 <acme:form>
-	<acme:input-textbox code="manager.project.list.label.code" path="code" readonly="true" />
-	<acme:input-textbox code="manager.project.list.label.title" path="title" readonly="true" />
-	<acme:input-textarea code="manager.project.list.label.summary" path="summary" readonly="true" />
-	<acme:input-double code="manager.project.list.label.cost" path="cost" readonly="true" />
-	<acme:input-url code="manager.project.list.label.url" path="url"  readonly="true" />
-	<acme:submit
-		test="${acme:anyOf(_command, 'show|update') && !acme:anyOf(status, 'ACCEPTED|REJECTED')}"
-		code="manager.application.form.button.update"
-		action="/manager/project/update" />
+	<acme:input-textbox code="manager.project.list.label.code" path="code" />
+	<acme:input-textbox code="manager.project.list.label.title" path="title" />
+	<acme:input-textarea code="manager.project.list.label.summary" path="summary" />
+	<acme:input-double code="manager.project.list.label.cost" path="cost" />
+	<acme:input-checkbox code="manager.project.list.label.fatalErrors" path="fatalErrors" />
+	<acme:input-url code="manager.project.list.label.url" path="url" />
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !publish}">
+			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
+			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
+			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
+		</jstl:when>
+	</jstl:choose>
+
 </acme:form>
