@@ -14,27 +14,28 @@ import acme.roles.Sponsor;
 public class SponsorSponsorshipController extends AbstractController<Sponsor, Sponsorship> {
 
 	@Autowired
-	public SponsorSponsorshipListService	listService;
+	private SponsorSponsorshipListService		listService;
 
 	@Autowired
-	public SponsorSponsorshipShowService	showService;
+	private SponsorSponsorshipShowService		showService;
 
 	@Autowired
-	public SponsorSponsorshipDeleteService	deleteService;
+	private SponsorSponsorshipDeleteService		deleteService;
 
 	@Autowired
-	public SponsorSponsorshipPublishService	publishService;
+	private SponsorSponsorshipPublishService	publishService;
 
 	@Autowired
-	public SponsorSponsorshipUpdateService	updateService;
+	private SponsorSponsorshipUpdateService		updateService;
 
 	@Autowired
-	public SponsorSponsorshipCreateService	createService;
+	private SponsorSponsorshipCreateService		createService;
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 
 	}
 

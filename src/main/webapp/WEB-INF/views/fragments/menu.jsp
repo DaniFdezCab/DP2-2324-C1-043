@@ -50,7 +50,8 @@
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.favourite-link" action="http://www.example.com/"/>
-			<acme:menu-suboption code="master.menu.sponsor.myPublishedSponsorships" action="/sponsor/sponsorship/list"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-published-sponsorships" action="/sponsor/sponsorship/list"/>
+			
 		</acme:menu-option>
 		
 	</acme:menu-left>

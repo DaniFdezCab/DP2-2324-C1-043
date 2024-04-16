@@ -16,12 +16,12 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="true">
-	<acme:input-textbox code="sponsor.sponsorship.list.label.code" path="code"/>
-	<acme:input-textbox code="sponsor.sponsorship.list.label.moment" path="moment"/>
-	<acme:input-double code="sponsor.sponsorship.list.label.duration" path="duration"/>
-	<acme:input-integer code="sponsor.sponsorship.list.label.amount" path="amount"/>
-	<acme:input-textbox code="sponsor.sponsorship.list.label.type" path="type"/>
-	<acme:input-textbox code="sponsor.sponsorship.list.label.emailContact" path="emailContact"/>
-	<acme:input-url code="sponsor.sponsorship.list.label.moreInfo" path="moreInfo"/>				
+	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.moment" path="moment"/>
+	<acme:input-double code="sponsor.sponsorship.form.label.duration" path="duration"/>
+	<acme:input-integer code="sponsor.sponsorship.form.label.amount" path="amount"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.type" path="type"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.emailContact" path="emailContact"/>
+	<acme:input-url code="sponsor.sponsorship.form.label.moreInfo" path="moreInfo"/>				
 </acme:form>
 

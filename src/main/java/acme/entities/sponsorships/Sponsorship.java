@@ -52,6 +52,7 @@ public class Sponsorship extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				moment;
 
 	@Min(value = 1)

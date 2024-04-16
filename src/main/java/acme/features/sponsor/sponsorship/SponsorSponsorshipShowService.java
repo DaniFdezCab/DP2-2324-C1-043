@@ -1,8 +1,6 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,11 +23,11 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 	@Override
 	public void load() {
-		Collection<Sponsorship> object;
+		Sponsorship object;
 		int sponsorId;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		object = this.repo.findManySponsorshipsBySponsorId(sponsorId);
+		sponsorId = super.getRequest().getData("id", int.class);
+		object = this.repo.findOneSponsorshipById(sponsorId);
 
 		super.getBuffer().addData(object);
 	}
@@ -40,7 +38,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "notPublished");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
 
 		super.getResponse().addData(dataset);
 	}
