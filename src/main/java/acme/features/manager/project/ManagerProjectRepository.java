@@ -21,4 +21,6 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.manager.id = :id and p.published = true")
 	Collection<Project> findManyPublishedProjectsByManagerId(int id);
 
+	@Query("select p from Project p where p.code = :code")
+	Project findOneProjectByCode(String code);
 }

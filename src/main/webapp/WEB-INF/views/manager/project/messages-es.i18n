@@ -13,10 +13,28 @@ manager.project.list.title = Lista de mis proyectos
 
 manager.project.list.label.code = Código
 manager.project.list.label.title = Título
-manager.project.list.label.summary = Descripción:
-manager.project.list.label.cost = Coste:
-manager.project.list.label.url = Enlace:
+manager.project.list.label.summary = Descripción
+manager.project.list.label.cost = Coste
+manager.project.list.label.url = Enlace
+
+
+# FORM 
+
+manager.project.form.label.code = Código:
+manager.project.form.label.title = Título:
+manager.project.form.label.summary = Resumen:
+manager.project.form.label.cost = Coste:
+manager.project.form.label.url = Enlace: 
+manager.project.form.label.fatalErrors = Errores fatales:
+
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.delete = Borrar
 manager.project.form.button.publish = Publicar
+
+
+# Errors
+
+manager.project.form.error.duplicated = Este código ya está en uso
+manager.project.form.error.fatalErrors = El proyecto no debe contener errores fatales
+manager.project.form.error.negative-cost = El coste no debe ser negativo
