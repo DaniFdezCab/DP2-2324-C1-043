@@ -1,8 +1,6 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +24,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		sponsorId = super.getRequest().getData("sponsorId", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorId);
-		status = sponsorship != null && (!sponsorship.getNotPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
+		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
 
 		super.getResponse().setAuthorised(status);
 
@@ -34,11 +32,11 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void load() {
-		Collection<Sponsorship> object;
-		int sponsorId;
+		Sponsorship object;
+		int id;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		object = this.repo.findManySponsorshipsBySponsorId(sponsorId);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repo.findOneSponsorshipById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -52,6 +50,11 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "notPublished");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void validate(final Sponsorship object) {
+		assert object != null;
 	}
 
 }

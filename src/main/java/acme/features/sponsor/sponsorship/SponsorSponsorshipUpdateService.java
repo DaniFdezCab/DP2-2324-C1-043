@@ -1,8 +1,6 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +22,9 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		int sponsorId;
 		Sponsorship sponsorship;
 
-		sponsorId = super.getRequest().getData("sponsorId", int.class);
+		sponsorId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorId);
-		status = sponsorship != null && (!sponsorship.getNotPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
+		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
 
 		super.getResponse().setAuthorised(status);
 
@@ -34,13 +32,33 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void load() {
-		Collection<Sponsorship> object;
+		Sponsorship object;
 		int sponsorId;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		object = this.repo.findManySponsorshipsBySponsorId(sponsorId);
+		sponsorId = super.getRequest().getData("id", int.class);
+		object = this.repo.findOneSponsorshipById(sponsorId);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final Sponsorship object) {
+		assert object != null;
+
+		super.bind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo");
+
+	}
+
+	@Override
+	public void validate(final Sponsorship object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final Sponsorship object) {
+		assert object != null;
+
+		this.repo.save(object);
 	}
 
 	@Override
@@ -49,8 +67,8 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "notPublished");
-
-		super.getResponse().addData(dataset);
+		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo");
+		dataset.put("sponsorId", object.getSponsor().getId());
 	}
+
 }

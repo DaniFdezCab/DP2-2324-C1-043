@@ -22,6 +22,18 @@
 	<acme:input-integer code="sponsor.sponsorship.form.label.amount" path="amount"/>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.type" path="type"/>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.emailContact" path="emailContact"/>
-	<acme:input-url code="sponsor.sponsorship.form.label.moreInfo" path="moreInfo"/>				
+	<acme:input-url code="sponsor.sponsorship.form.label.moreInfo" path="moreInfo"/>		
+	
+		<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && !publish}">
+			<acme:submit code="sponsor.sponsorship.form.button.update" action="/sponsor/sponsorship/update"/>
+			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>
+			<acme:submit code="sponsor.sponsorship.form.button.publish" action="/sponsor/sponsorship/publish"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
+		</jstl:when>
+	</jstl:choose>
+		
 </acme:form>
 

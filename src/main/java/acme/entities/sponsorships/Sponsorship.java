@@ -74,6 +74,6 @@ public class Sponsorship extends AbstractEntity {
 	private String				moreInfo;
 
 	@NotNull
-	public Boolean				notPublished		= false;
+	public Boolean				published			= false;
 
 }
