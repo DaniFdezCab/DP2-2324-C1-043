@@ -24,7 +24,8 @@
 	<acme:list-column code="sponsor.sponsorship.list.label.emailContact" path="emailContact" width="15%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.moreInfo" path="moreInfo" width="10%"/>	
 	
-	<jstl:if test="${_command == 'list'}">
-    <acme:button code="sponsor.sponsorship.list.button.create-form" action="/sponsor/sponsorship/create"/>
-	</jstl:if>	
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+   <acme:button code="sponsor.sponsorship.list.button.create-form" action="/sponsor/sponsorship/create"/>
+</jstl:if>	

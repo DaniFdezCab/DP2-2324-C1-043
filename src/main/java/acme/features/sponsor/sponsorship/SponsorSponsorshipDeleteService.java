@@ -21,10 +21,12 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		boolean status;
 		int sponsorId;
 		Sponsorship sponsorship;
+		Sponsor sponsor;
 
 		sponsorId = super.getRequest().getData("sponsorId", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorId);
-		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(sponsor));
 
 		super.getResponse().setAuthorised(status);
 
@@ -47,14 +49,29 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "notPublished");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
+	public void bind(final Sponsorship object) {
+		assert object != null;
+
+		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+
+	}
+
+	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+	}
+
+	@Override
+	public void perform(final Sponsorship object) {
+		assert object != null;
+
+		this.repo.save(object);
 	}
 
 }

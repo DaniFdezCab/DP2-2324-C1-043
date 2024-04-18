@@ -12,19 +12,25 @@ import acme.roles.Sponsor;
 @Service
 public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private SponsorSponsorshipRepository repo;
+
+	// AbstractService<Sponsor, Sponsorship> -------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
-		int sponsorId;
+		int sponsorshipId;
 		Sponsorship sponsorship;
+		Sponsor sponsor;
 
-		sponsorId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repo.findOneSponsorshipById(sponsorId);
-		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(Sponsor.class));
+		sponsorshipId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+		status = sponsorship != null && !sponsorship.getPublished() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 
@@ -33,10 +39,10 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void load() {
 		Sponsorship object;
-		int sponsorId;
+		int id;
 
-		sponsorId = super.getRequest().getData("id", int.class);
-		object = this.repo.findOneSponsorshipById(sponsorId);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repo.findOneSponsorshipById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -45,7 +51,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo");
+		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
 
 	}
 
@@ -67,8 +73,9 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo");
-		dataset.put("sponsorId", object.getSponsor().getId());
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+
+		super.getResponse().addData(dataset);
 	}
 
 }

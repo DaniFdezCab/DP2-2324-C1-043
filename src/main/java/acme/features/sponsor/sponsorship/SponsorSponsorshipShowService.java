@@ -12,8 +12,12 @@ import acme.roles.Sponsor;
 @Service
 public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Sponsorship> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private SponsorSponsorshipRepository repo;
+
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
