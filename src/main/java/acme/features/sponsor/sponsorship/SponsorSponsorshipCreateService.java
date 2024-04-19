@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -18,18 +19,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int sponsorId;
-		Sponsorship sponsorship;
-		Sponsor sponsor;
-
-		sponsorId = super.getRequest().getData("sponsorId", int.class);
-		sponsorship = this.repo.findOneSponsorshipById(sponsorId);
-		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && (!sponsorship.getPublished() || super.getRequest().getPrincipal().hasRole(sponsor));
-
-		super.getResponse().setAuthorised(status);
-
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -48,14 +38,14 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
-		Sponsor sponsor;
+		int projectId;
+		Project project;
 
-		sponsorId = super.getRequest().getData("sponsor", int.class);
-		sponsor = this.repo.findOneSponsorById(sponsorId);
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repo.findOneProjectById(projectId);
 
-		super.bind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "Published");
-		object.setSponsor(sponsor);
+		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		object.setProject(project);
 	}
 
 	@Override
@@ -64,7 +54,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "duration", "amount", "type", "emailContact", "moreInfo", "Published");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
 
 		super.getResponse().addData(dataset);
 	}
@@ -74,6 +64,22 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		assert object != null;
 
 		this.repo.save(object);
+	}
+
+	@Override
+	public void validate(final Sponsorship object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
+
+			existing = this.repo.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount() >= 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
+
 	}
 
 }

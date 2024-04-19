@@ -28,8 +28,12 @@ sponsor.sponsorship.form.label.type = Type
 sponsor.sponsorship.form.label.emailContact = Email Contact
 sponsor.sponsorship.form.label.moreInfo = More Info
 
+sponsor.sponsorship.form.error.duplicated = This code is already taken
+sponsor.sponsorship.form.error.negative-amount = The amount can not be negative
+
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
 
 sponsor.sponsorship.list.button.create-form = Create
+sponsor.sponsorship.form.button.create = Create

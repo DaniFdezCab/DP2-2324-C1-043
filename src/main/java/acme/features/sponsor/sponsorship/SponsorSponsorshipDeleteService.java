@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -58,7 +59,14 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repo.findOneProjectById(projectId);
+
 		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		object.setProject(project);
 
 	}
 
@@ -71,7 +79,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
-		this.repo.save(object);
+		this.repo.delete(object);
 	}
 
 }
