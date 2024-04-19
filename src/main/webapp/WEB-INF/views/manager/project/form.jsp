@@ -34,6 +34,9 @@
 				</jstl:when>
 			</jstl:choose>
 		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
+		</jstl:when>
 	</jstl:choose>
 
 </acme:form>

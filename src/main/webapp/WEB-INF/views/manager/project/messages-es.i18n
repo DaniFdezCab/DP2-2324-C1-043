@@ -17,6 +17,7 @@ manager.project.list.label.summary = Descripción
 manager.project.list.label.cost = Coste
 manager.project.list.label.url = Enlace
 
+manager.project.list.button.create-form = Crear Proyecto
 
 # FORM 
 
@@ -32,6 +33,7 @@ manager.project.form.button.update = Actualizar
 manager.project.form.button.delete = Borrar
 manager.project.form.button.publish.true = Despublicar
 manager.project.form.button.publish.false = Publicar
+manager.project.form.button.create = Crear
 
 # Errors
 
