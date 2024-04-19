@@ -42,11 +42,9 @@ public class Project extends AbstractEntity {
 	@Length(max = 100)
 	private String				summary;
 
-	/*
-	 * Esta es una propiedad con una restricción compleja, ya que cuando fatalErrors se setea en true
-	 * el proyecto tiene que ser rechazado por el sistema
-	 */
 	private boolean				fatalErrors			= false;
+
+	private boolean				published			= false;
 
 	@PositiveOrZero
 	private double				cost;

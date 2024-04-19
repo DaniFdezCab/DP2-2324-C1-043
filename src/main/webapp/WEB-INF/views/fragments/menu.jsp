@@ -49,6 +49,11 @@
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list"/>
 		</acme:menu-option>
+			
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.consumer.myProjects" action="/manager/project/list"/>
+			<acme:menu-suboption code="master.menu.consumer.myPublishedProjects" action="/manager/project/listPublished"/>
+		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

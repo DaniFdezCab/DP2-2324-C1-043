@@ -50,6 +50,12 @@ master.menu.client = Contratos
 master.menu.client.contract = Mis Contratos
 
 
+# master.menu.manager ##########################################################
+
+master.menu.manager = Proyectos
+master.menu.consumer.myProjects = Mis Proyectos
+master.menu.consumer.myPublishedProjects = Mis Proyectos Publicados
+s
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

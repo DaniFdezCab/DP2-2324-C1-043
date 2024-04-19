@@ -44,10 +44,17 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+
 # master.menu.client ####################################################
 
 master.menu.client = Contracts
 master.menu.client.contract = My Contracts
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Projects
+master.menu.consumer.myProjects = My Projects
+master.menu.consumer.myPublishedProjects = My Published Projects
 
 # master.menu.user-account ####################################################
 
