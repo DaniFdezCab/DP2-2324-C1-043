@@ -77,9 +77,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount() >= 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
-
 	}
 
 }

@@ -9,17 +9,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
 import acme.roles.Sponsor;
 import lombok.Getter;
@@ -41,6 +40,7 @@ public class Sponsorship extends AbstractEntity {
 	private Project				project;
 
 	@ManyToOne(optional = false)
+	@NotNull
 	private Sponsor				sponsor;
 
 	//Attributes --------------------------
@@ -48,6 +48,7 @@ public class Sponsorship extends AbstractEntity {
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
+	@NotNull
 	private String				code;
 
 	@Past
@@ -55,11 +56,11 @@ public class Sponsorship extends AbstractEntity {
 	@NotNull
 	private Date				moment;
 
-	@Min(value = 1)
-	private float				duration;
+	@NotNull
+	private Integer				duration;
 
-	@Positive
-	private Integer				amount;
+	@NotNull
+	private Money				amount;
 
 	@NotBlank
 	@Pattern(regexp = "Financial|In kind")
