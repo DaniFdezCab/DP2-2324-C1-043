@@ -30,8 +30,8 @@ manager.project.form.label.fatalErrors = Errores fatales:
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.delete = Borrar
-manager.project.form.button.publish = Publicar
-
+manager.project.form.button.publish.true = Despublicar
+manager.project.form.button.publish.false = Publicar
 
 # Errors
 
