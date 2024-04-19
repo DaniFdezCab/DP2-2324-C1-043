@@ -48,7 +48,8 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.sponsor = Sponsor
 master.menu.sponsor.favourite-link = Favourite Link
-master.menu.sponsor.sponsorship.list-published-sponsorships = List published sponsorships
+master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
+master.menu.sponsor.invoice.list-invoices = List invoices
 master.menu.sponsor.sponsorship.show-published-sponsorships = Show published sponsorships
 
 # master.menu.user-account ####################################################

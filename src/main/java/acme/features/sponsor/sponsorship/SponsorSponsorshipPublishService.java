@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -52,27 +51,23 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repo.findOneProjectById(projectId);
-
 		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
-		object.setProject(project);
+
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
+	}
 
-			existing = this.repo.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
-		}
+	@Override
+	public void perform(final Sponsorship object) {
+		assert object != null;
 
+		object.setPublished(true);
+
+		this.repo.save(object);
 	}
 
 	@Override
@@ -85,13 +80,6 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 
 		super.getResponse().addData(dataset);
 
-	}
-
-	@Override
-	public void perform(final Sponsorship object) {
-		assert object != null;
-
-		this.repo.save(object);
 	}
 
 }

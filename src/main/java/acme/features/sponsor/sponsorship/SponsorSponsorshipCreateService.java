@@ -1,11 +1,14 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
@@ -30,6 +33,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		sponsor = this.repo.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Sponsorship();
 		object.setSponsor(sponsor);
+		object.setPublished(false);
 
 		super.getBuffer().addData(object);
 	}
@@ -46,24 +50,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
 		object.setProject(project);
-	}
 
-	@Override
-	public void unbind(final Sponsorship object) {
-		assert object != null;
-
-		Dataset dataset;
-
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
-
-		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void perform(final Sponsorship object) {
-		assert object != null;
-
-		this.repo.save(object);
 	}
 
 	@Override
@@ -77,6 +64,33 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 
+	}
+
+	@Override
+	public void perform(final Sponsorship object) {
+		assert object != null;
+
+		this.repo.save(object);
+	}
+
+	@Override
+	public void unbind(final Sponsorship object) {
+		assert object != null;
+
+		int sponsorId;
+		Collection<Project> projects;
+		SelectChoices choices;
+		Dataset dataset;
+
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		projects = this.repo.findManyProjectsBySponsorId(sponsorId);
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
+		super.getResponse().addData(dataset);
 	}
 
 }

@@ -14,16 +14,33 @@ import acme.roles.Sponsor;
 public class SponsorInvoiceController extends AbstractController<Sponsor, Invoice> {
 
 	@Autowired
-	public SponsorInvoiceListService	listService;
+	public SponsorInvoiceListService		listService;
 
 	@Autowired
-	public SponsorInvoiceShowService	showService;
+	public SponsorInvoiceShowService		showService;
+
+	@Autowired
+	private SponsorInvoiceDeleteService		deleteService;
+
+	@Autowired
+	private SponsorInvoicePublishService	publishService;
+
+	@Autowired
+	private SponsorInvoiceUpdateService		updateService;
+
+	@Autowired
+	private SponsorInvoiceCreateService		createService;
 
 
 	@PostConstruct
 	public void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }
