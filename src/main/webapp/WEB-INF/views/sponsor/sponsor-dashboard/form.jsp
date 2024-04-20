@@ -76,6 +76,65 @@
 	</tr>		
 </table>
 
+<div>
+	<canvas id="myCanvas"></canvas>
+</div>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		var data = {
+			labels : [
+					"TaxedInvoices", "LinkedSponsorships"
+			],
+			datasets : [
+				{
+					data : [
+						<jstl:out value="${taxedInvoices}"/>, 
+						<jstl:out value="${linkedSponsorships}"/>
+		
+					],
+					backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',   // Color for "must"
+		                'rgba(54, 162, 235, 0.2)',   // Color for "should"
+		                'rgba(255, 206, 86, 0.2)',   // Color for "could"
+		                'rgba(75, 192, 192, 0.2)'    // Color for "wont"
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',     // Border color for "must"
+		                'rgba(54, 162, 235, 1)',     // Border color for "should"
+		                'rgba(255, 206, 86, 1)',     // Border color for "could"
+		                'rgba(75, 192, 192, 1)'      // Border color for "wont"
+		            ],
+		            borderWidth: 1
+				}
+			]
+		};
+		var options = {
+			scales : {
+				yAxes : [
+					{
+						ticks : {
+							suggestedMin : 0.0,
+							suggestedMax : 1.0
+						}
+					}
+				]
+			},
+			legend : {
+				display : false
+			}
+		};
+	
+		var canvas, context;
+	
+		canvas = document.getElementById("myCanvas");
+		context = canvas.getContext("2d");
+		new Chart(context, {
+			type : "bar",
+			data : data,
+			options : options
+		});
+	});
+</script>
 
 <acme:return/>

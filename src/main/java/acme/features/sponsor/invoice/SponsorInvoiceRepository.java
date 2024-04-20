@@ -1,7 +1,7 @@
 
 package acme.features.sponsor.invoice;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import acme.entities.sponsorships.Sponsorship;
 public interface SponsorInvoiceRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.sponsorship.id = :id")
-	List<Invoice> findInvoicesBySponsorshipId(int id);
+	Collection<Invoice> findInvoicesBySponsorshipId(int id);
 
 	@Query("select s from Sponsorship s where s.id =:id")
 	Sponsorship findOneSponsorshipById(int id);

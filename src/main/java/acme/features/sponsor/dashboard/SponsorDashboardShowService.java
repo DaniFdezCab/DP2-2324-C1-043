@@ -55,16 +55,16 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		Double maximumSponsorship;
 
-		taxedInvoices = this.repo.countInvoicesWithTaxLessThanOrEqualTo21();
-		linkedSponsorships = this.repo.countLinkedSponsorships();
-		averageSponsorship = this.repo.averageSponsorshipAmount();
-		averageInvoice = this.repo.averageInvoiceAmount();
-		deviationInvoice = this.repo.deviationInvoiceAmount();
-		deviationSponsorship = this.repo.deviationSponsorshipAmount();
-		minimumInvoice = this.repo.minInvoiceAmount();
-		minimumSponsorship = this.repo.minSponsorshipAmount();
-		maximumInvoice = this.repo.maxInvoiceAmount();
-		maximumSponsorship = this.repo.maxSponsorshipAmount();
+		taxedInvoices = this.repo.countInvoicesWithTaxLessThanOrEqualTo21(sponsorId);
+		linkedSponsorships = this.repo.countLinkedSponsorships(sponsorId);
+		averageSponsorship = this.repo.averageSponsorshipAmount(sponsorId);
+		averageInvoice = this.repo.averageInvoiceAmount(sponsorId);
+		deviationInvoice = this.repo.deviationInvoiceAmount(sponsorId);
+		deviationSponsorship = this.repo.deviationSponsorshipAmount(sponsorId);
+		minimumInvoice = this.repo.minInvoiceAmount(sponsorId);
+		minimumSponsorship = this.repo.minSponsorshipAmount(sponsorId);
+		maximumInvoice = this.repo.maxInvoiceAmount(sponsorId);
+		maximumSponsorship = this.repo.maxSponsorshipAmount(sponsorId);
 
 		sponsorDashboard = new SponsorDashboard();
 

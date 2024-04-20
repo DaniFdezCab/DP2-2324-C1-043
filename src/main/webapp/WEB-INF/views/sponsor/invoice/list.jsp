@@ -25,6 +25,4 @@
 	
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
-   <acme:button code="sponsor.invoice.list.button.create-form" action="/sponsor/invoice/create"/>
-</jstl:if>	
+<acme:button test="${showCreate}" code="sponsor.invoice.list.button.create" action="/sponsor/invoice/create?sponsorshipId=${sponsorshipId}"/>

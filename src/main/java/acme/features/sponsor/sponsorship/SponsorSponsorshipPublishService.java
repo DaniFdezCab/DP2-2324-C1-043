@@ -1,7 +1,7 @@
 
 package acme.features.sponsor.sponsorship;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,7 +68,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		int sponsorshipId;
 		sponsorshipId = super.getRequest().getData("id", int.class);
 
-		List<Invoice> li = this.Irepo.findInvoicesBySponsorshipId(sponsorshipId);
+		Collection<Invoice> li = this.Irepo.findInvoicesBySponsorshipId(sponsorshipId);
 		Sponsorship s = this.repo.findOneSponsorshipById(sponsorshipId);
 		double amount = s.getAmount().getAmount();
 		double cant = 0.0;
