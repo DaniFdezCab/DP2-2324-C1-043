@@ -1,16 +1,13 @@
 
 package acme.forms;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.PositiveOrZero;
-
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
 public class SponsorDashboard extends AbstractEntity {
 
 	/**
@@ -18,37 +15,24 @@ public class SponsorDashboard extends AbstractEntity {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes 
+	private Integer				taxedInvoices;
 
-	// TODO: Implementar estos atributos de forma compleja a través de los servicios.
-	@PositiveOrZero
-	private int					numberInvoicesTaxed;
+	private Integer				linkedSponsorships;
 
-	@PositiveOrZero
-	private int					numberSponsorshipsLinked;
+	private Money				averageSponsorship;
 
-	@PositiveOrZero
-	private double				averageI;
+	private Money				averageInvoice;
 
-	@PositiveOrZero
-	private double				deviationI;
+	private Money				deviationInvoice;
 
-	@PositiveOrZero
-	private int					minimumI;
+	private Money				deviationSponsorship;
 
-	@PositiveOrZero
-	private int					maximumI;
+	private Money				minimumInvoice;
 
-	@PositiveOrZero
-	private double				averageS;
+	private Money				minimumSponsorship;
 
-	@PositiveOrZero
-	private double				deviationS;
+	private Money				maximumInvoice;
 
-	@PositiveOrZero
-	private int					minimumS;
-
-	@PositiveOrZero
-	private int					maximumS;
+	private Money				maximumSponsorship;
 
 }

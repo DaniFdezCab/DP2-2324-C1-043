@@ -49,9 +49,9 @@
 		
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship.list-sponsorships" action="/sponsor/sponsorship/list"/>
-			<acme:menu-suboption code="master.menu.sponsor.invoice.list-invoices" action="/sponsor/invoice/list"/>
+			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-dashboard/show"/>
+	
 			
 		</acme:menu-option>
 		

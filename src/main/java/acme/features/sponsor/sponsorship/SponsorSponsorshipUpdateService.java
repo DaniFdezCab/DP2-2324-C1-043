@@ -30,7 +30,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && !sponsorship.getPublished() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && !sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 
@@ -58,6 +58,13 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
+
+			existing = this.repo.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
+		}
 	}
 
 	@Override
@@ -73,7 +80,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

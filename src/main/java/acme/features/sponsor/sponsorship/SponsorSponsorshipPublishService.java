@@ -1,12 +1,16 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
+import acme.features.sponsor.invoice.SponsorInvoiceRepository;
 import acme.roles.Sponsor;
 
 @Service
@@ -15,7 +19,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repo;
+	private SponsorSponsorshipRepository	repo;
+
+	@Autowired
+	private SponsorInvoiceRepository		Irepo;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -30,7 +37,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && !sponsorship.getPublished() && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && !sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 
@@ -58,6 +65,16 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+		int sponsorshipId;
+		sponsorshipId = super.getRequest().getData("id", int.class);
+
+		List<Invoice> li = this.Irepo.findInvoicesBySponsorshipId(sponsorshipId);
+		Sponsorship s = this.repo.findOneSponsorshipById(sponsorshipId);
+		double amount = s.getAmount().getAmount();
+		double cant = 0.0;
+		for (Invoice i : li)
+			cant += i.getQuantity().getAmount();
+		super.state(amount == cant, "*", "sponsor.sponsorship.form.error.invoiceerror");
 
 	}
 
@@ -65,7 +82,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
-		object.setPublished(true);
+		object.setDraftMode(false);
 
 		this.repo.save(object);
 	}
@@ -76,7 +93,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "published");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 

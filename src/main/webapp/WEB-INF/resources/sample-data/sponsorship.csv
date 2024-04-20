@@ -1,21 +1,21 @@
-key,code,moment,duration,amount,type,email-contact,more-info,key:project,key:sponsor
-sponsorship-01,ABC-123,2022/07/29 23:59,1,"EUR 15,000.00",Financial,sponsor1@gmail.com,null,project-01,sponsor-01
-sponsorship-02,XYZ-456,2021/02/13 19:39,5,"EUR 15,000.00",In kind,sponsor2@example.com,http://www.org,project-02,sponsor-01
-sponsorship-03,DEF-789,2022/03/15 10:10,10,"EUR 15,000.00",Financial,sponsor3@example.com,https://www.org,project-03,sponsor-01
-sponsorship-04,QWE-987,2021/07/03 08:45,1,"EUR 15,000.00",In kind,null,null,project-04,sponsor-01
-sponsorship-05,HJK-654,2022/05/18 16:30,2,"EUR 15,000.00",Financial,null,http://www.sponsor5.org,project-05,sponsor-01
-sponsorship-06,POI-321,2022/07/05 23:59,1,"EUR 15,000.00",In kind,sponsor6@example.com,http://www.sponsor6.org,project-06,sponsor-01
-sponsorship-07,ZXC-789,2021/02/28 09:55,7,"EUR 15,000.00",Financial,null,null,project-07,sponsor-01
-sponsorship-08,LKJ-987,2021/12/01 13:40,7,"EUR 15,000.00",In kind,null,http://www.sponsor8.org,project-08,sponsor-01
-sponsorship-09,RTY-123,2021/06/25 11:15,1,"EUR 15,000.00",Financial,sponsor9@example.com,http://www.sponsor9.org,project-09,sponsor-01
-sponsorship-10,BNM-456,2022/03/09 15:50,6,"EUR 15,000.00",In kind,sponsor10@example.com,null,project-10,sponsor-01
-sponsorship-11,POI-987,2011/06/01 00:01,6,"EUR 15,000.00",Financial,sponsor11@example.com,http://www.example.com,project-11,sponsor-01
-sponsorship-12,UIO-456,2022/03/30 10:30,1,"EUR 15,000.00",In kind,null,http://www.sponsor12.org,project-12,sponsor-01
-sponsorship-13,QAZ-987,2021/11/05 14:00,4,"EUR 15,000.00",Financial,sponsor13@example.com,http://www.example.com,project-13,sponsor-01
-sponsorship-14,PLM-321,2022/03/20 23:59,1,"EUR 15,000.00",In kind,sponsor14@example.com,null,project-14,sponsor-01
-sponsorship-15,OKM-123,2022/07/18 00:00,8,"EUR 15,000.00",Financial,null,http://www.example.com,project-15,sponsor-01
-sponsorship-16,POI-789,2022/07/19 00:00,1,"EUR 15,000.00",In kind,null,http://www.sponsor16.org,project-16,sponsor-01
-sponsorship-17,UIO-654,2020/09/07 00:00,3,"EUR 15,000.00",Financial,sponsor17@example.com,https://www.sponsor17.org,project-17,sponsor-01
-sponsorship-18,PLM-789,2021/04/29 09:00,1,"EUR 15,000.00",In kind,null,null,project-18,sponsor-01
-sponsorship-19,OKM-321,2021/01/15 13:25,2,"EUR 15,000.00",Financial,sponsor19@example.com,http://www.sponsor19.org,project-19,sponsor-01
-sponsorship-20,POI-654,2000/01/01 00:01,1,"EUR 15,000.00",In kind,sponsor20@example.com,http://www.sponsor20.org,project-20,sponsor-01
+key,code,moment,duration,amount,type,email-contact,more-info,draft-mode,key:project,key:sponsor
+sponsorship-01,ABC-123,2022/07/29 23:59,1,"EUR 15,000.00",Financial,sponsor1@gmail.com,null,false,project-01,sponsor-01
+sponsorship-02,XYZ-456,2021/02/13 19:39,5,"EUR 15,000.00",In kind,sponsor2@example.com,http://www.org,false,project-02,sponsor-01
+sponsorship-03,DEF-789,2022/03/15 10:10,10,"EUR 15,000.00",Financial,sponsor3@example.com,https://www.org,false,project-03,sponsor-01
+sponsorship-04,QWE-987,2021/07/03 08:45,1,"EUR 15,000.00",In kind,null,null,false,project-04,sponsor-01
+sponsorship-05,HJK-654,2022/05/18 16:30,2,"EUR 15,000.00",Financial,null,http://www.sponsor5.org,false,project-05,sponsor-01
+sponsorship-06,POI-321,2022/07/05 23:59,1,"EUR 15,000.00",In kind,sponsor6@example.com,http://www.sponsor6.org,false,project-06,sponsor-01
+sponsorship-07,ZXC-789,2021/02/28 09:55,7,"EUR 15,000.00",Financial,null,null,false,project-07,sponsor-01
+sponsorship-08,LKJ-987,2021/12/01 13:40,7,"EUR 15,000.00",In kind,null,http://www.sponsor8.org,false,project-08,sponsor-01
+sponsorship-09,RTY-123,2021/06/25 11:15,1,"EUR 15,000.00",Financial,sponsor9@example.com,http://www.sponsor9.org,false,project-09,sponsor-01
+sponsorship-10,BNM-456,2022/03/09 15:50,6,"EUR 15,000.00",In kind,sponsor10@example.com,null,false,project-10,sponsor-01
+sponsorship-11,POI-987,2011/06/01 00:01,6,"EUR 15,000.00",Financial,sponsor11@example.com,http://www.example.com,false,project-11,sponsor-01
+sponsorship-12,UIO-456,2022/03/30 10:30,1,"EUR 15,000.00",In kind,null,http://www.sponsor12.org,false,project-12,sponsor-01
+sponsorship-13,QAZ-987,2021/11/05 14:00,4,"EUR 15,000.00",Financial,sponsor13@example.com,http://www.example.com,false,project-13,sponsor-01
+sponsorship-14,PLM-321,2022/03/20 23:59,1,"EUR 15,000.00",In kind,sponsor14@example.com,null,false,project-14,sponsor-01
+sponsorship-15,OKM-123,2022/07/18 00:00,8,"EUR 15,000.00",Financial,null,http://www.example.com,true,project-15,sponsor-01
+sponsorship-16,POI-789,2022/07/19 00:00,1,"EUR 15,000.00",In kind,null,http://www.sponsor16.org,true,project-16,sponsor-01
+sponsorship-17,UIO-654,2020/09/07 00:00,3,"EUR 15,000.00",Financial,sponsor17@example.com,https://www.sponsor17.org,true,project-17,sponsor-01
+sponsorship-18,PLM-789,2021/04/29 09:00,1,"EUR 15,000.00",In kind,null,null,true,project-18,sponsor-01
+sponsorship-19,OKM-321,2021/01/15 13:25,2,"EUR 15,000.00",Financial,sponsor19@example.com,http://www.sponsor19.org,true,project-19,sponsor-01
+sponsorship-20,POI-654,2000/01/01 00:01,1,"EUR 15,000.00",In kind,sponsor20@example.com,http://www.sponsor20.org,true,project-20,sponsor-01

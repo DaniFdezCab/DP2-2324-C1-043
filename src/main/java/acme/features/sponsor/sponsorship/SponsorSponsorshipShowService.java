@@ -22,7 +22,17 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int sponsorshipId;
+		Sponsorship sponsorship;
+		Sponsor sponsor;
+
+		sponsorshipId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
+		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
+		status = sponsorship != null && !sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -42,7 +52,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

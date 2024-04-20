@@ -55,15 +55,14 @@ public class Invoice extends AbstractEntity {
 	@URL
 	private String				moreInfo;
 
-	@NotNull
-	public Boolean				published			= false;
+	private boolean				draftMode;
 
 	// Derived attributes -----------------------------------------------------
 
 
 	@Transient
 	private Money getTotalAmount() {
-		Money money = null;
+		Money money = new Money();
 		Double res = this.getQuantity().getAmount() * (1. + this.tax);
 		money.setAmount(res);
 		money.setCurrency(this.quantity.getCurrency());
