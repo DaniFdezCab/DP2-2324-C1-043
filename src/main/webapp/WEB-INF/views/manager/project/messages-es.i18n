@@ -34,6 +34,7 @@ manager.project.form.button.delete = Borrar
 manager.project.form.button.publish.true = Despublicar
 manager.project.form.button.publish.false = Publicar
 manager.project.form.button.create = Crear
+manager.project.form.button.userStory = Historias de Usuario
 
 # Errors
 

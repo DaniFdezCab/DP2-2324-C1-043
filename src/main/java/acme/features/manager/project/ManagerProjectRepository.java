@@ -34,7 +34,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.code = :code")
 	Project findOneProjectByCode(String code);
 
-	@Query("select us from UserStory us where us.project.id = :id")
+	@Query("select us from AssociationProject ap JOIN UserStory us WHERE ap.project.id = :id AND ap.userStory.id = us.id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
 	@Query("select c from Contract c where c.project.id = :id")
@@ -49,4 +49,9 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select i from Invoice i where i.sponsorship.id IN :ids")
 	Collection<Invoice> findManyInvoicesBySponsorshipIds(Set<Integer> ids);
 
+	@Query("select us from  UserStory us WHERE us.manager.id = :id")
+	Collection<UserStory> findManyUserStoriesByManagerId(int id);
+
+	@Query("select us from UserStory us")
+	Collection<UserStory> findAllUserStories();
 }

@@ -34,7 +34,9 @@ manager.project.form.button.update = Update
 manager.project.form.button.delete = Delete
 manager.project.form.button.publish.true = Unpublish
 manager.project.form.button.publish.false = Publish
-manager.project.form.button.create = Crear
+manager.project.form.button.create = Create
+manager.project.form.button.userStory = User Stories
+
 
 #Errors
 

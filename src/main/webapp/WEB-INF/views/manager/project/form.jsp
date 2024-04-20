@@ -24,15 +24,17 @@
 	<acme:input-checkbox code="manager.project.form.label.fatalErrors" path="fatalErrors" readonly="${published}"/>
 	<acme:input-url code="manager.project.form.label.url" path="url" readonly="${published}"/>
 	
+	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+		<jstl:when test="${published}">
+			<acme:button code="manager.project.form.button.userStory" action="/manager/user-story/list?projectId=${id}"/>
 			<acme:submit code="manager.project.form.button.publish.${published}" action="/manager/project/publish"/>
-			<jstl:choose>
-				<jstl:when test="${!published}">
-					<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
-					<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
-				</jstl:when>
-			</jstl:choose>
+		</jstl:when>
+		<jstl:when test="${!published && acme:anyOf(_command, 'show|update|delete|publish')}">
+			<acme:button code="manager.project.form.button.userStory" action="/manager/user-story/list?projectId=${id}"/>	
+			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
+			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
+			<acme:submit code="manager.project.form.button.publish.${published}" action="/manager/project/publish"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
