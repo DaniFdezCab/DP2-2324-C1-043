@@ -16,12 +16,12 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code" readonly="${published}"/>
-	<acme:input-moment code="sponsor.invoice.form.label.registrationTime" path="registrationTime" readonly="${published}"/>
-	<acme:input-double code="sponsor.invoice.form.label.dueDate" path="dueDate" readonly="${published}"/>
-	<acme:input-integer code="sponsor.invoice.form.label.quantity" path="quantity" readonly="${published}"/>
-	<acme:input-textbox code="sponsor.invoice.form.label.tax" path="tax" readonly="${published}"/>
-	<acme:input-url code="sponsor.invoice.form.label.moreInfo" path="moreInfo" readonly="${published}"/>		
+	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code" />
+	<acme:input-moment code="sponsor.invoice.form.label.registrationTime" path="registrationTime"/>
+	<acme:input-double code="sponsor.invoice.form.label.dueDate" path="dueDate" />
+	<acme:input-integer code="sponsor.invoice.form.label.quantity" path="quantity" />
+	<acme:input-textbox code="sponsor.invoice.form.label.tax" path="tax" />
+	<acme:input-url code="sponsor.invoice.form.label.moreInfo" path="moreInfo"/>		
 	
 	<jstl:choose>
     <jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

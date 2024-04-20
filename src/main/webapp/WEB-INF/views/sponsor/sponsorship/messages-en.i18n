@@ -11,18 +11,20 @@
 sponsor.sponsorship.list.title = Listing of sponsorships
 
 sponsor.sponsorship.list.label.code = Code
-sponsor.sponsorship.list.label.moment = Moment
-sponsor.sponsorship.list.label.duration = Duration
+sponsor.sponsorship.list.label.startMoment = startMoment
+sponsor.sponsorship.list.label.endMoment = endMoment
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.type = Type
 sponsor.sponsorship.list.label.emailContact = Email Contact
 sponsor.sponsorship.list.label.moreInfo = More Info
 
-sponsor.sponsorship.form.title = Details 
+sponsor.sponsorship.form.title = Details
+
+sponsor.sponsorship.form.project = Project
 
 sponsor.sponsorship.form.label.code = Code
-sponsor.sponsorship.form.label.moment = Moment
-sponsor.sponsorship.form.label.duration = Duration
+sponsor.sponsorship.form.label.startMoment = startMoment
+sponsor.sponsorship.form.label.endMoment = endMoment
 sponsor.sponsorship.form.label.amount = Amount
 sponsor.sponsorship.form.label.type = Type
 sponsor.sponsorship.form.label.emailContact = Email Contact
@@ -30,7 +32,7 @@ sponsor.sponsorship.form.label.moreInfo = More Info
 
 sponsor.sponsorship.form.error.duplicated = This code is already taken
 sponsor.sponsorship.form.error.negative-amount = The amount can not be negative
-
+sponsor.sponsorship.form.error.invoice.error = The amount of sponsorship should be the same as the invoice
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish

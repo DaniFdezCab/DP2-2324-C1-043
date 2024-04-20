@@ -7,12 +7,16 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -29,6 +33,8 @@ public class Invoice extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private Sponsorship			sponsorship;
 
@@ -41,18 +47,22 @@ public class Invoice extends AbstractEntity {
 
 	@Past
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationTime;
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				dueDate;
 
 	@NotNull
 	private Money				quantity;
 
 	@PositiveOrZero
+	@NotNull
 	private Double				tax;
 
 	@URL
+	@Length(max = 255)
 	private String				moreInfo;
 
 	private boolean				draftMode;

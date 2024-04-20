@@ -17,8 +17,8 @@
 
 <acme:list>
 	<acme:list-column code="sponsor.sponsorship.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.moment" path="moment" width="15%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.duration" path="duration" width="15%"/>	
+	<acme:list-column code="sponsor.sponsorship.list.label.startMoment" path="startMoment" width="15%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.endMoment" path="endMoment" width="15%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.amount" path="amount" width="15%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="15%"/>	
 	<acme:list-column code="sponsor.sponsorship.list.label.emailContact" path="emailContact" width="15%"/>	

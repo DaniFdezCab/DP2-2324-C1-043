@@ -51,7 +51,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		super.bind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
 
 	}
 
@@ -83,7 +83,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

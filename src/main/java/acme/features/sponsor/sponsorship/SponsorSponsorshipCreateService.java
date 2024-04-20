@@ -16,8 +16,12 @@ import acme.roles.Sponsor;
 @Service
 public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
 
+	// Internal state -----------------------------------------------------------------------------
+
 	@Autowired
-	private SponsorSponsorshipRepository repo;
+	private SponsorSponsorshipRepository repository;
+
+	//AbstractService interface -------------------------------------------------------------------
 
 
 	@Override
@@ -30,7 +34,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		Sponsorship object;
 		Sponsor sponsor;
 
-		sponsor = this.repo.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
+		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Sponsorship();
 		object.setDraftMode(true);
 		object.setSponsor(sponsor);
@@ -44,10 +48,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		int projectId;
 		Project project;
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repo.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
 		object.setProject(project);
 	}
 
@@ -58,11 +63,12 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
 
-			existing = this.repo.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
+			existing = this.repository.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "sponsor.sponsorship.form.error.draft-mode");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
 
 	}
 
@@ -70,23 +76,21 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
-		this.repo.save(object);
+		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repo.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

@@ -54,7 +54,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "manager.project.form.error.draft-mode");
+			super.state(object.isDraftMode() == true, "draftMode", "sponsor.invoice.form.error.draft-mode");
 	}
 
 	@Override

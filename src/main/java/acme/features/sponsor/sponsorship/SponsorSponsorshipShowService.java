@@ -52,7 +52,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

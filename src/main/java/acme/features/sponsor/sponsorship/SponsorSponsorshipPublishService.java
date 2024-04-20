@@ -58,7 +58,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
+		super.bind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
 
 	}
 
@@ -74,7 +74,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		double cant = 0.0;
 		for (Invoice i : li)
 			cant += i.getQuantity().getAmount();
-		super.state(amount == cant, "*", "sponsor.sponsorship.form.error.invoiceerror");
+		super.state(amount == cant, "*", "sponsor.sponsorship.form.error.invoice.error");
 
 	}
 
@@ -93,7 +93,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
 
 		super.getResponse().addData(dataset);
 
