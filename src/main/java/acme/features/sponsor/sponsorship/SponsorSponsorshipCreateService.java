@@ -32,8 +32,8 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		sponsor = this.repo.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Sponsorship();
-		object.setSponsor(sponsor);
 		object.setDraftMode(true);
+		object.setSponsor(sponsor);
 
 		super.getBuffer().addData(object);
 	}
@@ -44,13 +44,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		int projectId;
 		Project project;
-
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repo.findOneProjectById(projectId);
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "emailContact", "moreInfo");
 		object.setProject(project);
-
 	}
 
 	@Override
@@ -63,6 +61,8 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			existing = this.repo.findOneSponsorshipByCode(object.getCode());
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode() == true, "draftMode", "sponsor.sponsorship.form.error.draft-mode");
 
 	}
 

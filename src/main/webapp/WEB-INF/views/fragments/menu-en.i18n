@@ -51,7 +51,7 @@ master.menu.sponsor.favourite-link = Favourite Link
 master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
 master.menu.sponsor.invoice.list-invoices = List invoices
 master.menu.sponsor.sponsorship.show-published-sponsorships = Show published sponsorships
-
+master.menu.sponsor.dashboard = Sponsor Dashboard
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
