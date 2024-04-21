@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -36,9 +37,13 @@ public class Sponsorship extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private Project				project;
 
+	@NotNull
+	@Valid
 	@ManyToOne(optional = false)
 	@NotNull
 	private Sponsor				sponsor;

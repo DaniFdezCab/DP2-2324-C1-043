@@ -74,9 +74,6 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 		Collection<Invoice> us;
 		us = this.repo.findInvoicesBySponsorshipId(object.getId());
-		Project p1 = new Project();
-		p1.setId(1);
-		object.setProject(p1);
 		this.repo.deleteAll(us);
 
 		this.repo.delete(object);
