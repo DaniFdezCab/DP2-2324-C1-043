@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
+import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -19,14 +20,12 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		Invoice i;
-		Sponsor sponsor;
+		int invoiceId;
+		Sponsorship sponsorship;
 
-		id = super.getRequest().getData("id", int.class);
-		i = this.mur.findOneInvoiceById(id);
-		sponsor = i == null ? null : i.getSponsorship().getSponsor();
-		status = i != null && i.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		invoiceId = super.getRequest().getData("id", int.class);
+		sponsorship = this.mur.findOneSponsorshipByInvoiceId(invoiceId);
+		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,8 +52,6 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void validate(final Invoice object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "manager.project.form.error.draft-mode");
 	}
 
 	@Override
@@ -62,6 +59,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		assert object != null;
 
 		object.setDraftMode(false);
+
 		this.mur.save(object);
 	}
 
@@ -71,7 +69,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
-
+		dataset.put("sponsorshipId", object.getSponsorship().getId());
 		super.getResponse().addData(dataset);
 
 	}

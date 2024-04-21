@@ -12,17 +12,13 @@ import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
-import acme.features.sponsor.invoice.SponsorInvoiceRepository;
 import acme.roles.Sponsor;
 
 @Service
 public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sponsorship> {
 
 	@Autowired
-	private SponsorSponsorshipRepository	repo;
-
-	@Autowired
-	private SponsorInvoiceRepository		Irepo;
+	private SponsorSponsorshipRepository repo;
 
 
 	@Override
@@ -77,7 +73,10 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		assert object != null;
 
 		Collection<Invoice> us;
-		us = this.Irepo.findInvoicesBySponsorshipId(object.getId());
+		us = this.repo.findInvoicesBySponsorshipId(object.getId());
+		Project p1 = new Project();
+		p1.setId(1);
+		object.setProject(p1);
 		this.repo.deleteAll(us);
 
 		this.repo.delete(object);

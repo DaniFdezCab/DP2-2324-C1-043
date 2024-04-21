@@ -19,16 +19,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void authorise() {
-
-		boolean status;
-		int invoiceId;
-		Sponsorship sponsorship;
-
-		invoiceId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repo.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override

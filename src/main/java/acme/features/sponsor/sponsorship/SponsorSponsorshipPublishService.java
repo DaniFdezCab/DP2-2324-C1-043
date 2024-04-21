@@ -10,7 +10,6 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
-import acme.features.sponsor.invoice.SponsorInvoiceRepository;
 import acme.roles.Sponsor;
 
 @Service
@@ -19,10 +18,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository	repo;
-
-	@Autowired
-	private SponsorInvoiceRepository		Irepo;
+	private SponsorSponsorshipRepository repo;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -68,7 +64,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		int sponsorshipId;
 		sponsorshipId = super.getRequest().getData("id", int.class);
 
-		Collection<Invoice> li = this.Irepo.findInvoicesBySponsorshipId(sponsorshipId);
+		Collection<Invoice> li = this.repo.findInvoicesBySponsorshipId(sponsorshipId);
 		Sponsorship s = this.repo.findOneSponsorshipById(sponsorshipId);
 		double amount = s.getAmount().getAmount();
 		double cant = 0.0;
