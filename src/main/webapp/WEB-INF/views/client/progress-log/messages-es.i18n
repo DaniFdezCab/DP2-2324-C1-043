@@ -1,0 +1,29 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+#cabeceras
+
+client.progress-log.list.title = Listado de registros de progreso
+
+#listado
+
+client.progressLog.list.label.recordId = Identificar de registro
+
+client.progressLog.list.label.completeness = Completitud
+
+client.progressLog.list.label.registrationMoment = Momento de Registro
+
+client.progressLog.list.label.responsiblePerson = Responsable
+
+client.progressLog.list.label.draftMode = Editable
+
+#boton de crear
+
+client.progressLog.list.button.create = Crear registro de progreso
