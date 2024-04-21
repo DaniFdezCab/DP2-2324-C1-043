@@ -94,16 +94,16 @@
 		
 					],
 					backgroundColor: [
-		                'rgba(255, 99, 132, 0.2)',   // Color for "must"
-		                'rgba(54, 162, 235, 0.2)',   // Color for "should"
-		                'rgba(255, 206, 86, 0.2)',   // Color for "could"
-		                'rgba(75, 192, 192, 0.2)'    // Color for "wont"
+		                'rgba(255, 99, 132, 0.2)',   
+		                'rgba(54, 162, 235, 0.2)',   
+		                'rgba(255, 206, 86, 0.2)',   
+		                'rgba(75, 192, 192, 0.2)'    
 		            ],
 		            borderColor: [
-		                'rgba(255, 99, 132, 1)',     // Border color for "must"
-		                'rgba(54, 162, 235, 1)',     // Border color for "should"
-		                'rgba(255, 206, 86, 1)',     // Border color for "could"
-		                'rgba(75, 192, 192, 1)'      // Border color for "wont"
+		                'rgba(255, 99, 132, 1)',     
+		                'rgba(54, 162, 235, 1)',     
+		                'rgba(255, 206, 86, 1)',     
+		                'rgba(75, 192, 192, 1)'      
 		            ],
 		            borderWidth: 1
 				}

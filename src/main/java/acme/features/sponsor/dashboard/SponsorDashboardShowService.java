@@ -33,6 +33,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	@Override
 	public void load() {
 		Integer sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+
 		SponsorDashboard sponsorDashboard;
 
 		Integer taxedInvoices;
@@ -43,32 +44,19 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		Double averageInvoice;
 
-		Double deviationInvoice;
-
-		Double deviationSponsorship;
-
-		Double minimumInvoice;
-
-		Double minimumSponsorship;
-
 		Double maximumInvoice;
 
-		Double maximumSponsorship;
-
 		taxedInvoices = this.repo.countInvoicesWithTaxLessThanOrEqualTo21(sponsorId);
+
 		linkedSponsorships = this.repo.countLinkedSponsorships(sponsorId);
+
 		averageSponsorship = this.repo.averageSponsorshipAmount(sponsorId);
+
 		averageInvoice = this.repo.averageInvoiceAmount(sponsorId);
-		deviationInvoice = this.repo.deviationInvoiceAmount(sponsorId);
-		deviationSponsorship = this.repo.deviationSponsorshipAmount(sponsorId);
-		minimumInvoice = this.repo.minInvoiceAmount(sponsorId);
-		minimumSponsorship = this.repo.minSponsorshipAmount(sponsorId);
+
 		maximumInvoice = this.repo.maxInvoiceAmount(sponsorId);
-		maximumSponsorship = this.repo.maxSponsorshipAmount(sponsorId);
 
 		sponsorDashboard = new SponsorDashboard();
-
-		String systemCurrency = this.systemRepository.getSystemConfiguration().get(0).getSystemCurrency();
 
 		sponsorDashboard.setTaxedInvoices(taxedInvoices);
 
@@ -77,42 +65,17 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		Money averageMoney = new Money();
 		averageMoney.setAmount(averageSponsorship);
 		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setAverageSponsorship(this.moneyService.computeMoneyExchange(averageMoney, systemCurrency).getTarget());
+		sponsorDashboard.setAverageSponsorship(averageMoney);
 
 		Money averageMoneyI = new Money();
 		averageMoneyI.setAmount(averageInvoice);
 		averageMoneyI.setCurrency("EUR");
-		sponsorDashboard.setAverageInvoice(this.moneyService.computeMoneyExchange(averageMoneyI, systemCurrency).getTarget());
-
-		Money deviationMoneyS = new Money();
-		averageMoney.setAmount(deviationSponsorship);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setDeviationSponsorship(this.moneyService.computeMoneyExchange(deviationMoneyS, systemCurrency).getTarget());
-
-		Money deviationMoneyI = new Money();
-		averageMoney.setAmount(deviationInvoice);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setDeviationInvoice(this.moneyService.computeMoneyExchange(deviationMoneyI, systemCurrency).getTarget());
-
-		Money minimumMoneyS = new Money();
-		averageMoney.setAmount(minimumSponsorship);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setMinimumSponsorship(this.moneyService.computeMoneyExchange(minimumMoneyS, systemCurrency).getTarget());
-
-		Money minimumMoneyI = new Money();
-		averageMoney.setAmount(minimumInvoice);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setMinimumInvoice(this.moneyService.computeMoneyExchange(minimumMoneyI, systemCurrency).getTarget());
-
-		Money maximumMoneyS = new Money();
-		averageMoney.setAmount(maximumSponsorship);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setMaximumSponsorship(this.moneyService.computeMoneyExchange(maximumMoneyS, systemCurrency).getTarget());
+		sponsorDashboard.setAverageInvoice(averageMoneyI);
 
 		Money maximumMoneyI = new Money();
 		averageMoney.setAmount(maximumInvoice);
 		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setMaximumInvoice(this.moneyService.computeMoneyExchange(maximumMoneyI, systemCurrency).getTarget());
+		sponsorDashboard.setMaximumInvoice(maximumMoneyI);
 
 		super.getBuffer().addData(sponsorDashboard);
 	}
@@ -122,7 +85,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "taxedInvoices", "linkedSponsorships", "averageSponsorship", "averageInvoice", "deviationInvoice", "deviationSponsorship", "minimumInvoice", "minimumSponsorship", "maximumInvoice", "maximumSponsorship");
+		dataset = super.unbind(object, "taxedInvoices", "linkedSponsorships", "averageSponsorship", "averageInvoice");
 
 		super.getResponse().addData(dataset);
 	}
