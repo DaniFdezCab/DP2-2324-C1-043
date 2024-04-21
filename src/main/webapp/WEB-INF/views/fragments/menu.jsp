@@ -47,8 +47,8 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.consumer.myProjects" action="/manager/project/list"/>
-			<acme:menu-suboption code="master.menu.consumer.myPublishedProjects" action="/manager/project/listPublished"/>
+			<acme:menu-suboption code="master.menu.manager.myProjects" action="/manager/project/list"/>
+			<acme:menu-suboption code="master.menu.manager.myPublishedProjects" action="/manager/project/listPublished"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

@@ -1,18 +1,19 @@
 
 package acme.features.manager.userStory;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.projects.Priority;
+import acme.entities.projects.AssociationProject;
 import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -30,7 +31,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(userStory.getManager());
+		status = userStory != null && !userStory.isPublished() && super.getRequest().getPrincipal().hasRole(userStory.getManager());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -47,19 +48,40 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	}
 
 	@Override
+	public void bind(final UserStory object) {
+		assert object != null;
+
+		super.bind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url");
+
+	}
+
+	@Override
+	public void validate(final UserStory object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final UserStory object) {
+		assert object != null;
+
+		List<AssociationProject> associationProjects;
+		int id = object.getId();
+
+		associationProjects = (List<AssociationProject>) this.repository.findManyAssociationProjectByUserStoryId(id);
+
+		this.repository.deleteAll(associationProjects);
+
+		this.repository.delete(object);
+	}
+
+	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
 
-		SelectChoices choices;
-
-		choices = SelectChoices.from(Priority.class, object.getPriority());
-
 		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url", "published");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url");
 
-		dataset.put("priority", choices);
 		super.getResponse().addData(dataset);
 	}
-
 }

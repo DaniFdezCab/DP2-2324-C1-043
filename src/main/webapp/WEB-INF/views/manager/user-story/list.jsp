@@ -16,14 +16,15 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="manager.userStory.list.label.title" path="code" width="5%"/>
-	<acme:list-column code="manager.userStory.list.label.description" path="title" width="10%"/>
-	<acme:list-column code="manager.userStory.list.label.estimatedCost" path="summary" width="5%"/>
-	<acme:list-column code="manager.userStory.list.label.priority" path="cost" width="5%"/>
+	<acme:list-column code="manager.userStory.list.label.title" path="title" width="5%"/>
+	<acme:list-column code="manager.userStory.list.label.description" path="description" width="10%"/>
+	<acme:list-column code="manager.userStory.list.label.estimatedCost" path="estimatedCost" width="5%"/>
+	<acme:list-column code="manager.userStory.list.label.priority" path="priority" width="5%"/>
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">
-    <acme:button code="manager.userStory.list.button.create-form" action="/manager/user-story/create?projectId=${projectId}"/>
-    <acme:button code="manager.userStory.list.button.add-form" action="/manager/user-story/add?projectId=${projectId}"/>
-    
+    <acme:button code="manager.userStory.list.button.add-form" action="/manager/association-project/add?projectId=${projectId}"/>
+     <acme:button code="manager.userStory.list.button.create-form" action="/manager/user-story/create?projectId=${projectId}"/>
 </jstl:if>
+
+

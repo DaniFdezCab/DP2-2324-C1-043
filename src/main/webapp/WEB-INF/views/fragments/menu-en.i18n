@@ -47,8 +47,8 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.manager ##########################################################
 
 master.menu.manager = Projects
-master.menu.consumer.myProjects = My Projects
-master.menu.consumer.myPublishedProjects = My Published Projects
+master.menu.manager.myProjects = My Projects
+master.menu.manager.myPublishedProjects = My Published Projects
 
 
 

@@ -21,14 +21,11 @@
 	<acme:input-textarea code="manager.userStory.form.label.description" path="description" readonly="${published}"/>
 	<acme:input-textarea code="manager.userStory.form.label.acceptanceCriteria" path="acceptanceCriteria" readonly="${published}"/>
 	<acme:input-integer code="manager.userStory.form.label.estimatedCost" path="estimatedCost" readonly="${published}"/>
-	<acme:input-textbox code="manager.userStory.form.label.priority" path="priority" readonly="${published}"/>
+	<acme:input-select code="manager.userStory.form.label.priority" choices="${priority}" path="priority" readonly="${published}"/>
 	<acme:input-url code="manager.userStory.form.label.url" path="url" readonly="${published}"/>
 	
 	
 	<jstl:choose>
-		<jstl:when test="${published}">
-			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/user-story/publish"/>
-		</jstl:when>
 		<jstl:when test="${!published && acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:submit code="manager.userStory.form.button.update" action="/manager/user-story/update"/>
 			<acme:submit code="manager.userStory.form.button.delete" action="/manager/user-story/delete"/>

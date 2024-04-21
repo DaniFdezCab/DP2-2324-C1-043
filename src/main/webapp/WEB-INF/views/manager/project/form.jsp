@@ -28,7 +28,6 @@
 	<jstl:choose>
 		<jstl:when test="${published}">
 			<acme:button code="manager.project.form.button.userStory" action="/manager/user-story/list?projectId=${id}"/>
-			<acme:submit code="manager.project.form.button.publish.${published}" action="/manager/project/publish"/>
 		</jstl:when>
 		<jstl:when test="${!published && acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:button code="manager.project.form.button.userStory" action="/manager/user-story/list?projectId=${id}"/>	
