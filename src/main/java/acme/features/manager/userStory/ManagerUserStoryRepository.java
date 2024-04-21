@@ -20,9 +20,7 @@ public interface ManagerUserStoryRepository extends AbstractRepository {
 	@Query("select us from UserStory us where us.id = :id")
 	UserStory findOneUserStoryById(int id);
 
-	//@Query("select us from AssociationProject ap JOIN UserStory us WHERE ap.project.id = :id AND ap.userStory.id = us.id")
-
-	@Query("select us from UserStory us")
+	@Query("select us from AssociationProject ap join UserStory us on ap.userStory.id = us.id where ap.project.id = :id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
 	@Query("select m from Manager m where m.id = :id")

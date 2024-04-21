@@ -5,20 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerUserStoryRepository repository;
 
-	// AbstractService<Manager, userStory> -------------------------------------
+	// AbstractService<Manager, Project> -------------------------------------
 
 
 	@Override
@@ -69,11 +68,9 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-		object.setPublished(!object.isPublished());
 
 		this.repository.save(object);
 	}
-
 	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
@@ -83,12 +80,6 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url", "published");
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
 	}
 
 }

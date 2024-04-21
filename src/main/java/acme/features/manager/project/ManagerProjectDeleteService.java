@@ -13,6 +13,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLogs;
+import acme.entities.projects.AssociationProject;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
@@ -72,6 +73,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		List<ProgressLogs> progressLogs;
 		List<Sponsorship> sponsorships;
 		List<Invoice> invoices;
+		List<AssociationProject> associationProjects;
 		int id = object.getId();
 
 		contracts = (List<Contract>) this.repository.findManyContractsByProjectId(id);
@@ -81,6 +83,10 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		sponsorships = (List<Sponsorship>) this.repository.findManySponsorshipsByProjectId(id);
 		Set<Integer> sponsorShipIds = sponsorships.stream().map(AbstractEntity::getId).collect(Collectors.toSet());
 		invoices = (List<Invoice>) this.repository.findManyInvoicesBySponsorshipIds(sponsorShipIds);
+
+		associationProjects = (List<AssociationProject>) this.repository.findManyAssociationProjectByProjectId(id);
+
+		this.repository.deleteAll(associationProjects);
 
 		this.repository.deleteAll(invoices);
 		this.repository.deleteAll(sponsorships);

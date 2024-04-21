@@ -5,44 +5,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
+import acme.entities.projects.AssociationProject;
+import acme.entities.projects.Project;
 import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
-
-	// Internal state ---------------------------------------------------------
+public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
 
 	@Autowired
 	private ManagerUserStoryRepository repository;
 
-	// AbstractService<Manager, userStory> -------------------------------------
-
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int userStoryId;
-		UserStory userStory;
-		Manager manager;
-
-		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(userStoryId);
-		manager = userStory == null ? null : userStory.getManager();
-		status = userStory != null && super.getRequest().getPrincipal().hasRole(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
 		UserStory object;
-		int id;
+		Manager manager;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneUserStoryById(id);
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		object = new UserStory();
+		object.setPublished(false);
+		object.setManager(manager);
 
 		super.getBuffer().addData(object);
 	}
@@ -51,27 +40,30 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		int managerId;
-		Manager manager;
-
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		manager = this.repository.findOneManagerById(managerId);
-
 		super.bind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url");
-		object.setManager(manager);
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
+
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-		object.setPublished(!object.isPublished());
+		int projectId;
+		AssociationProject ap = new AssociationProject();
+		Project project;
+
+		projectId = super.getRequest().getData("projectId", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		ap.setProject(project);
+		ap.setUserStory(object);
 
 		this.repository.save(object);
+		this.repository.save(ap);
 	}
 
 	@Override
@@ -83,12 +75,6 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url", "published");
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
 	}
 
 }

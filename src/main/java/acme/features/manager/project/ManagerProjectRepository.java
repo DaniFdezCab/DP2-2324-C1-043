@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contracts.Contract;
 import acme.entities.contracts.ProgressLogs;
+import acme.entities.projects.AssociationProject;
 import acme.entities.projects.Project;
 import acme.entities.projects.UserStory;
 import acme.entities.sponsorships.Invoice;
@@ -34,8 +35,11 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.code = :code")
 	Project findOneProjectByCode(String code);
 
-	@Query("select us from AssociationProject ap JOIN UserStory us WHERE ap.project.id = :id AND ap.userStory.id = us.id")
+	@Query("select us from AssociationProject ap join UserStory us on ap.userStory.id = us.id where ap.project.id = :id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
+
+	@Query("select us from AssociationProject ap join UserStory us on ap.userStory.id = us.id where ap.project.id = :id and us.published = true")
+	Collection<UserStory> findManyPublishedUserStoriesByProjectId(int id);
 
 	@Query("select c from Contract c where c.project.id = :id")
 	Collection<Contract> findManyContractsByProjectId(int id);
@@ -54,4 +58,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select us from UserStory us")
 	Collection<UserStory> findAllUserStories();
+
+	@Query("select ap from AssociationProject ap where ap.project.id = :id")
+	Collection<AssociationProject> findManyAssociationProjectByProjectId(int id);
 }

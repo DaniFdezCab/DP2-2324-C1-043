@@ -27,17 +27,15 @@
 	
 	<jstl:choose>
 		<jstl:when test="${published}">
-			<acme:button code="manager.userStory.form.button.userStory" action="/manager/userStory/list?projectId=${id}"/>
-			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/userStory/publish"/>
+			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/user-story/publish"/>
 		</jstl:when>
 		<jstl:when test="${!published && acme:anyOf(_command, 'show|update|delete|publish')}">
-			<acme:button code="manager.userStory.form.button.userStory" action="/manager/userStory/list?projectId=${id}"/>	
-			<acme:submit code="manager.userStory.form.button.update" action="/manager/project/update"/>
-			<acme:submit code="manager.userStory.form.button.delete" action="/manager/project/delete"/>
-			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/project/publish"/>			
+			<acme:submit code="manager.userStory.form.button.update" action="/manager/user-story/update"/>
+			<acme:submit code="manager.userStory.form.button.delete" action="/manager/user-story/delete"/>
+			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/user-story/publish"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
+			<acme:submit code="manager.project.form.button.create" action="/manager/user-story/create"/>
 		</jstl:when>
 	</jstl:choose>
 

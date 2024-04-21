@@ -23,7 +23,7 @@
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">
-    <acme:button code="manager.userStory.list.button.create-form" action="/manager/user-story/create"/>
-    <acme:button code="manager.userStory.list.button.add-form" action="/manager/user-story/add?project=${projectId}"/>
+    <acme:button code="manager.userStory.list.button.create-form" action="/manager/user-story/create?projectId=${projectId}"/>
+    <acme:button code="manager.userStory.list.button.add-form" action="/manager/user-story/add?projectId=${projectId}"/>
     
 </jstl:if>

@@ -34,6 +34,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		status = project != null && super.getRequest().getPrincipal().hasRole(project.getManager());
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
