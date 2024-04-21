@@ -32,7 +32,6 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
 		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
-
 		super.getResponse().setAuthorised(status);
 
 	}

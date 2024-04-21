@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.components.MoneyService;
-import acme.components.SystemCurrencyRepository;
 import acme.forms.SponsorDashboard;
 import acme.roles.Sponsor;
 
@@ -16,13 +14,7 @@ import acme.roles.Sponsor;
 public class SponsorDashboardShowService extends AbstractService<Sponsor, SponsorDashboard> {
 
 	@Autowired
-	private SponsorDashboardRepository	repo;
-
-	@Autowired
-	private MoneyService				moneyService;
-
-	@Autowired
-	private SystemCurrencyRepository	systemRepository;
+	private SponsorDashboardRepository repo;
 
 
 	@Override
@@ -46,6 +38,16 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		Double maximumInvoice;
 
+		Double maximumSponsorship;
+
+		Double minimumInvoice;
+
+		Double minimumSponsorship;
+
+		Double deviationInvoice;
+
+		Double deviationSponsorship;
+
 		taxedInvoices = this.repo.countInvoicesWithTaxLessThanOrEqualTo21(sponsorId);
 
 		linkedSponsorships = this.repo.countLinkedSponsorships(sponsorId);
@@ -56,6 +58,15 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		maximumInvoice = this.repo.maxInvoiceAmount(sponsorId);
 
+		maximumSponsorship = this.repo.maxSponsorshipAmount(sponsorId);
+
+		minimumInvoice = this.repo.minInvoiceAmount(sponsorId);
+
+		minimumSponsorship = this.repo.minSponsorshipAmount(sponsorId);
+
+		deviationInvoice = this.repo.deviationInvoiceAmount(sponsorId);
+
+		deviationSponsorship = this.repo.deviationSponsorshipAmount(sponsorId);
 		sponsorDashboard = new SponsorDashboard();
 
 		sponsorDashboard.setTaxedInvoices(taxedInvoices);
@@ -73,9 +84,34 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 		sponsorDashboard.setAverageInvoice(averageMoneyI);
 
 		Money maximumMoneyI = new Money();
-		averageMoney.setAmount(maximumInvoice);
-		averageMoney.setCurrency("EUR");
+		maximumMoneyI.setAmount(maximumInvoice);
+		maximumMoneyI.setCurrency("EUR");
 		sponsorDashboard.setMaximumInvoice(maximumMoneyI);
+
+		Money maximumMoneyS = new Money();
+		maximumMoneyS.setAmount(maximumSponsorship);
+		maximumMoneyS.setCurrency("EUR");
+		sponsorDashboard.setMaximumSponsorship(maximumMoneyS);
+
+		Money minimumMoneyS = new Money();
+		minimumMoneyS.setAmount(minimumSponsorship);
+		minimumMoneyS.setCurrency("EUR");
+		sponsorDashboard.setMinimumSponsorship(minimumMoneyS);
+
+		Money minimumMoneyI = new Money();
+		minimumMoneyI.setAmount(minimumInvoice);
+		minimumMoneyI.setCurrency("EUR");
+		sponsorDashboard.setMinimumInvoice(minimumMoneyI);
+
+		Money deviationMoneyS = new Money();
+		deviationMoneyS.setAmount(deviationSponsorship);
+		deviationMoneyS.setCurrency("EUR");
+		sponsorDashboard.setDeviationSponsorship(deviationMoneyS);
+
+		Money deviationMoneyI = new Money();
+		deviationMoneyI.setAmount(deviationInvoice);
+		deviationMoneyI.setCurrency("EUR");
+		sponsorDashboard.setDeviationInvoice(deviationMoneyI);
 
 		super.getBuffer().addData(sponsorDashboard);
 	}
@@ -85,7 +121,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "taxedInvoices", "linkedSponsorships", "averageSponsorship", "averageInvoice");
+		dataset = super.unbind(object, "taxedInvoices", "linkedSponsorships", "averageSponsorship", "averageInvoice", "maximumInvoice", "maximumSponsorship", "minimumInvoice", "minimumSponsorship", "deviationInvoice", "deviationSponsorship");
 
 		super.getResponse().addData(dataset);
 	}
