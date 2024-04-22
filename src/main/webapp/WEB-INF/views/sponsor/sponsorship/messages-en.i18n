@@ -8,37 +8,44 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-sponsor.sponsorship.list.title = Listing of sponsorships
+sponsor.sponsorship.list.title = My sponsorships
 
 sponsor.sponsorship.list.label.code = Code
-sponsor.sponsorship.list.label.startMoment = startMoment
-sponsor.sponsorship.list.label.endMoment = endMoment
+sponsor.sponsorship.list.label.moment = Moment
+sponsor.sponsorship.list.label.startDuration = Start duration
+sponsor.sponsorship.list.label.endDuration = End duration
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.type = Type
 sponsor.sponsorship.list.label.emailContact = Email Contact
 sponsor.sponsorship.list.label.moreInfo = More Info
+sponsor.sponsorship.list.label.project = Project
+
 
 sponsor.sponsorship.form.title = Details
 
-sponsor.sponsorship.form.project = Project
-
 sponsor.sponsorship.form.label.code = Code
-sponsor.sponsorship.form.label.startMoment = startMoment
-sponsor.sponsorship.form.label.endMoment = endMoment
+sponsor.sponsorship.form.label.startDuration = Start duration
+sponsor.sponsorship.form.label.endDuration = End duration
+sponsor.sponsorship.form.label.moment = Moment
 sponsor.sponsorship.form.label.amount = Amount
 sponsor.sponsorship.form.label.type = Type
-sponsor.sponsorship.form.label.emailContact = Email Contact
 sponsor.sponsorship.form.label.moreInfo = More Info
+sponsor.sponsorship.form.label.draftMode = Draft Mode
+sponsor.sponsorship.form.label.emailContact = Email Contact
+sponsor.sponsorship.form.label.project = Project
 
 sponsor.sponsorship.form.error.duplicated = This code is already taken
 sponsor.sponsorship.form.error.negative-amount = The amount can not be negative
 sponsor.sponsorship.form.error.invoice.error = The amount of sponsorship should be the same as the invoice
+sponsor.sponsorship.form.error.startDuration = The start date must be after the moment
+sponsor.sponsorship.form.error.endDuration = The end date must be after the moment and  one month difference between both of them
+
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
 
-sponsor.sponsorship.form.label.draftMode = Draft Mode
-
-sponsor.sponsorship.list.button.create-form = Create
+sponsor.sponsorship.list.button.create = Create
 sponsor.sponsorship.form.button.create = Create
 sponsor.sponsorship.form.button.invoices = Invoices
+
+

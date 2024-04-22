@@ -49,6 +49,17 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			Invoice existing = this.repo.findOneInvoiceByCode(object.getCode());
+
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "code", "sponsor.invoice.form.error.code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.quantity");
 	}
 
 	@Override
@@ -66,7 +77,6 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
 		dataset.put("sponsorshipId", super.getRequest().getData("sponsorshipId", int.class));
-		dataset.put("draftMode", object.getSponsorship().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

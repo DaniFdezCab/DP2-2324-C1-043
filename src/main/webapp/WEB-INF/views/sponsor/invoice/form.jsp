@@ -30,8 +30,11 @@
         	<acme:submit code="sponsor.invoice.form.button.delete" action="/sponsor/invoice/delete"/>
         	<acme:submit code="sponsor.invoice.form.button.publish" action="/sponsor/invoice/publish"/>
     	</jstl:when>
-    	<jstl:when test="${_command == 'create'}">
+    	<jstl:when test="${_command == 'list'}">
         	<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/invoice/create?sponsorshipId=${sponsorshipId}"/>
+    	</jstl:when>
+    	<jstl:when test="${_command == 'create'}">
+        	<acme:submit code="sponsor.invoice.list.button.create" action="/sponsor/invoice/create?sponsorshipId=${sponsorshipId}"/>
     	</jstl:when>
 	</jstl:choose>
 		

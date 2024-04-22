@@ -53,7 +53,6 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
 		dataset.put("sponsorshipId", object.getSponsorship().getId());
-		dataset.put("draftMode", object.getSponsorship().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

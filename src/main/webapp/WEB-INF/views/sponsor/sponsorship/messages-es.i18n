@@ -1,35 +1,39 @@
-# messages-es.i18n
-#
-# Copyright (C) 2012-2024 Rafael Corchuelo.
-#
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes.  The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
-
-sponsor.sponsorship.list.title = Listado de patrocinios
+sponsor.sponsorship.list.title = Mis patrocinios
 
 sponsor.sponsorship.list.label.code = Código
 sponsor.sponsorship.list.label.moment = Momento
-sponsor.sponsorship.list.label.duration = Duración
-sponsor.sponsorship.list.label.amount = Cantidad
+sponsor.sponsorship.list.label.startDuration = Inicio
+sponsor.sponsorship.list.label.endDuration = Fin
+sponsor.sponsorship.list.label.amount = Monto
 sponsor.sponsorship.list.label.type = Tipo
-sponsor.sponsorship.list.label.emailContact = Contacto de email
+sponsor.sponsorship.list.label.emailContact = Contacto de Correo Electrónico
 sponsor.sponsorship.list.label.moreInfo = Más Información
+sponsor.sponsorship.list.label.project = Proyecto
 
-sponsor.sponsorship.form.title = Detalles 
+sponsor.sponsorship.form.title = Detalles
 
 sponsor.sponsorship.form.label.code = Código
+sponsor.sponsorship.form.label.startDuration = Inicio
+sponsor.sponsorship.form.label.endDuration = Fin
 sponsor.sponsorship.form.label.moment = Momento
-sponsor.sponsorship.form.label.duration = Duración
-sponsor.sponsorship.form.label.amount = Cantidad
+sponsor.sponsorship.form.label.amount = Monto
 sponsor.sponsorship.form.label.type = Tipo
-sponsor.sponsorship.form.label.emailContact = Contacto
 sponsor.sponsorship.form.label.moreInfo = Más Información
+sponsor.sponsorship.form.label.draftMode = Modo Borrador
+sponsor.sponsorship.form.label.emailContact = Contacto de Correo Electrónico
+sponsor.sponsorship.form.label.project = Proyecto
 
+sponsor.sponsorship.form.error.duplicated = Este código ya está en uso
+sponsor.sponsorship.form.error.negative-amount = El monto no puede ser negativo
+sponsor.sponsorship.form.error.invoice.error = El monto del patrocinio debe ser el mismo que el de la factura
 sponsor.sponsorship.form.button.update = Actualizar
-sponsor.sponsorship.form.button.delete = Borrar
+sponsor.sponsorship.form.button.delete = Eliminar
 sponsor.sponsorship.form.button.publish = Publicar
 
-sponsor.sponsorship.list.button.create-form = Create
+
+sponsor.sponsorship.form.error.startDuration = La fecha de inicio debe ser posterior al momento
+sponsor.sponsorship.form.error.endDuration = La fecha de finalización debe ser posterior al momento y tener una diferencia de un mes entre ambas
+
+sponsor.sponsorship.list.button.create = Crear
+sponsor.sponsorship.form.button.create = Crear
+sponsor.sponsorship.form.button.invoices = Facturas

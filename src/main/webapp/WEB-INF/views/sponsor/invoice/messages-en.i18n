@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-sponsor.invoice.list.title = Listing of Invoices
+sponsor.invoice.list.title = My Invoices
 sponsor.invoice.form.title = Details
 
 sponsor.invoice.list.label.code = Code
@@ -30,3 +30,7 @@ sponsor.invoice.form.label.draftMode = Draft Mode
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.publish = Publish
+
+sponsor.invoice.form.error.code =  The code must be unique
+sponsor.invoice.form.error.dueDate = The due date must be after the registration time and one month difference between both of them
+sponsor.invoice.form.error.quantity = Quantity must be positive

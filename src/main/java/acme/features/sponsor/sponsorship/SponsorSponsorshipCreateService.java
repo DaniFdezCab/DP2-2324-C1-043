@@ -1,16 +1,20 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.projects.Project;
 import acme.entities.sponsorships.Sponsorship;
+import acme.entities.sponsorships.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -46,14 +50,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData("project", int.class);
-		project = this.repository.findOneProjectById(projectId);
-
-		super.bind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
-		object.setProject(project);
+		super.bind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo", "project");
 	}
 
 	@Override
@@ -66,9 +63,27 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			existing = this.repository.findOneSponsorshipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
 		}
+		if (!super.getBuffer().getErrors().hasErrors("startDuration")) {
+			Date startDuration;
+			Date moment;
+			startDuration = object.getStartDuration();
+			moment = object.getMoment();
+
+			super.state(startDuration.after(moment), "startDuration", "sponsor.sponsorship.form.error.startDuration");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endDuration")) {
+			Date endDuration;
+			Date startDuration;
+
+			startDuration = object.getStartDuration();
+			endDuration = object.getEndDuration();
+
+			super.state(MomentHelper.isLongEnough(startDuration, endDuration, 1, ChronoUnit.MONTHS) && endDuration.after(startDuration), "endDuration", "sponsor.sponsorship.form.error.endDuration");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
+			super.state(object.getAmount().getAmount() >= 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
 
 	}
 
@@ -86,11 +101,14 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices choices2;
 
+		choices2 = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo", "project", "draftMode");
+		dataset.put("types", choices2);
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

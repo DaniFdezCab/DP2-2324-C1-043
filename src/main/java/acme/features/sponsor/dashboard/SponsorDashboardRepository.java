@@ -9,7 +9,7 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface SponsorDashboardRepository extends AbstractRepository {
 
-	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.tax <= 21.00 AND i.sponsorship.sponsor.id =:id")
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.tax <= 0.21 AND i.sponsorship.sponsor.id =:id")
 	Integer countInvoicesWithTaxLessThanOrEqualTo21(int id);
 
 	@Query("SELECT COUNT(s) FROM Sponsorship s WHERE s.moreInfo IS NOT NULL AND s.sponsor.id =:id")

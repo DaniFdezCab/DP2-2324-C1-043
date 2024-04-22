@@ -17,14 +17,14 @@
 
 <acme:form>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code" />
-	<acme:input-select code="sponsor.sponsorship.form.project" path="project" choices="${projects}"/>
-	<acme:input-moment code="sponsor.sponsorship.form.label.startMoment" path="startMoment" />
-	<acme:input-moment code="sponsor.sponsorship.form.label.endMoment" path="endMoment" />
+	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment" />
+	<acme:input-moment code="sponsor.sponsorship.form.label.startDuration" path="startDuration" />
+	<acme:input-moment code="sponsor.sponsorship.form.label.endDuration" path="endDuration" />
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount" />
-	<acme:input-textbox code="sponsor.sponsorship.form.label.type" path="type" placeholder="FINANCIAL, IN_KIND"/>
-	<acme:input-textbox code="sponsor.sponsorship.form.label.emailContact" path="emailContact" />
-	<acme:input-url code="sponsor.sponsorship.form.label.moreInfo" path="moreInfo"/>
-	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode" readonly="true"/>		
+	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}" readonly="${acme:anyOf(types, 'FINANCIAL|INKIND')}"/>
+	<acme:input-textbox code="sponsor.sponsorship.form.label.emailContact " path="emailContact" />
+	<acme:input-url code="sponsor.sponsorship.form.label.moreInfo" path="moreInfo" />		
+	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
@@ -40,6 +40,7 @@
         	<acme:submit code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
     	</jstl:when>
 	</jstl:choose>
+		
 		
 </acme:form>
 

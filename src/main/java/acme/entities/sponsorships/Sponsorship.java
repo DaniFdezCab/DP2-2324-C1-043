@@ -57,20 +57,23 @@ public class Sponsorship extends AbstractEntity {
 	private String				code;
 
 	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				moment;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				startMoment;
+	private Date				startDuration;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				endMoment;
+	private Date				endDuration;
 
 	@NotNull
 	private Money				amount;
 
-	@NotBlank
-	@Pattern(regexp = "Financial|In kind")
-	private String				type;
+	@NotNull
+	private SponsorshipType		type;
 
 	@Email
 	@Length(max = 255)

@@ -1,10 +1,14 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
@@ -51,7 +55,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
+		super.bind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo", "project");
 
 	}
 
@@ -66,11 +70,27 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "sponsor.sponsorship.form.error.draft-mode");
+		if (!super.getBuffer().getErrors().hasErrors("startDuration")) {
+			Date startDuration;
+			Date moment;
+			startDuration = object.getStartDuration();
+			moment = object.getMoment();
+
+			super.state(startDuration.after(moment), "startDuration", "sponsor.sponsorship.form.error.durationStartTime");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endDuration")) {
+			Date endDuration;
+			Date startDuration;
+
+			startDuration = object.getStartDuration();
+			endDuration = object.getEndDuration();
+
+			super.state(MomentHelper.isLongEnough(startDuration, endDuration, 1, ChronoUnit.MONTHS) && endDuration.after(startDuration), "endDuration", "sponsor.sponsorship.form.error.durationEndTime");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
+			super.state(object.getAmount().getAmount() >= 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
 	}
 
 	@Override
@@ -86,7 +106,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo", "draftMode");
+		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo", "project", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

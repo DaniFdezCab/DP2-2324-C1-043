@@ -26,13 +26,14 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 
 	@Override
 	public void load() {
-		Collection<Sponsorship> object;
+		Collection<Sponsorship> objects;
 		int sponsorId;
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		object = this.repo.findManySponsorshipsBySponsorId(sponsorId);
 
-		super.getBuffer().addData(object);
+		objects = this.repo.findManySponsorshipsBySponsorId(sponsorId);
+
+		super.getBuffer().addData(objects);
 	}
 
 	@Override
@@ -41,7 +42,8 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startMoment", "endMoment", "amount", "type", "emailContact", "moreInfo");
+		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo");
+		dataset.put("project", object.getProject().getCode());
 
 		super.getResponse().addData(dataset);
 	}

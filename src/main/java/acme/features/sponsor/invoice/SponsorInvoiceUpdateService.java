@@ -1,10 +1,14 @@
 
 package acme.features.sponsor.invoice;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.roles.Sponsor;
@@ -53,8 +57,26 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode() == true, "draftMode", "sponsor.invoice.form.error.draft-mode");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			Invoice existing = this.mur.findOneInvoiceByCode(object.getCode());
+
+			if (existing != null)
+				super.state(existing.getId() == object.getId(), "code", "sponsor.invoice.form.error.code");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
+			Date registrationTime;
+			Date dueDate;
+
+			registrationTime = object.getRegistrationTime();
+			dueDate = object.getDueDate();
+
+			super.state(MomentHelper.isLongEnough(registrationTime, dueDate, 1, ChronoUnit.MONTHS) && dueDate.after(registrationTime), "dueDate", "sponsor.invoice.form.error.dueDate");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.quantity");
 	}
 
 	@Override
