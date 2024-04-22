@@ -49,7 +49,7 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.manager = Projects
 master.menu.manager.myProjects = My Projects
 master.menu.manager.myPublishedProjects = My Published Projects
-
+master.menu.manager.dashboard =My Dashboard
 
 
 # master.menu.user-account ####################################################

@@ -15,8 +15,12 @@ import acme.roles.Manager;
 @Service
 public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
 
+	// Internal state ---------------------------------------------------------
+
 	@Autowired
 	private ManagerUserStoryRepository repository;
+
+	// CustomService<Manager, UserStory> interface ----------------------------------------------
 
 
 	@Override
@@ -58,7 +62,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 		if (super.getRequest().hasData("projectId", int.class)) {
 			final AssociationProject ap = new AssociationProject();
-			ap.setProject(this.repository.findOneProjectById(super.getRequest().getGlobal("projectId", int.class)));
+			ap.setProject(this.repository.findOneProjectById(super.getRequest().getData("projectId", int.class)));
 			ap.setUserStory(object);
 			this.repository.save(ap);
 		}

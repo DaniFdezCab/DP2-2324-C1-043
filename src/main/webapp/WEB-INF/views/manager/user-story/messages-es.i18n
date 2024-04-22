@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.userStory.form.description = Formulario de Historia de Usuario
+manager.user-story.form.title = Formulario de Historia de Usuario
 manager.user-story.list.title = Historias de Usuario del proyecto
 
 manager.userStory.list.label.title = Título
@@ -25,7 +25,7 @@ manager.userStory.form.label.title = Título:
 manager.userStory.form.label.description = Descripción:
 manager.userStory.form.label.estimatedCost = Coste estimado:
 manager.userStory.form.label.priority = Prioridad: 
-manager.userStory.form.label.acceptanceCriteria = Criterios de aceptación (MUST, SHOULD, COULD, WONT):
+manager.userStory.form.label.acceptanceCriteria = Criterios de aceptación:
 manager.userStory.form.label.url = Enlace:
 
 manager.userStory.form.button.update = Actualizar

@@ -1,17 +1,15 @@
 
 package acme.entities.dashboard;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.PositiveOrZero;
 
-import acme.client.data.AbstractEntity;
+import acme.client.data.AbstractForm;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class ManagerDashboard extends AbstractEntity {
+public class ManagerDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -19,7 +17,6 @@ public class ManagerDashboard extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
-	// TODO: Implementar estos atributos de forma compleja a través de los servicios.
 	@PositiveOrZero
 	private int					totalUserStories;
 
@@ -30,10 +27,10 @@ public class ManagerDashboard extends AbstractEntity {
 	private double				deviationCostUserStories;
 
 	@PositiveOrZero
-	private double				minimumCostUserStories;
+	private int					minimumCostUserStories;
 
 	@PositiveOrZero
-	private double				maximumCostUserStories;
+	private int					maximumCostUserStories;
 
 	@PositiveOrZero
 	private double				averageCostProjects;

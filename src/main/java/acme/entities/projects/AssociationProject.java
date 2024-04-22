@@ -23,12 +23,12 @@ public class AssociationProject extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
 	private UserStory			userStory;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
 	private Project				project;
