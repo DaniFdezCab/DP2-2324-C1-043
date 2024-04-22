@@ -43,4 +43,4 @@ manager.project.form.button.userStory = User Stories
 manager.project.form.error.duplicated = This code is already taken
 manager.project.form.error.fatalErrors = The project must not have fatal errors
 manager.project.form.error.negative-cost = The cost must not be negative
-
+manager.project.form.error.publish = You need more than one user history and all of them must be published.
