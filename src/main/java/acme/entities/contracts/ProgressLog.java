@@ -48,7 +48,7 @@ public class ProgressLog extends AbstractEntity {
 
 	@Positive
 	@Max(value = 100)
-	private Integer				completeness;
+	private Double				completeness;
 
 	@NotBlank
 	@Length(max = 100)

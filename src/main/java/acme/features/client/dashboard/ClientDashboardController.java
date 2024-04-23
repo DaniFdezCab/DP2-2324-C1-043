@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLogs;
+package acme.features.client.dashboard;
 
 import javax.annotation.PostConstruct;
 
@@ -7,19 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.contracts.ProgressLog;
+import acme.entities.dashboard.ClientDashboard;
 import acme.roles.Client;
 
 @Controller
-public class ClientProgressLogController extends AbstractController<Client, ProgressLog> {
+public class ClientDashboardController extends AbstractController<Client, ClientDashboard> {
 
 	@Autowired
-	private ClientProgressLogListService listService;
+	private ClientDashboardShowService showService;
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 
 }

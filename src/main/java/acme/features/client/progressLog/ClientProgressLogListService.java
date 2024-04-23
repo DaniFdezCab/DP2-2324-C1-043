@@ -1,5 +1,5 @@
 
-package acme.features.client.progressLogs;
+package acme.features.client.progressLog;
 
 import java.util.Collection;
 
