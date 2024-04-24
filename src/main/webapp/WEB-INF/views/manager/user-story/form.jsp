@@ -32,7 +32,7 @@
 			<acme:submit code="manager.userStory.form.button.publish.${published}" action="/manager/user-story/publish"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.project.form.button.create" action="/manager/user-story/create"/>
+			<acme:submit code="manager.project.form.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
 		</jstl:when>
 	</jstl:choose>
 
