@@ -77,7 +77,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(!projectUS.isEmpty() && projectUS.size() == publishedUS.size(), "published", "manager.project.form.error.publish");
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost() > 0, "cost", "manager.project.form.error.negative-cost");
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 	}
 
 	@Override

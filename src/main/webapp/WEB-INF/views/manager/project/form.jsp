@@ -20,7 +20,7 @@
 	<acme:input-textbox code="manager.project.form.label.code" path="code" readonly="${published}"/>
 	<acme:input-textbox code="manager.project.form.label.title" path="title" readonly="${published}"/>
 	<acme:input-textarea code="manager.project.form.label.summary" path="summary" readonly="${published}"/>
-	<acme:input-double code="manager.project.form.label.cost" path="cost" readonly="${published}"/>
+	<acme:input-money code="manager.project.form.label.cost" path="cost" readonly="${published}"/>
 	<acme:input-checkbox code="manager.project.form.label.fatalErrors" path="fatalErrors" readonly="${published}"/>
 	<acme:input-url code="manager.project.form.label.url" path="url" readonly="${published}"/>
 	

@@ -4,6 +4,7 @@ package acme.features.manager.dashboard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.dashboard.ManagerDashboard;
@@ -41,25 +42,41 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		double minimumCostProjects;
 		double maximumCostProjects;
 
-		totalUserStories = this.repository.countManyUserStoriesByManagerId(managerId);
-		averageCostUserStories = this.repository.averageCostUserStoriesByManagerId(managerId);
-		deviationCostUserStories = this.repository.deviationCostUserStoriesByManagerId(managerId);
-		minimumCostUserStories = this.repository.minimumCostUserStoriesByManager(managerId);
-		maximumCostUserStories = this.repository.maximumCostUserStoriesByManager(managerId);
-		averageCostProjects = this.repository.averageCostProjectsByManagerId(managerId);
-		deviationCostProjects = this.repository.deviationCostProjectsByManagerId(managerId);
-		minimumCostProjects = this.repository.minimumCostProjectsByManager(managerId);
-		maximumCostProjects = this.repository.maximumCostProjectsByManager(managerId);
+		totalUserStories = this.repository.countManyUserStoriesByManagerId(managerId).orElse(0);
+		averageCostUserStories = this.repository.averageCostUserStoriesByManagerId(managerId).orElse(0.0);
+		deviationCostUserStories = this.repository.deviationCostUserStoriesByManagerId(managerId).orElse(0.0);
+		minimumCostUserStories = this.repository.minimumCostUserStoriesByManager(managerId).orElse(0);
+		maximumCostUserStories = this.repository.maximumCostUserStoriesByManager(managerId).orElse(0);
+		averageCostProjects = this.repository.averageCostProjectsByManagerId(managerId).orElse(0.0);
+		deviationCostProjects = this.repository.deviationCostProjectsByManagerId(managerId).orElse(0.0);
+		minimumCostProjects = this.repository.minimumCostProjectsByManager(managerId).orElse(0.0);
+		maximumCostProjects = this.repository.maximumCostProjectsByManager(managerId).orElse(0.0);
 
 		managerDashboard.setTotalUserStories(totalUserStories);
 		managerDashboard.setAverageCostUserStories(averageCostUserStories);
 		managerDashboard.setDeviationCostUserStories(deviationCostUserStories);
 		managerDashboard.setMinimumCostUserStories(minimumCostUserStories);
 		managerDashboard.setMaximumCostUserStories(maximumCostUserStories);
-		managerDashboard.setAverageCostProjects(averageCostProjects);
-		managerDashboard.setDeviationCostUserStories(deviationCostProjects);
-		managerDashboard.setMinimumCostProjects(minimumCostProjects);
-		managerDashboard.setMaximumCostProjects(maximumCostProjects);
+
+		Money averageMoney = new Money();
+		averageMoney.setAmount(averageCostProjects);
+		averageMoney.setCurrency("USD");
+		managerDashboard.setAverageCostProjects(averageMoney);
+
+		Money deviationMoney = new Money();
+		deviationMoney.setAmount(deviationCostProjects);
+		deviationMoney.setCurrency("USD");
+		managerDashboard.setDeviationCostProjects(deviationMoney);
+
+		Money minimumMoney = new Money();
+		minimumMoney.setAmount(minimumCostProjects);
+		minimumMoney.setCurrency("USD");
+		managerDashboard.setMinimumCostProjects(minimumMoney);
+
+		Money maximumMoney = new Money();
+		maximumMoney.setAmount(maximumCostProjects);
+		maximumMoney.setCurrency("USD");
+		managerDashboard.setMaximumCostProjects(maximumMoney);
 
 		super.getBuffer().addData(managerDashboard);
 	}

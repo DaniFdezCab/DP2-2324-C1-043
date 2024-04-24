@@ -68,7 +68,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost() > 0, "cost", "manager.project.form.error.negative-cost");
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 	}
 
 	@Override

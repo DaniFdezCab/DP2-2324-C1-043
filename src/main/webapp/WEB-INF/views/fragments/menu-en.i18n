@@ -51,6 +51,15 @@ master.menu.manager.myProjects = My Projects
 master.menu.manager.myPublishedProjects = My Published Projects
 master.menu.manager.dashboard =My Dashboard
 
+# master.menu.sponsor ##########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.favourite-link = Favourite Link
+master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
+master.menu.sponsor.invoice.list-invoices = List invoices
+master.menu.sponsor.sponsorship.list-published-sponsorships = List published sponsorships
+master.menu.sponsor.sponsorship.show-published-sponsorships = Mostrar patrocinios publicados
+master.menu.sponsor.dashboard = Sponsor Dashboard
 
 # master.menu.user-account ####################################################
 
@@ -60,3 +69,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager = Become a manager
+
+
+master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published

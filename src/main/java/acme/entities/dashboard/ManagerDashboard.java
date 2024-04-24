@@ -4,6 +4,7 @@ package acme.entities.dashboard;
 import javax.validation.constraints.PositiveOrZero;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,16 +33,12 @@ public class ManagerDashboard extends AbstractForm {
 	@PositiveOrZero
 	private int					maximumCostUserStories;
 
-	@PositiveOrZero
-	private double				averageCostProjects;
+	private Money				averageCostProjects;
 
-	@PositiveOrZero
-	private double				deviationCostProjects;
+	private Money				deviationCostProjects;
 
-	@PositiveOrZero
-	private double				minimumCostProjects;
+	private Money				minimumCostProjects;
 
-	@PositiveOrZero
-	private double				maximumCostProjects;
+	private Money				maximumCostProjects;
 
 }

@@ -38,8 +38,8 @@ manager.project.form.button.userStory = Historias de Usuario
 
 # Errors
 
-manager.project.form.error.duplicated = Este código ya está en uso
-manager.project.form.error.fatalErrors = El proyecto no debe contener errores fatales
-manager.project.form.error.negative-cost = El coste no debe ser negativo
+manager.project.form.error.duplicated = Este código ya está en uso.
+manager.project.form.error.fatalErrors = El proyecto no debe contener errores fatales.
+manager.project.form.error.negative-cost = El coste no debe ser negativo.
 manager.project.form.error.publish = Necesitas tener más de una historia y que estén publicadas para poder publicar el proyecto.
 

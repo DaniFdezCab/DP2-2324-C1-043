@@ -8,18 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.projects.Project;
+import acme.roles.Sponsor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,29 +37,43 @@ public class Sponsorship extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
+	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	@NotNull
+	private Sponsor				sponsor;
 
 	//Attributes --------------------------
 
 	@NotBlank
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@Column(unique = true)
+	@NotNull
 	private String				code;
 
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				moment;
 
-	@Min(value = 1)
-	private float				duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				startDuration;
 
-	@Positive
-	private Integer				amount;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDuration;
 
-	@NotBlank
-	@Pattern(regexp = "Financial|In kind")
-	private String				type;
+	@NotNull
+	private Money				amount;
+
+	@NotNull
+	private SponsorshipType		type;
 
 	@Email
 	@Length(max = 255)
@@ -66,5 +82,7 @@ public class Sponsorship extends AbstractEntity {
 	@URL
 	@Length(max = 255)
 	private String				moreInfo;
+
+	private boolean				draftMode;
 
 }

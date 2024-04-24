@@ -51,6 +51,12 @@ master.menu.manager.myProjects = Mis Proyectos
 master.menu.manager.myPublishedProjects = Mis Proyectos Publicados
 master.menu.manager.dashboard = Mi tablero
 
+# master.menu.sponsor ##########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.favourite-link = Enlace favorito
+master.menu.sponsor.sponsorship.list-published-sponsorships = Mis patrocinios publicados
+master.menu.sponsor.sponsorship.show-published-sponsorships = Mostrar patrocinios publicados
 
 # master.menu.user-account ####################################################
 
@@ -60,3 +66,6 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.manager = Datos de manager
+master.menu.user-account.become-manager = Hazte manager
+

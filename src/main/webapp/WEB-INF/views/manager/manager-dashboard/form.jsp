@@ -22,9 +22,9 @@
 	<acme:input-double code="manager.dashboard.form.label.deviationCostUserStories" path="deviationCostUserStories"/>
 	<acme:input-integer code="manager.dashboard.form.label.minimumCostUserStories" path="minimumCostUserStories"/>
 	<acme:input-integer code="manager.dashboard.form.label.maximumCostUserStories" path="maximumCostUserStories"/>
-	<acme:input-double code="manager.dashboard.form.label.averageCostProjects" path="averageCostProjects"/>
-	<acme:input-double code="manager.dashboard.form.label.deviationCostProjects" path="deviationCostProjects"/>
-	<acme:input-double code="manager.dashboard.form.label.minimumCostProjects" path="minimumCostProjects"/>
-	<acme:input-double code="manager.dashboard.form.label.maximumCostProjects" path="maximumCostProjects"/>
+	<acme:input-money code="manager.dashboard.form.label.averageCostProjects" path="averageCostProjects"/>
+	<acme:input-money code="manager.dashboard.form.label.deviationCostProjects" path="deviationCostProjects"/>
+	<acme:input-money code="manager.dashboard.form.label.minimumCostProjects" path="minimumCostProjects"/>
+	<acme:input-money code="manager.dashboard.form.label.maximumCostProjects" path="maximumCostProjects"/>
 
 </acme:form>
