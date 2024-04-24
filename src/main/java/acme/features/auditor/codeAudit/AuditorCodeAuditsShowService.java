@@ -10,14 +10,21 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.codeAudits;
+package acme.features.auditor.codeAudit;
+
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.audits.CodeAudit;
+import acme.entities.audits.Mark;
+import acme.entities.audits.Type;
+import acme.entities.projects.Project;
 import acme.roles.Auditor;
 
 @Service
@@ -36,10 +43,12 @@ public class AuditorCodeAuditsShowService extends AbstractService<Auditor, CodeA
 		boolean status;
 		int codeAuditId;
 		CodeAudit codeAudit;
+		int auditorId;
 
 		codeAuditId = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-		status = codeAudit != null && super.getRequest().getPrincipal().hasRole(codeAudit.getAuditor());
+		auditorId = super.getRequest().getPrincipal().getActiveRoleId();
+		status = auditorId == codeAudit.getAuditor().getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -59,11 +68,21 @@ public class AuditorCodeAuditsShowService extends AbstractService<Auditor, CodeA
 	public void unbind(final CodeAudit object) {
 		assert object != null;
 
+		SelectChoices choices;
+		SelectChoices choices2;
 		Dataset dataset;
+		List<Mark> marks;
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "proposedCorrectiveActions", "mark", "optionalLink", "auditor");
+		marks = this.repository.findMarksByCodeAuditId(object.getId()).stream().toList();
+
+		Collection<Project> allProjects = this.repository.findAllProjects();
+		choices = SelectChoices.from(Type.class, object.getType());
+		choices2 = SelectChoices.from(allProjects, "code", (Project) allProjects.toArray()[0]);
+		dataset = super.unbind(object, "code", "executionDate", "type", "proposedCorrectiveActions", "optionalLink", "published");
+		dataset.put("mark", this.repository.averageMark(marks));
+		dataset.put("type", choices);
+		dataset.put("projects", choices2);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

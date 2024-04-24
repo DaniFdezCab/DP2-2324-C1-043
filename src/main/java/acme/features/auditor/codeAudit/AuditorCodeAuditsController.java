@@ -1,5 +1,5 @@
 /*
- * AuthenticatedConsumerController.java
+ * AdministratorUserAccountController.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.auditor;
+package acme.features.auditor.codeAudit;
 
 import javax.annotation.PostConstruct;
 
@@ -18,27 +18,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Authenticated;
+import acme.entities.audits.CodeAudit;
 import acme.roles.Auditor;
 
 @Controller
-public class AuthenticatedAuditorController extends AbstractController<Authenticated, Auditor> {
+public class AuditorCodeAuditsController extends AbstractController<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedAuditorCreateService	createService;
+	private AuditorCodeAuditsShowService			showService;
 
 	@Autowired
-	private AuthenticatedAuditorUpdateService	updateService;
+	private AuditorCodeAuditsListPublishedService	listPublishedService;
+
+	@Autowired
+	private AuditorCodeAuditsUpdateService			updateService;
+
+	@Autowired
+	private AuditorCodeAuditsPublishService			publishService;
+
+	@Autowired
+
+	private AuditorCodeAuditsDeleteService			deleteService;
+
+	@Autowired
+	private AuditorCodeAuditsCreateService			createService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("create", this.createService);
+
+		super.addCustomCommand("listPublished", "list", this.listPublishedService);
+		super.addCustomCommand("publish", "update", this.publishService);
+
 	}
 
 }

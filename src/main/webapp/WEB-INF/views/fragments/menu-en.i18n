@@ -48,6 +48,9 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.auditor = CodeAudits
 master.menu.auditor.my-code-audits = My CodeAudits
+master.menu.auditor.auditrecord.list-my-audit-records = My Audits Record
+master.menu.auditor.dashboard = Auditor Dashboard
+
 
 # master.menu.user-account ####################################################
 

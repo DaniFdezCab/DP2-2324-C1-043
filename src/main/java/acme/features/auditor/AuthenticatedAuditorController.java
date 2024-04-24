@@ -1,5 +1,5 @@
 /*
- * AdministratorUserAccountController.java
+ * AuthenticatedConsumerController.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.codeAudits;
+package acme.features.auditor;
 
 import javax.annotation.PostConstruct;
 
@@ -18,27 +18,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.audits.CodeAudit;
+import acme.client.data.accounts.Authenticated;
 import acme.roles.Auditor;
 
 @Controller
-public class AuditorCodeAuditsController extends AbstractController<Auditor, CodeAudit> {
+public class AuthenticatedAuditorController extends AbstractController<Authenticated, Auditor> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditsListService	listService;
+	private AuthenticatedAuditorCreateService	createService;
 
 	@Autowired
-	private AuditorCodeAuditsShowService	showService;
+	private AuthenticatedAuditorUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
-		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 	}
 
 }

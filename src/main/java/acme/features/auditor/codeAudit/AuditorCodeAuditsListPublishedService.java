@@ -10,9 +10,10 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.codeAudits;
+package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.audits.CodeAudit;
+import acme.entities.audits.Mark;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditsListService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditsListPublishedService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -53,8 +55,13 @@ public class AuditorCodeAuditsListService extends AbstractService<Auditor, CodeA
 		assert object != null;
 
 		Dataset dataset;
+		List<Mark> marks;
 
-		dataset = super.unbind(object, "code", "executionDate", "type", "proposedCorrectiveActions", "mark", "optionalLink", "auditor");
+		marks = this.repository.findMarksByCodeAuditId(object.getId()).stream().toList();
+		dataset = super.unbind(object, "code", "executionDate", "type", "proposedCorrectiveActions", "optionalLink", "published");
+		dataset.put("mark", this.repository.averageMark(marks));
+		dataset.put("project", object.getProject().getCode());
+
 		super.getResponse().addData(dataset);
 	}
 

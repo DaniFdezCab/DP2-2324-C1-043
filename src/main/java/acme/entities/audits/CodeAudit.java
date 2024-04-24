@@ -2,9 +2,6 @@
 package acme.entities.audits;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -22,6 +19,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,40 +47,21 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 100)
 	private String				proposedCorrectiveActions;
 
-	@NotNull
-	private Mark				mark;
-
-
-	public static Mark moda(final List<Mark> lista) {
-		// Crear un mapa para almacenar las frecuencias de cada valor
-		Map<Mark, Integer> frecuencias = new HashMap<>();
-		for (Mark valor : lista)
-			frecuencias.put(valor, frecuencias.getOrDefault(valor, 0) + 1);
-
-		// Encontrar el valor con la mayor frecuencia
-		Mark moda = null;
-		int frecuenciaMaxima = 0;
-		for (Map.Entry<Mark, Integer> entrada : frecuencias.entrySet())
-			if (entrada.getValue() > frecuenciaMaxima) {
-				frecuenciaMaxima = entrada.getValue();
-				moda = entrada.getKey();
-			}
-
-		// Devolver la moda
-		return moda;
-	}
-
-
 	@URL
 	@Length(max = 255)
-	private String	optionalLink;
+	private String				optionalLink;
 
 	@ManyToOne(optional = false)
 	@NotNull
 	@Valid
-	private Auditor	auditor;
+	private Auditor				auditor;
 
-	private boolean	published;
+	private boolean				published;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Project				project;
 
 	// Constructors, getters, setters, hashCode, equals, etc.
 
@@ -91,7 +70,7 @@ public class CodeAudit extends AbstractEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(this.code, this.executionDate, this.optionalLink, this.mark, this.proposedCorrectiveActions, this.type);
+		result = prime * result + Objects.hash(this.code, this.executionDate, this.optionalLink, this.proposedCorrectiveActions, this.type);
 		return result;
 	}
 
@@ -104,7 +83,7 @@ public class CodeAudit extends AbstractEntity {
 		if (this.getClass() != obj.getClass())
 			return false;
 		CodeAudit other = (CodeAudit) obj;
-		return Objects.equals(this.code, other.code) && Objects.equals(this.executionDate, other.executionDate) && Objects.equals(this.optionalLink, other.optionalLink) && this.mark == other.mark
-			&& Objects.equals(this.proposedCorrectiveActions, other.proposedCorrectiveActions) && Objects.equals(this.type, other.type);
+		return Objects.equals(this.code, other.code) && Objects.equals(this.executionDate, other.executionDate) && Objects.equals(this.optionalLink, other.optionalLink) && Objects.equals(this.proposedCorrectiveActions, other.proposedCorrectiveActions)
+			&& Objects.equals(this.type, other.type);
 	}
 }
