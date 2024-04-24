@@ -180,7 +180,7 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 	private Money invoicesMinimumQuantity(final Collection<Money> quantities) {
 		Money money = new Money();
 		money.setCurrency("USD");
-		money.setAmount(quantites.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).min().orElse(0.0));
+		money.setAmount(quantities.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).min().orElse(0.0));
 		return money;
 	}
 
