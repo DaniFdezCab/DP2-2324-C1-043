@@ -33,6 +33,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		ManagerDashboard managerDashboard = new ManagerDashboard();
 
 		int totalUserStories;
+		int totalUserStoriesMUST;
+		int totalUserStoriesSHOULD;
+		int totalUserStoriesCOULD;
+		int totalUserStoriesWONT;
 		double averageCostUserStories;
 		double deviationCostUserStories;
 		int minimumCostUserStories;
@@ -43,6 +47,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		double maximumCostProjects;
 
 		totalUserStories = this.repository.countManyUserStoriesByManagerId(managerId).orElse(0);
+		totalUserStoriesMUST = this.repository.countManyUserStoriesMUSTByManagerId(managerId).orElse(0);
+		totalUserStoriesSHOULD = this.repository.countManyUserStoriesSHOULDByManagerId(managerId).orElse(0);
+		totalUserStoriesCOULD = this.repository.countManyUserStoriesCOULDByManagerId(managerId).orElse(0);
+		totalUserStoriesWONT = this.repository.countManyUserStoriesWONTByManagerId(managerId).orElse(0);
 		averageCostUserStories = this.repository.averageCostUserStoriesByManagerId(managerId).orElse(0.0);
 		deviationCostUserStories = this.repository.deviationCostUserStoriesByManagerId(managerId).orElse(0.0);
 		minimumCostUserStories = this.repository.minimumCostUserStoriesByManager(managerId).orElse(0);
@@ -53,6 +61,10 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 		maximumCostProjects = this.repository.maximumCostProjectsByManager(managerId).orElse(0.0);
 
 		managerDashboard.setTotalUserStories(totalUserStories);
+		managerDashboard.setTotalUserStoriesMUST(totalUserStoriesMUST);
+		managerDashboard.setTotalUserStoriesSHOULD(totalUserStoriesSHOULD);
+		managerDashboard.setTotalUserStoriesCOULD(totalUserStoriesCOULD);
+		managerDashboard.setTotalUserStoriesWONT(totalUserStoriesWONT);
 		managerDashboard.setAverageCostUserStories(averageCostUserStories);
 		managerDashboard.setDeviationCostUserStories(deviationCostUserStories);
 		managerDashboard.setMinimumCostUserStories(minimumCostUserStories);
@@ -87,8 +99,8 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "totalUserStories", "averageCostUserStories", "deviationCostUserStories", "minimumCostUserStories", "maximumCostUserStories", "averageCostProjects", "deviationCostProjects", "minimumCostProjects",
-			"maximumCostProjects");
+		dataset = super.unbind(object, "totalUserStories", "totalUserStoriesMUST", "totalUserStoriesSHOULD", "totalUserStoriesCOULD", "totalUserStoriesWONT", "averageCostUserStories", "deviationCostUserStories", "minimumCostUserStories",
+			"maximumCostUserStories", "averageCostProjects", "deviationCostProjects", "minimumCostProjects", "maximumCostProjects");
 
 		super.getResponse().addData(dataset);
 	}

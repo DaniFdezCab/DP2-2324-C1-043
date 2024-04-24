@@ -14,6 +14,18 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select count(us) from UserStory us where us.manager.id = :id")
 	Optional<Integer> countManyUserStoriesByManagerId(int id);
 
+	@Query("select count(us) from UserStory us where (us.manager.id = :id and us.priority = acme.entities.projects.Priority.MUST)")
+	Optional<Integer> countManyUserStoriesMUSTByManagerId(int id);
+
+	@Query("select count(us) from UserStory us where (us.manager.id = :id and us.priority = acme.entities.projects.Priority.SHOULD)")
+	Optional<Integer> countManyUserStoriesSHOULDByManagerId(int id);
+
+	@Query("select count(us) from UserStory us where (us.manager.id = :id and us.priority = acme.entities.projects.Priority.COULD)")
+	Optional<Integer> countManyUserStoriesCOULDByManagerId(int id);
+
+	@Query("select count(us) from UserStory us where (us.manager.id = :id and us.priority = acme.entities.projects.Priority.WONT)")
+	Optional<Integer> countManyUserStoriesWONTByManagerId(int id);
+
 	@Query("select avg(us.estimatedCost) from UserStory us where us.manager.id = :id")
 	Optional<Double> averageCostUserStoriesByManagerId(int id);
 

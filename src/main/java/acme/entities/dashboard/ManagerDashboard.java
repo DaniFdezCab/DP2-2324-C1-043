@@ -22,6 +22,18 @@ public class ManagerDashboard extends AbstractForm {
 	private int					totalUserStories;
 
 	@PositiveOrZero
+	private int					totalUserStoriesMUST;
+
+	@PositiveOrZero
+	private int					totalUserStoriesSHOULD;
+
+	@PositiveOrZero
+	private int					totalUserStoriesCOULD;
+
+	@PositiveOrZero
+	private int					totalUserStoriesWONT;
+
+	@PositiveOrZero
 	private double				averageCostUserStories;
 
 	@PositiveOrZero
