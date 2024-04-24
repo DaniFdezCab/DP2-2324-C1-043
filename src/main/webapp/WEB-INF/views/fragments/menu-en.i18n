@@ -52,6 +52,9 @@ master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
 master.menu.sponsor.invoice.list-invoices = List invoices
 master.menu.sponsor.sponsorship.show-published-sponsorships = Show published sponsorships
 master.menu.sponsor.dashboard = Sponsor Dashboard
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -61,4 +64,4 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 
-master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published
+

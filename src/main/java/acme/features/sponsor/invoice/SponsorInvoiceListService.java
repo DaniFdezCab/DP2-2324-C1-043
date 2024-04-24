@@ -22,18 +22,30 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 	@Override
 	public void authorise() {
 
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int sponsorshipId;
+		int sponsorId;
+		Sponsorship sponsorship;
+
+		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
+
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		status = sponsorId == sponsorship.getSponsor().getId();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Invoice> object;
+		Collection<Invoice> objects;
 		int sponsorshipId;
 
 		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
-		object = this.repo.findInvoicesBySponsorshipId(sponsorshipId);
+		objects = this.repo.findInvoicesBySponsorshipId(sponsorshipId);
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(objects);
 	}
 
 	@Override
@@ -43,6 +55,7 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
+		dataset.put("totalAmount", object.totalAmount());
 
 		super.getResponse().addData(dataset);
 	}
@@ -52,15 +65,11 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		assert object != null;
 
 		int sponsorshipId;
-		Sponsorship sponsorship;
-		final boolean showCreate;
 
 		sponsorshipId = super.getRequest().getData("sponsorshipId", int.class);
-		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
-		showCreate = sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().addGlobal("sponsorshipId", sponsorshipId);
-		super.getResponse().addGlobal("showCreate", showCreate);
+
 	}
 
 }

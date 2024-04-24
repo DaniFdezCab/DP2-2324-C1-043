@@ -17,6 +17,7 @@ sponsor.invoice.list.label.dueDate = Fecha de Vencimiento
 sponsor.invoice.list.label.quantity = Cantidad
 sponsor.invoice.list.label.tax = Impuesto
 sponsor.invoice.list.label.moreInfo = Más Información
+sponsor.inovice.list.label.totalAmount = Cantidad total
 
 sponsor.invoice.form.label.code = Código
 sponsor.invoice.form.label.registrationTime = Hora de Registro
@@ -24,13 +25,16 @@ sponsor.invoice.form.label.dueDate = Fecha de Vencimiento
 sponsor.invoice.form.label.quantity = Cantidad
 sponsor.invoice.form.label.tax = Impuesto
 sponsor.invoice.form.label.moreInfo = Más Información
+sponsor.inovice.form.label.totalAmount = Total Amount = Cantidad total
 
 sponsor.invoice.list.button.create = Crear
 sponsor.invoice.form.label.draftMode = Modo Borrador
 sponsor.invoice.form.button.update = Actualizar
-sponsor.invoice.form.button.delete = Eliminar
+sponsor.invoice.form.button.delete = Borrar
 sponsor.invoice.form.button.publish = Publicar
 
 sponsor.invoice.form.error.code = El código debe ser único
 sponsor.invoice.form.error.dueDate = La fecha de vencimiento debe ser posterior a la hora de registro y tener una diferencia de un mes entre ambas
-sponsor.invoice.form.error.quantity = La cantidad debe ser positiva
+sponsor.invoice.form.error.negative-amount = La cantidad debe ser positiva
+sponsor.invoice.form.error.duplicated = Este código ya existe
+sponsor.invoice.form.error.acceptedCurrency = Esta moneda no está permitida

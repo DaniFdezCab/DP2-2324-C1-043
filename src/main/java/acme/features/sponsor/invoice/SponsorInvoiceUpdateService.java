@@ -48,7 +48,9 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 	@Override
 	public void bind(final Invoice object) {
+
 		assert object != null;
+
 		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo");
 
 	}
@@ -76,7 +78,10 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.quantity");
+			super.state(object.getQuantity().getAmount() >= 0, "amount", "sponsor.invoice.form.error.negative-amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "amount", "sponsor.invoice.form.error.acceptedCurrency");
 	}
 
 	@Override
@@ -89,6 +94,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void unbind(final Invoice object) {
 		assert object != null;
+
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");

@@ -61,7 +61,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			Sponsorship existing;
 
 			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("startDuration")) {
 			Date startDuration;
@@ -84,6 +84,9 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		if (!super.getBuffer().getErrors().hasErrors("amount"))
 			super.state(object.getAmount().getAmount() >= 0, "amount", "sponsor.sponsorship.form.error.negative-amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getCurrency().equals("GBP") || object.getAmount().getCurrency().equals("EUR") || object.getAmount().getCurrency().equals("USD"), "amount", "sponsor.sponsorship.form.error.acceptedCurrency");
 
 	}
 
@@ -109,7 +112,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		dataset = super.unbind(object, "code", "moment", "startDuration", "endDuration", "amount", "type", "emailContact", "moreInfo", "project", "draftMode");
 		dataset.put("types", choices2);
-		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
