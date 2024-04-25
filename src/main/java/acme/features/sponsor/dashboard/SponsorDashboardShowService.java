@@ -1,6 +1,10 @@
 
 package acme.features.sponsor.dashboard;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,96 +28,196 @@ public class SponsorDashboardShowService extends AbstractService<Sponsor, Sponso
 
 	@Override
 	public void load() {
-		Integer sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 
-		SponsorDashboard sponsorDashboard;
+		int sponsorId;
 
-		Integer taxedInvoices;
+		SponsorDashboard dashboard;
 
-		Integer linkedSponsorships;
+		int taxedInvoices;
 
-		Double averageSponsorship;
+		int linkedSponsorships;
 
-		Double averageInvoice;
+		Money averageSponsorship;
 
-		Double maximumInvoice;
+		Money deviationSponsorship;
 
-		Double maximumSponsorship;
+		Money minimumSponsorship;
 
-		Double minimumInvoice;
+		Money maximumSponsorship;
 
-		Double minimumSponsorship;
+		Money averageInvoice;
 
-		Double deviationInvoice;
+		Money deviationInvoice;
 
-		Double deviationSponsorship;
+		Money minimumInvoice;
+
+		Money maximumInvoice;
+
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+
+		Collection<Money> amounts = this.repo.sponsorshipAmounts(sponsorId).stream().map(this::currencyTransformerUsd).collect(Collectors.toCollection(ArrayList<Money>::new));
+
+		Collection<Money> quantities = this.repo.invoiceQuantities(sponsorId).stream().map(this::currencyTransformerUsd).collect(Collectors.toCollection(ArrayList<Money>::new));
 
 		taxedInvoices = this.repo.countInvoicesWithTaxLessThanOrEqualTo21(sponsorId);
 
 		linkedSponsorships = this.repo.countLinkedSponsorships(sponsorId);
 
-		averageSponsorship = this.repo.averageSponsorshipAmount(sponsorId);
+		averageSponsorship = this.sponsorshipsAverageAmount(amounts);
 
-		averageInvoice = this.repo.averageInvoiceAmount(sponsorId);
+		deviationSponsorship = this.sponsorshipDeviationAmount(amounts);
 
-		maximumInvoice = this.repo.maxInvoiceAmount(sponsorId);
+		minimumSponsorship = this.sponsorshipsMinimumAmount(amounts);
 
-		maximumSponsorship = this.repo.maxSponsorshipAmount(sponsorId);
+		maximumSponsorship = this.sponsorshipsMaximumAmount(amounts);
 
-		minimumInvoice = this.repo.minInvoiceAmount(sponsorId);
+		averageInvoice = this.invoicesAverageQuantity(quantities);
 
-		minimumSponsorship = this.repo.minSponsorshipAmount(sponsorId);
+		deviationInvoice = this.invoicesDeviationQuantity(quantities);
 
-		deviationInvoice = this.repo.deviationInvoiceAmount(sponsorId);
+		minimumInvoice = this.invoicesMinimumQuantity(quantities);
 
-		deviationSponsorship = this.repo.deviationSponsorshipAmount(sponsorId);
-		sponsorDashboard = new SponsorDashboard();
+		maximumInvoice = this.invoicesMaximumQuantity(quantities);
 
-		sponsorDashboard.setTaxedInvoices(taxedInvoices);
+		dashboard = new SponsorDashboard();
 
-		sponsorDashboard.setLinkedSponsorships(linkedSponsorships);
+		dashboard.setTaxedInvoices(taxedInvoices);
 
-		Money averageMoney = new Money();
-		averageMoney.setAmount(averageSponsorship);
-		averageMoney.setCurrency("EUR");
-		sponsorDashboard.setAverageSponsorship(averageMoney);
+		dashboard.setLinkedSponsorships(linkedSponsorships);
 
-		Money averageMoneyI = new Money();
-		averageMoneyI.setAmount(averageInvoice);
-		averageMoneyI.setCurrency("EUR");
-		sponsorDashboard.setAverageInvoice(averageMoneyI);
+		dashboard.setAverageSponsorship(averageSponsorship);
 
-		Money maximumMoneyI = new Money();
-		maximumMoneyI.setAmount(maximumInvoice);
-		maximumMoneyI.setCurrency("EUR");
-		sponsorDashboard.setMaximumInvoice(maximumMoneyI);
+		dashboard.setDeviationSponsorship(deviationSponsorship);
 
-		Money maximumMoneyS = new Money();
-		maximumMoneyS.setAmount(maximumSponsorship);
-		maximumMoneyS.setCurrency("EUR");
-		sponsorDashboard.setMaximumSponsorship(maximumMoneyS);
+		dashboard.setMinimumSponsorship(minimumSponsorship);
 
-		Money minimumMoneyS = new Money();
-		minimumMoneyS.setAmount(minimumSponsorship);
-		minimumMoneyS.setCurrency("EUR");
-		sponsorDashboard.setMinimumSponsorship(minimumMoneyS);
+		dashboard.setMaximumSponsorship(maximumSponsorship);
 
-		Money minimumMoneyI = new Money();
-		minimumMoneyI.setAmount(minimumInvoice);
-		minimumMoneyI.setCurrency("EUR");
-		sponsorDashboard.setMinimumInvoice(minimumMoneyI);
+		dashboard.setAverageInvoice(averageInvoice);
 
-		Money deviationMoneyS = new Money();
-		deviationMoneyS.setAmount(deviationSponsorship);
-		deviationMoneyS.setCurrency("EUR");
-		sponsorDashboard.setDeviationSponsorship(deviationMoneyS);
+		dashboard.setDeviationInvoice(deviationInvoice);
 
-		Money deviationMoneyI = new Money();
-		deviationMoneyI.setAmount(deviationInvoice);
-		deviationMoneyI.setCurrency("EUR");
-		sponsorDashboard.setDeviationInvoice(deviationMoneyI);
+		dashboard.setMinimumInvoice(minimumInvoice);
 
-		super.getBuffer().addData(sponsorDashboard);
+		dashboard.setMaximumInvoice(maximumInvoice);
+
+		super.getBuffer().addData(dashboard);
+	}
+
+	private Money sponsorshipsAverageAmount(final Collection<Money> amounts) {
+
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		money.setAmount(amounts.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).average().orElse(0.0));
+
+		return money;
+	}
+
+	private Money sponsorshipsMaximumAmount(final Collection<Money> amounts) {
+
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		money.setAmount(amounts.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).max().orElse(0.0));
+
+		return money;
+	}
+
+	private Money sponsorshipsMinimumAmount(final Collection<Money> amounts) {
+
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		money.setAmount(amounts.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).min().orElse(0.0));
+
+		return money;
+	}
+
+	private Money sponsorshipDeviationAmount(final Collection<Money> amounts) {
+
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		double average = amounts.stream().mapToDouble(Money::getAmount).average().orElse(0.0);
+
+		double sumSquares = amounts.stream().mapToDouble(x -> Math.pow(x.getAmount() - average, 2)).sum();
+
+		double var = sumSquares / amounts.size();
+
+		double dev = Math.sqrt(var);
+
+		money.setAmount(dev);
+
+		return money;
+	}
+
+	private Money invoicesAverageQuantity(final Collection<Money> quantities) {
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		money.setAmount(quantities.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).average().orElse(0.0));
+
+		return money;
+	}
+
+	private Money invoicesMaximumQuantity(final Collection<Money> quantities) {
+
+		Money money = new Money();
+
+		money.setCurrency("USD");
+
+		money.setAmount(quantities.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).max().orElse(0.0));
+
+		return money;
+	}
+
+	private Money invoicesMinimumQuantity(final Collection<Money> quantities) {
+		Money money = new Money();
+		money.setCurrency("USD");
+		money.setAmount(quantities.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).min().orElse(0.0));
+		return money;
+	}
+
+	private Money invoicesDeviationQuantity(final Collection<Money> quantities) {
+
+		Money money = new Money();
+		money.setCurrency("USD");
+
+		double average = quantities.stream().mapToDouble(Money::getAmount).average().orElse(0.0);
+
+		double sumSquares = quantities.stream().mapToDouble(x -> Math.pow(x.getAmount() - average, 2)).sum();
+
+		double var = sumSquares / quantities.size();
+
+		double dev = Math.sqrt(var);
+
+		money.setAmount(dev);
+
+		return money;
+	}
+
+	private Money currencyTransformerUsd(final Money initial) {
+
+		Money res = new Money();
+
+		res.setCurrency("USD");
+
+		if (initial.getCurrency().equals("USD"))
+			res.setAmount(initial.getAmount());
+
+		else if (initial.getCurrency().equals("EUR"))
+			res.setAmount(initial.getAmount() * 1.07);
+
+		else
+			res.setAmount(initial.getAmount() * 1.25);
+
+		return res;
 	}
 
 	@Override

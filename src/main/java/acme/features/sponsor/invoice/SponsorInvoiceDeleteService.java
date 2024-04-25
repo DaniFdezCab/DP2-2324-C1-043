@@ -70,8 +70,6 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
-		dataset.put("sponsorshipId", super.getRequest().getData("sponsorshipId", int.class));
-		dataset.put("draftMode", object.getSponsorship().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

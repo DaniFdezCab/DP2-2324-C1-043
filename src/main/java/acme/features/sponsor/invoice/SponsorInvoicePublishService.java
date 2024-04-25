@@ -1,10 +1,14 @@
 
 package acme.features.sponsor.invoice;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
 import acme.entities.sponsorships.Sponsorship;
@@ -14,7 +18,7 @@ import acme.roles.Sponsor;
 public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoice> {
 
 	@Autowired
-	SponsorInvoiceRepository mur;
+	SponsorInvoiceRepository repo;
 
 
 	@Override
@@ -24,7 +28,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		Sponsorship sponsorship;
 
 		invoiceId = super.getRequest().getData("id", int.class);
-		sponsorship = this.mur.findOneSponsorshipByInvoiceId(invoiceId);
+		sponsorship = this.repo.findOneSponsorshipByInvoiceId(invoiceId);
 		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
 
 		super.getResponse().setAuthorised(status);
@@ -36,7 +40,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.mur.findOneInvoiceById(id);
+		object = this.repo.findOneInvoiceById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -52,6 +56,28 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Invoice existing;
+
+			existing = this.repo.findOneInvoiceByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.invoice.form.error.duplicated");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
+			Date registrationTime;
+			Date dueDate;
+
+			registrationTime = object.getRegistrationTime();
+			dueDate = object.getDueDate();
+
+			super.state(MomentHelper.isLongEnough(registrationTime, dueDate, 1, ChronoUnit.MONTHS) && dueDate.after(registrationTime), "dueDate", "sponsor.invoice.form.error.dueDate");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getAmount() >= 0, "amount", "sponsor.invoice.form.error.negative-amount");
+
+		if (!super.getBuffer().getErrors().hasErrors("quantity"))
+			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "amount", "sponsor.invoice.form.error.acceptedCurrency");
+
 	}
 
 	@Override
@@ -60,7 +86,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 
 		object.setDraftMode(false);
 
-		this.mur.save(object);
+		this.repo.save(object);
 	}
 
 	@Override
@@ -69,7 +95,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "moreInfo", "draftMode");
-		dataset.put("sponsorshipId", object.getSponsorship().getId());
+
 		super.getResponse().addData(dataset);
 
 	}

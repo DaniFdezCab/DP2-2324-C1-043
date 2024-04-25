@@ -39,13 +39,14 @@ sponsor.sponsorship.form.error.negative-amount = The amount can not be negative
 sponsor.sponsorship.form.error.invoice.error = The amount of sponsorship should be the same as the invoice
 sponsor.sponsorship.form.error.startDuration = The start date must be after the moment
 sponsor.sponsorship.form.error.endDuration = The end date must be after the moment and  one month difference between both of them
+sponsor.sponsorship.form.error.acceptedCurrency = The currency is not allowed
 
 sponsor.sponsorship.form.button.update = Update
-sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.delete = Delete 
 sponsor.sponsorship.form.button.publish = Publish
 
-sponsor.sponsorship.list.button.create = Create
-sponsor.sponsorship.form.button.create = Create
+sponsor.sponsorship.list.button.create = Create new sponsorship
+sponsor.sponsorship.form.button.create = Register
 sponsor.sponsorship.form.button.invoices = Invoices
 
 

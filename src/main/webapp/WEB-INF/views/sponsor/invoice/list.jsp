@@ -21,7 +21,8 @@
 	<acme:list-column code="sponsor.invoice.list.label.dueDate" path="dueDate" width="15%"/>	
 	<acme:list-column code="sponsor.invoice.list.label.quantity" path="quantity" width="15%"/>	
 	<acme:list-column code="sponsor.invoice.list.label.tax" path="tax" width="15%"/>	
-	<acme:list-column code="sponsor.invoice.list.label.moreInfo" path="moreInfo" width="10%"/>	
+	<acme:list-column code="sponsor.invoice.list.label.moreInfo" path="moreInfo" width="10%"/>
+	<acme:input-double code="sponsor.inovice.list.label.totalAmount" path="totalAmount" readonly="true" />	
 	
 </acme:list>
 
