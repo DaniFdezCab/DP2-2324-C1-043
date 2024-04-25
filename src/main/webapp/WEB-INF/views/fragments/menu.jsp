@@ -35,6 +35,8 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-banners" action="/administrator/banner/list"/>			
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 
