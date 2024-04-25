@@ -36,7 +36,7 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="client.contract.form.button.create-contract" action="/client/contract/create"/>
-		</jstl:when>		
+		</jstl:when>	
 	</jstl:choose>
 	
 	
