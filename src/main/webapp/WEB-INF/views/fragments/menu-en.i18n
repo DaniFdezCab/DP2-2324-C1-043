@@ -23,6 +23,7 @@ master.menu.anonymous.favourite-link1 = 29543977V: Martín Muñoz, Álvaro
 master.menu.anonymous.favourite-link2 = 53930555V: Picón Garrote, Alexander
 master.menu.anonymous.favourite-link3 = 29510404R: Bermúdez Imaz, Pablo
 master.menu.anonymous.favourite-link4 = 09217444x: Capote Garcia, Francisco
+master.menu.anonymous.list-contracts = List published contracts
 
 
 # master.menu.administrator ###################################################
@@ -33,6 +34,7 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
+master.menu.administrator.list-banners = List banners
 
 # master.menu.provider ########################################################
 
@@ -44,13 +46,43 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+
 # master.menu.auditor ##########################################################
 
 master.menu.auditor = CodeAudits
 master.menu.auditor.my-code-audits = My CodeAudits
 master.menu.auditor.auditrecord.list-my-audit-records = My Audits Record
 master.menu.auditor.dashboard = Auditor Dashboard
+master.menu.any.codeaudits = CodeAudits
 
+
+# master.menu.client ####################################################
+
+master.menu.client = Contracts
+master.menu.client.contract = My Contracts
+master.menu.client.dashboard = Client Dashboard
+master.menu.user-account.become-client = Become a client
+master.menu.user-account.client = Client data
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Projects
+master.menu.manager.myProjects = My Projects
+master.menu.manager.myPublishedProjects = My Published Projects
+master.menu.manager.dashboard =My Dashboard
+
+
+# master.menu.sponsor ##########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.favourite-link = Favourite Link
+master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
+master.menu.sponsor.invoice.list-invoices = List invoices
+master.menu.sponsor.sponsorship.list-published-sponsorships = List published sponsorships
+master.menu.sponsor.sponsorship.show-published-sponsorships = Mostrar patrocinios publicados
+master.menu.sponsor.dashboard = Sponsor Dashboard
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published
 
 # master.menu.user-account ####################################################
 
@@ -62,4 +94,7 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.auditor = Auditor data
 master.menu.user-account.become-auditor = Become a auditor
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager = Become a manager
+
 

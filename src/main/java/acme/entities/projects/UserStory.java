@@ -45,13 +45,13 @@ public class UserStory extends AbstractEntity {
 	@NotNull
 	private Priority			priority;
 
+	private boolean				published			= false;
+
 	@URL
 	@Length(max = 255)
 	private String				url;
 
-	@ManyToOne(optional = false)
-	@Valid
-	private Project				project;
+	// Relationships ----------------------------------------------------------
 
 	@ManyToOne(optional = false)
 	@Valid
