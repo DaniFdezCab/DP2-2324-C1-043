@@ -18,6 +18,12 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+	<acme:menu-option code="master.menu.any">
+	
+			<acme:menu-suboption code="master.menu.any.codeaudits" action="/any/code-audit/list"/>
+			
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.callofduty.com/es"/>

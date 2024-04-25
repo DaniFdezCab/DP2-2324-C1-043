@@ -19,7 +19,7 @@
 	<acme:input-textbox code="auditor.codeaudit.form.label.code" path="code" placeholder="ABC-000"/>
 	<acme:input-moment code="auditor.codeaudit.form.label.executionDate" path="executionDate"/>
 	<acme:input-select code="auditor.codeaudit.form.label.type" path="type" choices="${type}" />
-	<acme:input-textbox code="auditor.codeaudit.form.label.mark" path="mark" placeholder="validation.codeaudit.mode.empty" readonly="true"/>
+	<acme:input-textbox code="auditor.codeaudit.form.label.mark" path="mark" readonly="true"/>
 	<acme:input-textbox code="auditor.codeaudit.form.label.proposedCorrectiveActions" path="proposedCorrectiveActions"/>
 	<acme:input-url code="auditor.codeaudit.form.label.optionalLink" path="optionalLink"/>
 	
