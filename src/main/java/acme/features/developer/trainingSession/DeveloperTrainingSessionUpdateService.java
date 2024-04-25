@@ -32,7 +32,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		module = this.repository.findOneTrainingModuleByTrainingSessionId(sessionId);
 		session = this.repository.findOneTrainingSessionById(sessionId);
 
-		status = module != null && module.getNotPublished() && session.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = module != null && session.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}

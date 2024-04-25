@@ -65,3 +65,5 @@ master.menu.user-account.become-developer = Hazte desarrollador
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Autentificado
+
+master.menu.authenticated.risk.list = Lista de riesgos

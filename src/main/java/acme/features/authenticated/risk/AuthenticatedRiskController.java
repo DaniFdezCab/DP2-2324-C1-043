@@ -1,5 +1,5 @@
 
-package acme.features.any.trainingModule;
+package acme.features.authenticated.risk;
 
 import javax.annotation.PostConstruct;
 
@@ -7,19 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Any;
-import acme.entities.trainings.TrainingModule;
+import acme.client.data.accounts.Authenticated;
+import acme.entities.risks.Risk;
 
 @Controller
-public class AnyTrainingModuleController extends AbstractController<Any, TrainingModule> {
+public class AuthenticatedRiskController extends AbstractController<Authenticated, Risk> {
 
 	@Autowired
-	private AnyTrainingModuleListService	listService;
+	private AuthenticatedRiskListService	listService;
 
 	@Autowired
-	private AnyTrainingModuleShowService	showService;
-
-	// Constructors -----------------------------------------------------------
+	private AuthenticatedRiskShowService	showService;
 
 
 	@PostConstruct
@@ -27,4 +25,5 @@ public class AnyTrainingModuleController extends AbstractController<Any, Trainin
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 	}
+
 }

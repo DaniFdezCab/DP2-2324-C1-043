@@ -8,7 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.dashboard.form.title = Developer dashboard
+
+developer.developer-dashboard.form.title = Developer dashboard
+
 
 developer.dashboard.form.label.training-modules-with-update-moment = Training modules with update moment
 developer.dashboard.form.label.training-sessions-with-a-link = Training sessions with a link

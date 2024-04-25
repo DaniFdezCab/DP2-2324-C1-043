@@ -32,6 +32,8 @@
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.anonymous.all-training-modules" action="/any/training-module/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.risk.list" action="/authenticated/risk/list"/>
 		</acme:menu-option>
 		
 
@@ -54,7 +56,7 @@
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">			
 			<acme:menu-suboption code="master.menu.developer.my-trainingModules" action="/developer/training-module/list-mine"/>
-			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/dashboard/show"/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
 		</acme:menu-option>
 		
 		

@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.dashboard.form.title = Dashboard del desarrollador
+developer.developer-dashboard.form.title = Dashboard del desarrollador
 
 developer.dashboard.form.label.training-modules-with-update-moment = Número de módulos de entrenamiento que se han actualizado
 developer.dashboard.form.label.training-sessions-with-a-link = Número de sesiones de entrenamiento con link
