@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contracts.Contract;
-import acme.entities.contracts.ProgressLogs;
+import acme.entities.contracts.ProgressLog;
 import acme.entities.projects.AssociationProject;
 import acme.entities.projects.Project;
 import acme.entities.projects.UserStory;
@@ -44,8 +44,8 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select c from Contract c where c.project.id = :id")
 	Collection<Contract> findManyContractsByProjectId(int id);
 
-	@Query("select pl from ProgressLogs pl where pl.contract.id IN :ids")
-	Collection<ProgressLogs> findManyProgressLogsByContractIds(Set<Integer> ids);
+	@Query("select pl from ProgressLog pl where pl.contract.id IN :ids")
+	Collection<ProgressLog> findManyProgressLogsByContractIds(Set<Integer> ids);
 
 	@Query("select ss from Sponsorship ss where ss.project.id = :id")
 	Collection<Sponsorship> findManySponsorshipsByProjectId(int id);

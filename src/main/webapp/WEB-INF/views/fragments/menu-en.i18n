@@ -23,6 +23,7 @@ master.menu.anonymous.favourite-link1 = 29543977V: Martín Muñoz, Álvaro
 master.menu.anonymous.favourite-link2 = 53930555V: Picón Garrote, Alexander
 master.menu.anonymous.favourite-link3 = 29510404R: Bermúdez Imaz, Pablo
 master.menu.anonymous.favourite-link4 = 09217444x: Capote Garcia, Francisco
+master.menu.anonymous.list-contracts = List published contracts
 
 
 # master.menu.administrator ###################################################
@@ -45,12 +46,22 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+
+# master.menu.client ####################################################
+
+master.menu.client = Contracts
+master.menu.client.contract = My Contracts
+master.menu.client.dashboard = Client Dashboard
+master.menu.user-account.become-client = Become a client
+master.menu.user-account.client = Client data
+
 # master.menu.manager ##########################################################
 
 master.menu.manager = Projects
 master.menu.manager.myProjects = My Projects
 master.menu.manager.myPublishedProjects = My Published Projects
 master.menu.manager.dashboard =My Dashboard
+
 
 # master.menu.sponsor ##########################################################
 
