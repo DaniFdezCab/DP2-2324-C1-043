@@ -11,7 +11,6 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Manager;
-import acme.roles.Sponsor;
 
 @Service
 public class AuthenticatedManagerCreateService extends AbstractService<Authenticated, Manager> {
@@ -28,7 +27,7 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		status = !super.getRequest().getPrincipal().hasRole(Manager.class);
 
 		super.getResponse().setAuthorised(status);
 	}
