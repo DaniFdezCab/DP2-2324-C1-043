@@ -17,6 +17,7 @@ manager.project.list.label.summary = Descripción
 manager.project.list.label.cost = Coste
 manager.project.list.label.url = Enlace
 
+manager.project.list.button.create-form = Crear Proyecto
 
 # FORM 
 
@@ -30,11 +31,15 @@ manager.project.form.label.fatalErrors = Errores fatales:
 
 manager.project.form.button.update = Actualizar
 manager.project.form.button.delete = Borrar
-manager.project.form.button.publish = Publicar
-
+manager.project.form.button.publish.true = Despublicar
+manager.project.form.button.publish.false = Publicar
+manager.project.form.button.create = Crear
+manager.project.form.button.userStory = Historias de Usuario
 
 # Errors
 
 manager.project.form.error.duplicated = Este código ya está en uso
 manager.project.form.error.fatalErrors = El proyecto no debe contener errores fatales
 manager.project.form.error.negative-cost = El coste no debe ser negativo
+manager.project.form.error.publish = Necesitas tener más de una historia y que estén publicadas para poder publicar el proyecto
+manager.project.form.error.invalid-currency = El coste debe estar en USD

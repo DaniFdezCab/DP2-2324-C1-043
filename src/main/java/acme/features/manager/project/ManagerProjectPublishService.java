@@ -1,6 +1,8 @@
 
 package acme.features.manager.project;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.entities.projects.Project;
+import acme.entities.projects.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -52,11 +55,14 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		assert object != null;
 
 		super.bind(object, "code", "title", "summary", "cost", "url", "fatalErrors");
+
 	}
 
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
+		List<UserStory> publishedUS = (List<UserStory>) this.repository.findManyPublishedUserStoriesByProjectId(object.getId());
+		List<UserStory> projectUS = (List<UserStory>) this.repository.findManyUserStoriesByProjectId(object.getId());
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Project existing;
@@ -67,8 +73,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
 			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
 
+		if (!super.getBuffer().getErrors().hasErrors("published"))
+			super.state(!projectUS.isEmpty() && projectUS.size() == publishedUS.size(), "published", "manager.project.form.error.publish");
+
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
-			super.state(object.getCost() > 0, "cost", "manager.project.form.error.negative-cost");
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 	}
 
 	@Override

@@ -30,6 +30,12 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 	@Autowired
 	private ManagerProjectPublishService		publishService;
 
+	@Autowired
+	private ManagerProjectDeleteService			deleteService;
+
+	@Autowired
+	private ManagerProjectCreateService			createService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -38,6 +44,8 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("create", this.createService);
 
 		super.addCustomCommand("listPublished", "list", this.listPublishedService);
 		super.addCustomCommand("publish", "update", this.publishService);

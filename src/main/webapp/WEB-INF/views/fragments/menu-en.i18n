@@ -34,6 +34,7 @@ master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
+master.menu.administrator.list-banners = List banners
 
 # master.menu.provider ########################################################
 
@@ -57,8 +58,22 @@ master.menu.user-account.client = Client data
 # master.menu.manager ##########################################################
 
 master.menu.manager = Projects
-master.menu.consumer.myProjects = My Projects
-master.menu.consumer.myPublishedProjects = My Published Projects
+master.menu.manager.myProjects = My Projects
+master.menu.manager.myPublishedProjects = My Published Projects
+master.menu.manager.dashboard =My Dashboard
+
+
+# master.menu.sponsor ##########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.favourite-link = Favourite Link
+master.menu.sponsor.sponsorship.list-sponsorships = List sponsorships
+master.menu.sponsor.invoice.list-invoices = List invoices
+master.menu.sponsor.sponsorship.list-published-sponsorships = List published sponsorships
+master.menu.sponsor.sponsorship.show-published-sponsorships = Mostrar patrocinios publicados
+master.menu.sponsor.dashboard = Sponsor Dashboard
+master.menu.user-account.become-sponsor = Become a sponsor
+master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published
 
 # master.menu.user-account ####################################################
 
@@ -68,6 +83,8 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-manager = Become a manager
 
 
 

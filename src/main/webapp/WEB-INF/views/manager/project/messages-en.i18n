@@ -18,6 +18,7 @@ manager.project.list.label.summary = Summary
 manager.project.list.label.cost = Cost
 manager.project.list.label.url = Url
 
+manager.project.list.button.create-form = Create project
 
 # FORM
 
@@ -33,6 +34,8 @@ manager.project.form.button.update = Update
 manager.project.form.button.delete = Delete
 manager.project.form.button.publish.true = Unpublish
 manager.project.form.button.publish.false = Publish
+manager.project.form.button.create = Create
+manager.project.form.button.userStory = User Stories
 
 
 #Errors
@@ -40,4 +43,5 @@ manager.project.form.button.publish.false = Publish
 manager.project.form.error.duplicated = This code is already taken
 manager.project.form.error.fatalErrors = The project must not have fatal errors
 manager.project.form.error.negative-cost = The cost must not be negative
-
+manager.project.form.error.publish = You need more than one user history and all of them must be published
+manager.project.form.error.invalid-currency = The cost must be in USD
