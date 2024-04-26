@@ -21,6 +21,9 @@
 	<acme:menu-option code="master.menu.any">
 	
 			<acme:menu-suboption code="master.menu.any.codeaudits" action="/any/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
+			<acme:menu-suboption code="master.menu.any.claims" action="/any/claim/list"/>
+			
 			
 		</acme:menu-option>
 		
@@ -31,9 +34,7 @@
             <acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="https://www.fortnite.com/?lang=es-ES"/>
             <acme:menu-suboption code="master.menu.anonymous.favourite-link3" action="https://www.youtube.com/watch?v=stgdmw8PcRY"/>
             <acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://www.suno.ai"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.anonymous.list-contracts" action="/any/contract/list"/>
-			
+			<acme:menu-separator/>	
 			
 
 		</acme:menu-option>

@@ -38,7 +38,6 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		auditRecord = this.repository.findOneAuditRecordById(id);
 
 		status = auditRecord != null && super.getRequest().getPrincipal().hasRole(auditRecord.getCodeAudit().getAuditor());
-
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -86,7 +85,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			auditPeriodStart = object.getAuditPeriodStart();
 			auditPeriodEnd = object.getAuditPeriodEnd();
 
-			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS) && auditPeriodEnd.after(auditPeriodStart), "auditEndTime", "validation.auditrecord.moment.minimum-one-hour");
+			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS) && auditPeriodEnd.after(auditPeriodStart), "auditEndTime", "validation.auditrecord.error.oneHour");
 		}
 	}
 
