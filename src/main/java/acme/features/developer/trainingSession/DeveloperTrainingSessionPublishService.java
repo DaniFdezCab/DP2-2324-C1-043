@@ -32,7 +32,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 		module = this.repository.findOneTrainingModuleByTrainingSessionId(sessionId);
 		session = this.repository.findOneTrainingSessionById(sessionId);
 
-		status = session != null && session.getNotPublished() == true && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = session != null && session.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -52,7 +52,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
-		super.bind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
+		super.bind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
 	}
 
 	@Override
@@ -98,7 +98,6 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 
 		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-		//dataset.put("notPublishedModule", object.getTrainingModule().getNotPublished());
 
 		super.getResponse().addData(dataset);
 	}

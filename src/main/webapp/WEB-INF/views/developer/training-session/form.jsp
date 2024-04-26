@@ -23,6 +23,7 @@
 	<acme:input-moment code="developer.training-session.form.label.endMoment" path="endMoment"/>	
 	<acme:input-url code="developer.training-session.form.label.link" path="link"/>
 	<acme:input-email code="developer.training-session.form.label.email" path="email"/>
+	<acme:input-textbox code="developer.training-session.form.label.notPublished" path="notPublished" readonly="true"/>
 	
 	
 	<jstl:choose>
