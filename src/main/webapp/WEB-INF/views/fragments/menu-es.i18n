@@ -20,6 +20,7 @@ master.menu.any.claims = Lista de reclamaciones
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
+master.menu.anonymous.all-training-modules = Lista de módulos de entrenamiento
 master.menu.anonymous.favourite-link = 49192084Y: Fernández Caballero, Daniel
 master.menu.anonymous.favourite-link1 = 29543977V: Martín Muñoz, Álvaro
 master.menu.anonymous.favourite-link2 = 53930555V: Picón Garrote, Alexander
@@ -81,7 +82,12 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.favourite-link = Enlace favorito
 master.menu.sponsor.sponsorship.list-published-sponsorships = Mis patrocinios publicados
 master.menu.sponsor.sponsorship.show-published-sponsorships = Mostrar patrocinios publicados
->>>>>>> branch 'main' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
+
+# master.menu.developer ##########################################################
+
+master.menu.developer = Developer
+master.menu.developer.my-trainingModules = List my training modules
+master.menu.developer.dashboard = Dashboard
 
 # master.menu.user-account ####################################################
 
@@ -95,4 +101,11 @@ master.menu.user-account.auditor = Datos de auditor
 master.menu.user-account.become-auditor = Hazte auditor
 master.menu.user-account.manager = Datos de manager
 master.menu.user-account.become-manager = Hazte manager
+master.menu.user-account.developer = Datos de desarrollador
+master.menu.user-account.become-developer = Hazte desarrollador
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+
+master.menu.authenticated.risk.list = Lista de riesgos

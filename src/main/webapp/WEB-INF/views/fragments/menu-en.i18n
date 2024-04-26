@@ -20,6 +20,7 @@ master.menu.any.claims = Claim list
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
+master.menu.anonymous.all-training-modules = List Training Modules
 master.menu.anonymous.favourite-link = 49192084Y: Fernández Caballero, Daniel
 master.menu.anonymous.favourite-link1 = 29543977V: Martín Muñoz, Álvaro
 master.menu.anonymous.favourite-link2 = 53930555V: Picón Garrote, Alexander
@@ -86,6 +87,13 @@ master.menu.sponsor.dashboard = Sponsor Dashboard
 master.menu.user-account.become-sponsor = Become a sponsor
 master.menu.sponsor.sponsorship.list-sponsorships-published = Sponsorships published
 
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.my-trainingModules = Ver mis módulos de entrenamiento
+master.menu.developer.dashboard = Dashboard
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -99,4 +107,10 @@ master.menu.user-account.become-auditor = Become a auditor
 master.menu.user-account.manager = Manager data
 master.menu.user-account.become-manager = Become a manager
 
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.risk.list = List of risks
