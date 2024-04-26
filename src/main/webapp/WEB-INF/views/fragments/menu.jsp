@@ -29,6 +29,7 @@
 		
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 
+	        <acme:menu-suboption code="master.menu.anonymous.all-training-modules" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.callofduty.com/es"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link1" action="https://www.goldsgym.com/"/>
             <acme:menu-suboption code="master.menu.anonymous.favourite-link2" action="https://www.fortnite.com/?lang=es-ES"/>
@@ -38,6 +39,13 @@
 			
 
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.anonymous.all-training-modules" action="/any/training-module/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.risk.list" action="/authenticated/risk/list"/>
+		</acme:menu-option>
+		
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
@@ -83,8 +91,16 @@
 	
 			
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">			
+			<acme:menu-suboption code="master.menu.developer.my-trainingModules" action="/developer/training-module/list-mine"/>
+			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-dashboard/show"/>
+		</acme:menu-option>
+		
+		
 	</acme:menu-left>
 	
+
 	<acme:menu-right>
 		<acme:menu-option code="master.menu.sign-up" action="/anonymous/user-account/create" access="isAnonymous()"/>
 		<acme:menu-option code="master.menu.sign-in" action="/anonymous/system/sign-in" access="isAnonymous()"/>
@@ -104,6 +120,8 @@
 			<acme:menu-suboption code="master.menu.user-account.sponsor" action="/authenticated/sponsor/update" access="hasRole('Sponsor')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-developer" action="/authenticated/developer/create" access="!hasRole('Developer')"/>
+			<acme:menu-suboption code="master.menu.user-account.developer" action="/authenticated/developer/update" access="hasRole('Developer')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
