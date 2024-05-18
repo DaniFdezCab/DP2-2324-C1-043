@@ -36,7 +36,7 @@ sponsor.sponsorship.form.label.project = Proyecto
 
 sponsor.sponsorship.form.error.duplicated = Este código ya está en uso
 sponsor.sponsorship.form.error.negative-amount = El monto no puede ser negativo
-sponsor.sponsorship.form.error.invoice.error = El monto del patrocinio debe ser igual al de la factura
+sponsor.sponsorship.form.error.invoices = El monto del patrocinio debe ser igual al de la factura (incluyendo la tasa aplicada)
 sponsor.sponsorship.form.error.startDuration = La fecha de inicio debe ser posterior al momento
 sponsor.sponsorship.form.error.endDuration = La fecha de finalización debe ser posterior al momento y debe haber una diferencia de un mes entre ambas
 sponsor.sponsorship.form.error.acceptedCurrency = La moneda no está permitida
