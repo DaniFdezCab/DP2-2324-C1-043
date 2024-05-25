@@ -1,12 +1,12 @@
-  AAAAA    CCCCC    MM     MM  EEEEEE      OOO   N     N  EEEEEE  
- AA   AA  CC    CC  MMM   MMM  EE         O   O  NN    N  EE     
-AA     AA CC        MM M M MM  EEEEEE     O   O  N N   N  EEEEEE   
-AAAAAAAAA CC        MM  M  MM  EE         O   O  N  N  N  EE     
-AA     AA CC    CC  MM     MM  EE         O   O  N   N N  EE     
-AA     AA  CCCCC    MM     MM  EEEEEE      OOO   N    NN  EEEEEE  
+  AAAAA    CCCCC    MM     MM  EEEEEE      SSSSSS  FFFFFFFF  
+ AA   AA  CC    CC  MMM   MMM  EE         SS       FF     
+AA     AA CC        MM M M MM  EEEEEE       SSSS   FFFFFF 
+AAAAAAAAA CC        MM  M  MM  EE              SS  FF     
+AA     AA CC    CC  MM     MM  EE         SS   SS  FF     
+AA     AA  CCCCC    MM     MM  EEEEEE      SSSS    FF
 
 
 Application:          ${acme.application.versioned-name}
-Application endpoint: http://localhost:${server.port}${server.servlet.contextPath}
+Application endpoint: http://localhost:${server.port}${server.servlet.context-path}${server.servlet.initial-query}
 Database endpoint:    ${spring.datasource.url}
 Powered by:           Spring Boot ${spring-boot.version}, ${acme.framework.display-name} ${acme.framework.version}
