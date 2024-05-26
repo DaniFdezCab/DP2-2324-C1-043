@@ -73,10 +73,10 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0, "amount", "sponsor.invoice.form.error.negative-amount");
+			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.negative-amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "amount", "sponsor.invoice.form.error.acceptedCurrency");
+			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "quantity", "sponsor.invoice.form.error.acceptedCurrency");
 
 	}
 

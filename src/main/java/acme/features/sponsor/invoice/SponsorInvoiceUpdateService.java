@@ -29,8 +29,8 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 
 		id = super.getRequest().getData("id", int.class);
 		i = this.mur.findOneInvoiceById(id);
-		sponsor = i == null ? null : i.getSponsorship().getSponsor();
-		status = i != null && i.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		sponsor = i.getSponsorship().getSponsor();
+		status = i.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -78,10 +78,10 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0, "amount", "sponsor.invoice.form.error.negative-amount");
+			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.negative-amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "amount", "sponsor.invoice.form.error.acceptedCurrency");
+			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "quantity", "sponsor.invoice.form.error.acceptedCurrency");
 	}
 
 	@Override

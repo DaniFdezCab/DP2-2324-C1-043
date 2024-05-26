@@ -33,12 +33,11 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		boolean status;
 		int sponsorshipId;
 		Sponsorship sponsorship;
-		Sponsor sponsor;
 
 		sponsorshipId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
-		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+
+		status = sponsorship.isDraftMode() && sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor());
 
 		super.getResponse().setAuthorised(status);
 

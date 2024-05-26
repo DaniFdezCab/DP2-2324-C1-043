@@ -33,12 +33,13 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void authorise() {
 		boolean status;
-		int sponsorshipId;
-		Sponsorship sponsorship;
+		int id;
 		Sponsor sponsor;
+		Sponsorship sponsorship;
 
-		sponsorshipId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
+		id = super.getRequest().getData("id", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(id);
+
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
 		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
@@ -68,6 +69,15 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship sponsorshipSameCode;
+			sponsorshipSameCode = this.repo.findOneSponsorshipByCode(object.getCode());
+			if (sponsorshipSameCode != null) {
+				int id = sponsorshipSameCode.getId();
+				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicated");
+			}
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
 
