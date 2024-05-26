@@ -31,7 +31,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		Project project;
 		Manager manager;
 
-		projectId = super.getRequest().getData("id", int.class);
+		projectId = super.getRequest().getData("projectId", int.class);
 		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
 		status = project != null && !project.isPublished() && super.getRequest().getPrincipal().hasRole(manager);
