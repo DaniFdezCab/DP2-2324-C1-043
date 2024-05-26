@@ -80,7 +80,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "	acceptanceCriteria", "url");
 
 		super.getResponse().addData(dataset);
 	}
