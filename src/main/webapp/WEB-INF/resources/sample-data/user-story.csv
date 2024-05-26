@@ -5,8 +5,8 @@ user-story-03,user Storyuser Storyuser Storyuser Storyuser Storyuser Storyuser S
 user-story-04,"""$%&""""""""@ñ·#¿?""",This is an example,120,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-02,false
 user-story-05,這是一個項目,This is an example,120,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,true
 user-story-06,<h1>Trying to hack...</h1>,This is an example,120,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-02,false
-user-story-07,userStory1,This is an example,0,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
-user-story-08,userStory2,This is an example,1,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
+user-story-07,userStory1,This is an example,1,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
+user-story-08,userStory2,This is an example,66,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
 user-story-09,userStory3,This is an example,45000,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,true
 user-story-10,userStory4,This is an example,99999,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
 user-story-11,userStory5,This is an example,100000,"Critery1, Critery2",MUST,http://www.exampleUserStory.com,manager-01,false
