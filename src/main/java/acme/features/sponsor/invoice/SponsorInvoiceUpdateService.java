@@ -23,14 +23,12 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void authorise() {
 		boolean status;
-		int id;
-		Invoice i;
-		Sponsor sponsor;
+		int invoiceId;
+		Invoice invoice;
 
-		id = super.getRequest().getData("id", int.class);
-		i = this.mur.findOneInvoiceById(id);
-		sponsor = i.getSponsorship().getSponsor();
-		status = i.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
+		invoiceId = super.getRequest().getData("id", int.class);
+		invoice = this.mur.findOneInvoiceById(invoiceId);
+		status = invoice.isDraftMode() && invoice != null && super.getRequest().getPrincipal().hasRole(invoice.getSponsorship().getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -79,13 +79,14 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			}
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
+		if (!super.getBuffer().getErrors().hasErrors("totalAmount"))
+			if (object.getAmount() != null) {
+				Collection<Invoice> invoices = this.repo.findInvoicesBySponsorshipId(object.getId());
 
-			Collection<Invoice> invoices = this.repo.findInvoicesBySponsorshipId(object.getId());
-
-			double Iamount = invoices.stream().mapToDouble(i -> this.currencyTransformerUsd(i.getQuantity(), i.totalAmount().getAmount()).getAmount()).sum();
-			super.state(Iamount == this.currencyTransformerUsd(object.getAmount(), object.getAmount().getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invoices");
-		}
+				double Iamount = invoices.stream().mapToDouble(i -> this.currencyTransformerUsd(i.getQuantity(), i.totalAmount().getAmount()).getAmount()).sum();
+				super.state(Iamount == this.currencyTransformerUsd(object.getAmount(), object.getAmount().getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invoices");
+			} else
+				super.state(object.getAmount() == null || object.getAmount().getAmount() == null, "*", "sponsor.sponsorship.form.error.amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("startDuration")) {
 			Date startDuration;

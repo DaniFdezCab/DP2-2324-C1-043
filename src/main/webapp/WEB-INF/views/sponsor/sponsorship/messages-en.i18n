@@ -40,7 +40,7 @@ sponsor.sponsorship.form.error.invoices = The amount of sponsorship should be th
 sponsor.sponsorship.form.error.startDuration = The start date must be after the moment
 sponsor.sponsorship.form.error.endDuration = The end date must be after the moment and  one month difference between both of them
 sponsor.sponsorship.form.error.acceptedCurrency = The currency is not allowed
-
+sponsor.sponsorship.form.error.amount.null = The amount can not be null.
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete 
 sponsor.sponsorship.form.button.publish = Publish
