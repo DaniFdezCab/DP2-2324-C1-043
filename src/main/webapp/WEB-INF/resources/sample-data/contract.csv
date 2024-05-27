@@ -1,5 +1,5 @@
 key,code,instantiation-moment,provider-name,customer-name,goals,budget,draft-mode,key:project,key:client
-contract-01,ABC-123,2000/01/01 00:00,P,C,g,"USD 1,000.00",true,project-01,client-01
+contract-01,ABC-123,2000/01/01 00:00,P,C,g,"USD 1,000.00",false,project-01,client-01
 contract-02,XYZ-456,2022/07/08 19:25,ProviderNaProviderNaProviderNaProviderNaProviderNaProviderNaProviderNaProvi,CustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCustomerNaCusto,GoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExamplGoalExampl,"USD 1,000.00",true,project-01,client-01
 contract-03,A-789,2022/07/07 14:45,"""$%&""""""""@ñ·#¿?""","""$%&""""""""@ñ·#¿?""","""$%&""""""""@ñ·#¿?""","USD 1,000.00",true,project-02,client-01
 contract-04,BC-012,2022/07/06 23:10,這是一個項目,這是一個項目,這是一個項目,"USD 1,000.00",true,project-03,client-01
