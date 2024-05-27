@@ -11,13 +11,14 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.projects.Project;
 import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,7 +37,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	private Date				creationMoment;
 
 	@NotBlank
@@ -46,16 +47,18 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	private DifficultyLevel		difficultyLevel;
 
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	@Past
+	@PastOrPresent
 	private Date				updateMoment;
 
 	@URL
 	private String				link;
 
 	@NotNull
-	private Double				totalTime;
+	private Integer				totalTime;
+
+	@NotNull
+	private Boolean				notPublished;
 
 	// Relationships ----------------------------------------------------------
 
@@ -63,5 +66,10 @@ public class TrainingModule extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Developer			developer;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Project				project;
 
 }

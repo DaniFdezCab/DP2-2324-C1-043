@@ -1,0 +1,45 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.banner.list.title = Banner List
+administrator.banner.form.title = banner form
+
+
+# LIST
+
+administrator.banner.list.label.updateMoment = Instantiation/update moment
+administrator.banner.list.label.displayStart = Display start
+administrator.banner.list.label.displayEnd = Display end
+administrator.banner.list.label.slogan = Slogan
+administrator.banner.list.label.picture = Picture url
+administrator.banner.list.label.link = Web url
+
+# FORM
+
+administrator.banner.form.label.updateMoment =  Instantiation/update moment:
+administrator.banner.form.label.displayStart = Display start:
+administrator.banner.form.label.displayEnd = Display end:
+administrator.banner.form.label.slogan = Slogan:
+administrator.banner.form.label.picture = Picture url:
+administrator.banner.form.label.link = Web url:
+
+
+# BUTTON
+
+administrator.banner.list.button.create-form = Create banner
+administrator.banner.form.button.create = Create
+administrator.banner.list.button.update = Update
+administrator.banner.list.button.delete = Delete
+
+
+
+# ERROR
+manager.project.form.error.displayStart = The display Start date must start after the instantiation/update date
+manager.project.form.error.displayEnd = The display End date has to start after the start date and must last for at least one week

@@ -9,19 +9,26 @@ import lombok.Setter;
 @Setter
 public class ClientDashboard extends AbstractForm {
 
-	// Serialisation identifier 
+	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
-	// Attributes
+	// Attributes -------------------------------------------------------------
 
-	int							totalNumberOfProgressLogs;
-	int							completeness;
-	float						averageBudget;
-	float						deviationBudget;
-	float						minimumBudget;
-	float						maximumBudget;
+	double						totalNumProgressLogLessThan25;
 
-	// Las operaciones se realizan en el servicio.
+	double						totalNumProgressLogBetween25And50;
+
+	double						totalNumProgressLogBetween50And75;
+
+	double						totalNumProgressLogAbove75;
+
+	double						averageBudget;
+
+	double						deviationBudget;
+
+	double						minimumBudget;
+
+	double						maximumBudget;
 
 }

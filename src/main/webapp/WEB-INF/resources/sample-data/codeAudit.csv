@@ -1,11 +1,11 @@
-key,code,executionDate,type,proposedCorrectiveActions,mark,optionalLink
-codeAudit-01,AAA-001,2022/07/29 23:59,STATIC,"hola,ejemplo",A,https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-codeAudit-02,AAA-002,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
-codeAudit-03,ZZZ-999,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
-codeAudit-04,MMM-500,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",C,https://www.ejemplo.com
-codeAudit-05,BBB-222,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
-codeAudit-06,YYY-800,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",A_PLUS,https://www.ejemplo.com
-codeAudit-07,AAA-003,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw,hiwifhawifohaw,ifhiowhfiwifwfhi,fihwofhjia,woh",B,https://www.ejemplo.com
-codeAudit-08,AAA-004,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw",B,https://www.ejemplo.com
-codeAudit-09,AAA-005,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",F_MINOR,https://www.ejemplo.com
-codeAudit-10,AAA-006,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",B,https://www.ejemplo.com
+key,code,executionDate,type,proposedCorrectiveActions,optionalLink,key:auditor,published,key:project
+codeAudit-01,AAA-001,2022/07/29 23:59,STATIC,"hola,ejemplo",https://www.contadordecaracteres.com/11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111,auditor-01,true,project-01
+codeAudit-02,AAA-002,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-02,true,project-01
+codeAudit-03,ZZZ-999,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-03,true,project-02
+codeAudit-04,MMM-500,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-04,true,project-01
+codeAudit-05,BBB-222,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-05,true,project-02
+codeAudit-06,YYY-800,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-01,false,project-01
+codeAudit-07,AAA-003,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw,hiwifhawifohaw,ifhiowhfiwifwfhi,fihwofhjia,woh",https://www.ejemplo.com,auditor-01,true,project-01
+codeAudit-08,AAA-004,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,holaduwadh,awuhdiouawo,ijfiwajiofrjhifw",https://www.ejemplo.com,auditor-01,true,project-01
+codeAudit-09,AAA-005,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-01,false,project-01
+codeAudit-10,AAA-006,2022/07/29 23:59,DYNAMIC,"adsad,ejemplo,hola",https://www.ejemplo.com,auditor-02,true,project-22

@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class ProgressLogs extends AbstractEntity {
+public class ProgressLog extends AbstractEntity {
 
 	// Serialisation identifier
 
@@ -48,7 +48,7 @@ public class ProgressLogs extends AbstractEntity {
 
 	@Positive
 	@Max(value = 100)
-	private Integer				completeness;
+	private Double				completeness;
 
 	@NotBlank
 	@Length(max = 100)
@@ -61,5 +61,7 @@ public class ProgressLogs extends AbstractEntity {
 	@NotBlank
 	@Length(max = 75)
 	private String				responsiblePerson;
+
+	private boolean				draftMode;
 
 }

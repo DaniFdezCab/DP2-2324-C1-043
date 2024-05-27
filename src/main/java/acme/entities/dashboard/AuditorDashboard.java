@@ -20,30 +20,33 @@ public class AuditorDashboard extends AbstractEntity {
 	// Derived attributes -----------------------------------------------------
 
 	@PositiveOrZero
-	private int					totalCodeAudits;
+	private int					numAuditsStatic;
 
 	@PositiveOrZero
-	private double				averageAuditRecords;
+	private int					numAuditsDynamic;
 
 	@PositiveOrZero
-	private double				deviationAuditRecords;
+	private Double				averageAuditRecords;
 
 	@PositiveOrZero
-	private double				minimumAuditRecords;
+	private Double				deviationAuditRecords;
 
 	@PositiveOrZero
-	private double				maximumAuditRecords;
+	private int					minimumAuditRecords;
 
 	@PositiveOrZero
-	private double				averagePeriodAuditRecords;
+	private int					maximumAuditRecords;
 
 	@PositiveOrZero
-	private double				deviationPeriodAuditRecords;
+	private Double				averagePeriodAuditRecords;
 
 	@PositiveOrZero
-	private double				minimumPeriodAuditRecords;
+	private Double				deviationPeriodAuditRecords;
 
 	@PositiveOrZero
-	private double				maximumPeriodAuditRecords;
+	private Double				minimumPeriodAuditRecords;
+
+	@PositiveOrZero
+	private Double				maximumPeriodAuditRecords;
 
 }
