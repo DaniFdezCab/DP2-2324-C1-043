@@ -58,7 +58,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
-			super.state(!object.isFatalErrors(), "fatalErrors", "manager.project.form.error.fatalErrors");
+			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");

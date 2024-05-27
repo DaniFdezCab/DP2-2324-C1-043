@@ -83,7 +83,9 @@ public class CodeAudit extends AbstractEntity {
 	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj) || (this.getClass() != obj.getClass()))
+		if (!super.equals(obj))
+			return false;
+		if (this.getClass() != obj.getClass())
 			return false;
 		CodeAudit other = (CodeAudit) obj;
 		return Objects.equals(this.code, other.code) && Objects.equals(this.executionDate, other.executionDate) && Objects.equals(this.optionalLink, other.optionalLink) && Objects.equals(this.proposedCorrectiveActions, other.proposedCorrectiveActions)

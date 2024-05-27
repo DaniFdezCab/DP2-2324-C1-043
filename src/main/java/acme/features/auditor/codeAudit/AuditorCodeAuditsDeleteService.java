@@ -49,7 +49,7 @@ public class AuditorCodeAuditsDeleteService extends AbstractService<Auditor, Cod
 		codeAuditId = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
 		auditor = super.getRequest().getPrincipal().getActiveRoleId();
-		status = auditor == codeAudit.getAuditor().getId() && !codeAudit.isPublished();
+		status = auditor == codeAudit.getAuditor().getId() && codeAudit.isPublished() == false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -76,7 +76,7 @@ public class AuditorCodeAuditsDeleteService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(!object.isPublished(), "published", "auditor.codeaudit.form.error.published");
+			super.state(object.isPublished() == false, "published", "auditor.codeaudit.form.error.published");
 	}
 
 	@Override

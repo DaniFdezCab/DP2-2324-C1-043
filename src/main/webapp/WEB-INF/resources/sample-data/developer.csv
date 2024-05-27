@@ -1,4 +1,3 @@
 key,key:userAccount,degree,specialisation,skills,email,link
 developer-01,user-account-developer-01,"Degree in the Univertsity of Seville","Software Engineering","intelligence,memory, leadership...",pabberima@acme.com,https://pelisgratishd.io/capitulo/better-call-saul-6x3/
-developer-02,user-account-developer-02,"Degree in the Univertsity of Madrid",n,"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, t",ester@acme.com,null
-developer-03,user-account-developer-03,D,"Computer Science",n,ester@acme.com,null
+developer-02,user-account-developer-02,"Degree in the Univertsity of Madrid","Computer Science",n,ester@acme.com,null

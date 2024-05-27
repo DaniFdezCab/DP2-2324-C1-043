@@ -38,9 +38,9 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 
 		Collection<ProgressLog> progressLogsPublished = this.repository.findAllProgressLogs().stream().filter(x -> !x.isDraftMode()).toList();
 		Collection<Contract> myPublishedContracts = this.repository.findManyContractsByClientId(clientId).stream().filter(x -> !x.isDraftMode()).toList();
-		Collection<Integer> myContractsIds = myPublishedContracts.stream().map(Contract::getId).toList();
+		Collection<Integer> myContractsIds = myPublishedContracts.stream().map(x -> x.getId()).toList();
 		Collection<Money> myBudgets = this.repository.findManyBudgetsByClientId(clientId); //this only considers published contracts.
-		Collection<Double> myBudgetsAmount = myBudgets.stream().map(Money::getAmount).toList();
+		Collection<Double> myBudgetsAmount = myBudgets.stream().map(x -> x.getAmount()).toList();
 
 		//my progress logs less than 25
 		double totalNumProgressLogLessThan25 = progressLogsPublished.stream().filter(x -> myContractsIds.contains(x.getContract().getId())).filter(x -> x.getCompleteness() < 25.0).count();
@@ -87,7 +87,7 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	private Money calcularMedia(final Collection<Money> budgets) {
 		Money moneyFinal = new Money();
 		moneyFinal.setCurrency("USD");
-		moneyFinal.setAmount(budgets.stream().map(Money::getAmount).mapToDouble(Double::doubleValue).average().orElse(Double.NaN));
+		moneyFinal.setAmount(budgets.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).average().orElse(Double.NaN));
 
 		return moneyFinal;
 	}
@@ -95,14 +95,14 @@ public class ClientDashboardShowService extends AbstractService<Client, ClientDa
 	private Money calcularMaximo(final Collection<Money> budgets) {
 		Money moneyFinal = new Money();
 		moneyFinal.setCurrency("USD");
-		moneyFinal.setAmount(budgets.stream().map(Money::getAmount).mapToDouble(Double::doubleValue).max().orElse(Double.NaN));
+		moneyFinal.setAmount(budgets.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).max().orElse(Double.NaN));
 		return moneyFinal;
 	}
 
 	private Money calcularMinimo(final Collection<Money> budgets) {
 		Money moneyFinal = new Money();
 		moneyFinal.setCurrency("USD");
-		moneyFinal.setAmount(budgets.stream().map(Money::getAmount).mapToDouble(Double::doubleValue).min().orElse(Double.NaN));
+		moneyFinal.setAmount(budgets.stream().map(x -> x.getAmount()).mapToDouble(Double::doubleValue).min().orElse(Double.NaN));
 		return moneyFinal;
 
 	}

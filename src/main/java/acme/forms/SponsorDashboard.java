@@ -11,7 +11,7 @@ import lombok.Setter;
 public class SponsorDashboard extends AbstractForm {
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
 

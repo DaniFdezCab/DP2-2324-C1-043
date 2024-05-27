@@ -97,7 +97,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
-		dataset.put("masterId", object.getTrainingModule().getId());
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 	}
