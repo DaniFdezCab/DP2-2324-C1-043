@@ -28,7 +28,6 @@
 
 	<artifactId>Acme-SF-D04</artifactId>
 
-	
 	<packaging>war</packaging>
 	
 	<parent>

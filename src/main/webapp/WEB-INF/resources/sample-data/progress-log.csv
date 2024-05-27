@@ -18,4 +18,4 @@ progress-log-16,PG-VW-2345,37.00,Riesgos actualizados.,2022/07/14 20:00,Responsi
 progress-log-17,PG-X-6789,19.00,Cambio en equipo.,2022/07/13 04:30,ResponsiblePerson1,true,contract-17
 progress-log-18,PG-YY-0123,72.00,Mantenimiento fin de semana.,2022/07/12 15:45,ResponsiblePerson1,true,contract-18
 progress-log-19,PG-ZZ-4567,95.00,Evaluación de proveedores.,2022/07/11 09:20,ResponsiblePerson1,true,contract-19
-progress-log-20,PG-AZ-8901,10.00,Progreso reportado.,2022/07/10 17:55,ResponsiblePerson1,true,contract-20
+progress-log-20,PG-AZ-8901,10.00,Progreso reportado.,2022/07/10 17:55,ResponsiblePerson1,false,contract-01
