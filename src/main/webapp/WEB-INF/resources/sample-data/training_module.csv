@@ -1,4 +1,7 @@
 key,code,creationMoment,details,difficultyLevel,updateMoment,link,totalTime,notPublished,key:developer,key:project
 training_module-01,AAB000,2011/01/29 21:39,This is an example Training Module,BASIC,2012/01/29 21:39,http://www.unit-conversion.info/texttools/random-string-generator/,5000,True,developer-01,project-01
-training_module-02,Z999,2021/06/19 21:39,T,ADVANCED,2022/01/03 21:39,,10000,True,developer-01,project-01
-training_module-03,IX647,2001/06/19 21:39,this is a sample text of 100 characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ±lkjÃ±lkjfsdfsjÃ±lkjfÃ±lkjdfÃ±,INTERMEDIATE,2012/01/03 21:39,null,10000,False,developer-01,project-02
+training_module-02,Z999,2021/06/19 08:30,T,ADVANCED,2022/01/03 21:39,,10000,True,developer-01,project-02
+training_module-03,IL647,2001/12/01 21:58,this is a sample text of 100 characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ±lkjÃ±lkjfsdfsjÃ±lkjfÃ±lkjdfÃ±,INTERMEDIATE,2012/01/03 21:39,null,0,False,developer-02,project-02
+training_module-04,ZZX905,2015/06/30 00:00,th,BASIC,null,"https://oq&u4B2e*qh*MQ!""XBN4py0P0(9№ck4U2j@3cD}PJv=H9;xSzx}R@#№r~7y@XqD+oN@F:puA<BSAp;xbr``KuRi7MV(aTA(CVr#j`hvk+-TY%R`GWWcSV""b=g4dMaC№mjL2!<'`f:hK{vCJ7)(v5*uPlDaFMga38SZO`x}gP.E+P`q9gY0vr>iAU9(UJx5hf`2tP№LWHOMkff+t1AXgiPY{@uzS""i2h.9L№mdECN)fE1KYlyu7{9ox;",9999,True,developer-02,project-03
+training_module-05,A441,2022/03/31 23:59,this is a sample text of 99 characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ±lkjÃ±lkjfsdfsjÃ±lkjfÃ±lkjdfÃ±,INTERMEDIATE,,http://0vf62UzfWgrvINqhZrejQxaLcBetui8fT03wiL7uNH35nBXE2W99smfgUUw6fpcCSci0Ig097byqF2d2NZipjQINVP7S3TAnjMfqx6VH2FnGoBrcY5tKrgJv,1,True,developer-03,project-02
+training_module-06,EO283,2022/03/31 00:01,this is a sample text of xx characters sdfaÃ±lkjfsdÃ±fkjsdfsdfÃ±alkjfÃ,ADVANCED,2022/06/30 12:00,http://,385,False,developer-03,project-04

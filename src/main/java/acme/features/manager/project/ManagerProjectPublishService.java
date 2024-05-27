@@ -71,7 +71,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
-			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
+			super.state(!object.isFatalErrors(), "fatalErrors", "manager.project.form.error.fatalErrors");
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
 			super.state(!projectUS.isEmpty() && projectUS.size() == publishedUS.size(), "published", "manager.project.form.error.publish");
