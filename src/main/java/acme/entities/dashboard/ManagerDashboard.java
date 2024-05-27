@@ -1,17 +1,16 @@
 
 package acme.entities.dashboard;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.PositiveOrZero;
 
-import acme.client.data.AbstractEntity;
+import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class ManagerDashboard extends AbstractEntity {
+public class ManagerDashboard extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -19,9 +18,20 @@ public class ManagerDashboard extends AbstractEntity {
 
 	// Derived attributes -----------------------------------------------------
 
-	// TODO: Implementar estos atributos de forma compleja a través de los servicios.
 	@PositiveOrZero
 	private int					totalUserStories;
+
+	@PositiveOrZero
+	private int					totalUserStoriesMUST;
+
+	@PositiveOrZero
+	private int					totalUserStoriesSHOULD;
+
+	@PositiveOrZero
+	private int					totalUserStoriesCOULD;
+
+	@PositiveOrZero
+	private int					totalUserStoriesWONT;
 
 	@PositiveOrZero
 	private double				averageCostUserStories;
@@ -30,21 +40,17 @@ public class ManagerDashboard extends AbstractEntity {
 	private double				deviationCostUserStories;
 
 	@PositiveOrZero
-	private double				minimumCostUserStories;
+	private int					minimumCostUserStories;
 
 	@PositiveOrZero
-	private double				maximumCostUserStories;
+	private int					maximumCostUserStories;
 
-	@PositiveOrZero
-	private double				averageCostProjects;
+	private Money				averageCostProjects;
 
-	@PositiveOrZero
-	private double				deviationCostProjects;
+	private Money				deviationCostProjects;
 
-	@PositiveOrZero
-	private double				minimumCostProjects;
+	private Money				minimumCostProjects;
 
-	@PositiveOrZero
-	private double				maximumCostProjects;
+	private Money				maximumCostProjects;
 
 }
