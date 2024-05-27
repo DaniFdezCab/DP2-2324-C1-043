@@ -27,3 +27,4 @@ auditor.auditrecord.form.button.publish = Publicar
 #ERROR
 validation.auditrecord.error.duplicate = El codigo esta en uso
 validation.auditrecord.error.oneHour = El tiempo desde que empezo hasta que termino debe de ser de almenos 1 hora
+validation.auditrecord.error.startAfterEnd = Debe de empezar antes de acabar
