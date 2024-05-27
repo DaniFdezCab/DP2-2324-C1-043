@@ -13,6 +13,9 @@ who have enrolled the Design and Testing subject of the Software Engineering cur
 University of Seville.  This project helps them start working on their new information system 
 projects.
 
+En la rama de main se han implementado los cambios de pabberima y dejaron de funcionar algunos tests,
+por lo que se hizo un backup hacia la rama grupal-dani-alvaro-capote
+
 To get this project up and running, please follow the guideline in the theory/lab materials,
 taking into account that you must link the appropriate version of the Acme-Framework excluding 
 the following resources:
