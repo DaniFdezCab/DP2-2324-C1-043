@@ -17,5 +17,10 @@ To get this project up and running, please follow the guideline in the theory/la
 taking into account that you must link the appropriate version of the Acme-Framework excluding 
 the following resources:
 
+
+En la rama de main se han implementado los cambios de pabberima y dejaron de funcionar algunos tests,
+por lo que se hizo un backup hacia la rama grupal-dani-alvaro-capote
+
+
 - **/fragments/**
  
