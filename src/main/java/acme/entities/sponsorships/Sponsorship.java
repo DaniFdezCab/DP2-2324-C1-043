@@ -31,7 +31,7 @@ import lombok.Setter;
 public class Sponsorship extends AbstractEntity {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long	serialVersionUID	= 1L;
 

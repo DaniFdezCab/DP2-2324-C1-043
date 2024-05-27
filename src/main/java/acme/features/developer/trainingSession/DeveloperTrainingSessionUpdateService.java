@@ -53,6 +53,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		assert object != null;
 
 		super.bind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
+
 	}
 
 	@Override
@@ -95,9 +96,10 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
+		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-		//dataset.put("notPublishedModule", object.getTrainingModule().getNotPublished());
+		dataset.put("trainingModule", object.getTrainingModule());
+		dataset.put("notPublished", object.getNotPublished());
 
 		super.getResponse().addData(dataset);
 	}

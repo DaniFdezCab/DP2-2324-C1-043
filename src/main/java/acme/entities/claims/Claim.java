@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Claim extends AbstractEntity {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long	serialVersionUID	= 1L;
 
