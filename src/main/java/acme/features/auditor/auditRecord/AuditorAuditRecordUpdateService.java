@@ -78,6 +78,9 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 				super.state(auditRecordSameCode.getId() == object.getId(), "code", "validation.auditrecord.error.duplicate");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("auditPeriodStart"))
+			super.state(MomentHelper.isAfter(object.getAuditPeriodEnd(), object.getAuditPeriodStart()), "auditPeriodStart", "validation.auditrecord.error.startAfterEnd");
+
 		if (!super.getBuffer().getErrors().hasErrors("auditPeriodEnd")) {
 			Date auditPeriodStart;
 			Date auditPeriodEnd;
@@ -85,7 +88,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			auditPeriodStart = object.getAuditPeriodStart();
 			auditPeriodEnd = object.getAuditPeriodEnd();
 
-			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS) && auditPeriodEnd.after(auditPeriodStart), "auditEndTime", "validation.auditrecord.error.oneHour");
+			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS), "auditEndTime", "validation.auditrecord.error.oneHour");
 		}
 	}
 
