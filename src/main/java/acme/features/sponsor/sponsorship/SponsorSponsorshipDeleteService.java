@@ -24,17 +24,14 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int sponsorshipId;
+		Boolean status;
+		int masterId;
 		Sponsorship sponsorship;
 		Sponsor sponsor;
 
-		sponsorshipId = super.getRequest().getData("id", int.class);
-
-		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
-
+		masterId = super.getRequest().getData("id", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(masterId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-
 		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);

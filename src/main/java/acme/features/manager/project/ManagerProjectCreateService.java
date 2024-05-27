@@ -60,9 +60,10 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
 			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
 
-		if (!super.getBuffer().getErrors().hasErrors("cost"))
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
-		super.state(object.getCost().getCurrency().equals("USD"), "cost", "manager.project.form.error.invalid-currency");
+			super.state(object.getCost().getCurrency().equals("USD"), "cost", "manager.project.form.error.invalid-currency");
+		}
 	}
 
 	@Override

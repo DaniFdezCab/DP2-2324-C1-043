@@ -64,15 +64,10 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		assert objects != null;
 
 		int projectId;
-		Project project;
-		final boolean showCreate;
 
 		projectId = super.getRequest().getData("projectId", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		showCreate = !project.isPublished() && super.getRequest().getPrincipal().hasRole(project.getManager());
 
 		super.getResponse().addGlobal("projectId", projectId);
-		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
 }
