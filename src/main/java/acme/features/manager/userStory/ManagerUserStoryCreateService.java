@@ -31,7 +31,11 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		Project project;
 		Manager manager;
 
+<<<<<<< HEAD
 		projectId = super.getRequest().getData("id", int.class);
+=======
+		projectId = super.getRequest().getData("projectId", int.class);
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
 		project = this.repository.findOneProjectById(projectId);
 		manager = project == null ? null : project.getManager();
 		status = project != null && !project.isPublished() && super.getRequest().getPrincipal().hasRole(manager);

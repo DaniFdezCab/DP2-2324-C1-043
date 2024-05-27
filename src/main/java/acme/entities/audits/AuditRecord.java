@@ -6,9 +6,12 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -24,6 +27,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "code_audit_id")
+})
 public class AuditRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -44,29 +50,19 @@ public class AuditRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				auditPeriodEnd;
 
-
-	public boolean haPasadoAlMenosUnaHora() {
-
-		// Calcular la diferencia en milisegundos
-		long diferencia = this.auditPeriodEnd.getTime() - this.auditPeriodStart.getTime();
-
-		// Convertir la diferencia a horas
-		long horas = diferencia / (1000 * 60 * 60);
-
-		// Devolver true si han pasado al menos una hora
-		return horas >= 1;
-	}
-
-
 	@NotNull
-	private Mark		mark;
+	private Mark				mark;
 
-	@ManyToOne
-	private CodeAudit	codeAudit;
+	private boolean				published;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private CodeAudit			codeAudit;
 
 	@URL
 	@Length(max = 255)
-	private String		furtherInformation;
+	private String				furtherInformation;
 
 
 	// Constructors, getters, setters, hashCode, equals, etc.

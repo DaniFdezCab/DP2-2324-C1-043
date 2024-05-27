@@ -78,6 +78,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 				super.state(auditRecordSameCode.getId() == object.getId(), "code", "validation.auditrecord.error.duplicate");
 		}
 
+<<<<<<< HEAD
 		if (!super.getBuffer().getErrors().hasErrors("auditPeriodEnd")) {
 			Date auditPeriodStart;
 			Date auditPeriodEnd;
@@ -86,6 +87,19 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			auditPeriodEnd = object.getAuditPeriodEnd();
 
 			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS) && auditPeriodEnd.after(auditPeriodStart), "auditEndTime", "validation.auditrecord.error.oneHour");
+=======
+		if (!super.getBuffer().getErrors().hasErrors("auditPeriodStart"))
+			super.state(MomentHelper.isAfter(object.getAuditPeriodEnd(), object.getAuditPeriodStart()), "auditPeriodStart", "validation.auditrecord.error.startAfterEnd");
+
+		if (!super.getBuffer().getErrors().hasErrors("auditPeriodEnd")) {
+			Date auditPeriodStart;
+			Date auditPeriodEnd;
+
+			auditPeriodStart = object.getAuditPeriodStart();
+			auditPeriodEnd = object.getAuditPeriodEnd();
+
+			super.state(MomentHelper.isLongEnough(auditPeriodStart, auditPeriodEnd, 1, ChronoUnit.HOURS), "auditEndTime", "validation.auditrecord.error.oneHour");
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
 		}
 	}
 

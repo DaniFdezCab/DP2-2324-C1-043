@@ -64,6 +64,7 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		assert objects != null;
 
 		int projectId;
+<<<<<<< HEAD
 		Project project;
 		final boolean showCreate;
 
@@ -73,6 +74,12 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 
 		super.getResponse().addGlobal("projectId", projectId);
 		super.getResponse().addGlobal("showCreate", showCreate);
+=======
+
+		projectId = super.getRequest().getData("projectId", int.class);
+
+		super.getResponse().addGlobal("projectId", projectId);
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
 	}
 
 }

@@ -67,9 +67,16 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		if (!super.getBuffer().getErrors().hasErrors("fatalErrors"))
 			super.state(object.isFatalErrors() == false, "fatalErrors", "manager.project.form.error.fatalErrors");
 
+<<<<<<< HEAD
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 		super.state(object.getCost().getCurrency().equals("USD"), "cost", "manager.project.form.error.invalid-currency");
+=======
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
+			super.state(object.getCost().getCurrency().equals("USD"), "cost", "manager.project.form.error.invalid-currency");
+		}
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
 	}
 
 	@Override

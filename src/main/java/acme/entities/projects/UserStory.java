@@ -2,11 +2,13 @@
 package acme.entities.projects;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -19,6 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = @Index(columnList = "id"))
 public class UserStory extends AbstractEntity {
 
 	// Serialisation identifier ---------------------------------------------
@@ -35,7 +38,7 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 100)
 	private String				description;
 
-	@PositiveOrZero
+	@Positive
 	private int					estimatedCost;
 
 	@NotBlank
@@ -45,13 +48,13 @@ public class UserStory extends AbstractEntity {
 	@NotNull
 	private Priority			priority;
 
+	private boolean				published			= false;
+
 	@URL
 	@Length(max = 255)
 	private String				url;
 
-	@ManyToOne(optional = false)
-	@Valid
-	private Project				project;
+	// Relationships ----------------------------------------------------------
 
 	@ManyToOne(optional = false)
 	@Valid

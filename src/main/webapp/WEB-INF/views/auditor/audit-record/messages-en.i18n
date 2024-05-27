@@ -26,4 +26,9 @@ auditor.auditrecord.form.button.publish = Publish
 
 #ERROR
 validation.auditrecord.error.duplicate = This code is taken.
+<<<<<<< HEAD
 validation.auditrecord.error.oneHour = The time between the start and the end date must be of at least an hour long
+=======
+validation.auditrecord.error.oneHour = The time between the start and the end date must be of at least an hour long
+validation.auditrecord.error.startAfterEnd = The start need to be before the end
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git

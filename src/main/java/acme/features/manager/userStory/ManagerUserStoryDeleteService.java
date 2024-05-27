@@ -80,7 +80,11 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 		Dataset dataset;
 
+<<<<<<< HEAD
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "acceptanceCriteria", "url");
+=======
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "priority", "	acceptanceCriteria", "url");
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git
 
 		super.getResponse().addData(dataset);
 	}

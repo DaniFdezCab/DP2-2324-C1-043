@@ -26,4 +26,9 @@ auditor.auditrecord.form.button.publish = Publicar
 
 #ERROR
 validation.auditrecord.error.duplicate = El codigo esta en uso
+<<<<<<< HEAD
 validation.auditrecord.error.oneHour = El tiempo desde que empezo hasta que termino debe de ser de almenos 1 hora
+=======
+validation.auditrecord.error.oneHour = El tiempo desde que empezo hasta que termino debe de ser de almenos 1 hora
+validation.auditrecord.error.startAfterEnd = Debe de empezar antes de acabar
+>>>>>>> branch 'D04-alepingar' of https://github.com/DaniFdezCab/DP2-2324-C1-043.git

@@ -21,11 +21,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>Acme-SF</name>
+
+	<name>Acme-SF-D04</name>
 
 	<description>This is the first deliverable</description>
 
-	<artifactId>Acme-SF</artifactId>
+	<artifactId>Acme-SF-D04</artifactId>
+
 	
 	<packaging>war</packaging>
 	
@@ -36,5 +38,12 @@
 		<relativePath>../../pom-24.4.0.xml</relativePath>
 	</parent>
 
-	
+
+	<dependencies>
+		<dependency>
+			<groupId>Acme</groupId>
+			<artifactId>Acme-Framework</artifactId>
+			<version>24.4.0</version>
+		</dependency>
+	</dependencies>
 </project>
