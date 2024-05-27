@@ -11,7 +11,6 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorships.Invoice;
-import acme.entities.sponsorships.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -25,11 +24,11 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void authorise() {
 		boolean status;
 		int invoiceId;
-		Sponsorship sponsorship;
+		Invoice invoice;
 
 		invoiceId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repo.findOneSponsorshipByInvoiceId(invoiceId);
-		status = sponsorship != null && (!sponsorship.isDraftMode() || super.getRequest().getPrincipal().hasRole(sponsorship.getSponsor()));
+		invoice = this.repo.findOneInvoiceById(invoiceId);
+		status = invoice.isDraftMode() && invoice != null && super.getRequest().getPrincipal().hasRole(invoice.getSponsorship().getSponsor());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -73,10 +72,10 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getAmount() >= 0, "amount", "sponsor.invoice.form.error.negative-amount");
+			super.state(object.getQuantity().getAmount() >= 0, "quantity", "sponsor.invoice.form.error.negative-amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity"))
-			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "amount", "sponsor.invoice.form.error.acceptedCurrency");
+			super.state(object.getQuantity().getCurrency().equals("GBP") || object.getQuantity().getCurrency().equals("EUR") || object.getQuantity().getCurrency().equals("USD"), "quantity", "sponsor.invoice.form.error.acceptedCurrency");
 
 	}
 

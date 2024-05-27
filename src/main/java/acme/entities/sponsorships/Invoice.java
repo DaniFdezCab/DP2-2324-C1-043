@@ -6,7 +6,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -28,6 +30,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id"), @Index(columnList = "sponsorship_id"), @Index(columnList = "code")
+})
 public class Invoice extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -58,6 +63,7 @@ public class Invoice extends AbstractEntity {
 	@NotNull
 	private Money				quantity;
 
+	@NotNull
 	@DecimalMin(value = "0.00")
 	@DecimalMax(value = "1.00")
 	private Double				tax;
@@ -73,11 +79,25 @@ public class Invoice extends AbstractEntity {
 
 	@Transient
 	public Money totalAmount() {
-		Money money = new Money();
-		Double res = this.getQuantity().getAmount() * (1. + this.tax);
-		money.setAmount(res);
-		money.setCurrency(this.quantity.getCurrency());
-		return money;
+
+		Double amount;
+
+		String currency;
+
+		if (this.quantity == null) {
+			amount = 0.0;
+			currency = "";
+		} else if (this.tax == null) {
+			amount = this.quantity.getAmount();
+			currency = this.quantity.getCurrency();
+		} else {
+			amount = this.quantity.getAmount() + this.tax * this.quantity.getAmount();
+			currency = this.quantity.getCurrency();
+		}
+		Money value = new Money();
+		value.setAmount(amount);
+		value.setCurrency(currency);
+		return value;
 	}
 
 }
