@@ -40,6 +40,7 @@ sponsor.sponsorship.form.error.invoices = El monto del patrocinio debe ser igual
 sponsor.sponsorship.form.error.startDuration = La fecha de inicio debe ser posterior al momento
 sponsor.sponsorship.form.error.endDuration = La fecha de finalización debe ser posterior al momento y debe haber una diferencia de un mes entre ambas
 sponsor.sponsorship.form.error.acceptedCurrency = La moneda no está permitida
+sponsor.sponsorship.form.error.amount.null = La cantidad no puede ser nula.
 
 sponsor.sponsorship.form.button.update = Actualizar
 sponsor.sponsorship.form.button.delete = Borrar

@@ -33,12 +33,13 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	@Override
 	public void authorise() {
 		boolean status;
-		int sponsorshipId;
-		Sponsorship sponsorship;
+		int id;
 		Sponsor sponsor;
+		Sponsorship sponsorship;
 
-		sponsorshipId = super.getRequest().getData("id", int.class);
-		sponsorship = this.repo.findOneSponsorshipById(sponsorshipId);
+		id = super.getRequest().getData("id", int.class);
+		sponsorship = this.repo.findOneSponsorshipById(id);
+
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
 		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
@@ -69,13 +70,23 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("totalAmount")) {
-
-			Collection<Invoice> invoices = this.repo.findInvoicesBySponsorshipId(object.getId());
-
-			double Iamount = invoices.stream().mapToDouble(i -> this.currencyTransformerUsd(i.getQuantity(), i.totalAmount().getAmount()).getAmount()).sum();
-			super.state(Iamount == this.currencyTransformerUsd(object.getAmount(), object.getAmount().getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invoices");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship sponsorshipSameCode;
+			sponsorshipSameCode = this.repo.findOneSponsorshipByCode(object.getCode());
+			if (sponsorshipSameCode != null) {
+				int id = sponsorshipSameCode.getId();
+				super.state(id == object.getId(), "code", "sponsor.sponsorship.form.error.duplicated");
+			}
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("totalAmount"))
+			if (object.getAmount() != null) {
+				Collection<Invoice> invoices = this.repo.findInvoicesBySponsorshipId(object.getId());
+
+				double Iamount = invoices.stream().mapToDouble(i -> this.currencyTransformerUsd(i.getQuantity(), i.totalAmount().getAmount()).getAmount()).sum();
+				super.state(Iamount == this.currencyTransformerUsd(object.getAmount(), object.getAmount().getAmount()).getAmount(), "*", "sponsor.sponsorship.form.error.invoices");
+			} else
+				super.state(object.getAmount() == null || object.getAmount().getAmount() == null, "*", "sponsor.sponsorship.form.error.amount");
 
 		if (!super.getBuffer().getErrors().hasErrors("startDuration")) {
 			Date startDuration;
