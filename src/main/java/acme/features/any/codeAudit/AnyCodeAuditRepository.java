@@ -65,7 +65,7 @@ public interface AnyCodeAuditRepository extends AbstractRepository {
 	}
 
 	default Mark averageMark(final List<Mark> ls) {
-		double average = ls.stream().mapToDouble(m -> this.changeMarkToNumber(m)).average().orElse(0);
+		double average = ls.stream().mapToDouble(this::changeMarkToNumber).average().orElse(0);
 		Mark res = this.changeNumberToMark(average);
 		return res;
 	}

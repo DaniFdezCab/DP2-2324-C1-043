@@ -78,9 +78,7 @@ public class AuditRecord extends AbstractEntity {
 	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
-			return false;
-		if (this.getClass() != obj.getClass())
+		if (!super.equals(obj) || (this.getClass() != obj.getClass()))
 			return false;
 		AuditRecord other = (AuditRecord) obj;
 		return Objects.equals(this.auditPeriodEnd, other.auditPeriodEnd) && Objects.equals(this.auditPeriodStart, other.auditPeriodStart) && Objects.equals(this.code, other.code) && Objects.equals(this.codeAudit, other.codeAudit)

@@ -5,7 +5,6 @@ AAAAAAAAA CC        MM  M  MM  EE              SS  FF
 AA     AA CC    CC  MM     MM  EE         SS   SS  FF     
 AA     AA  CCCCC    MM     MM  EEEEEE      SSSS    FF
 
-
 Application:          ${acme.application.versioned-name}
 Application endpoint: http://localhost:${server.port}${server.servlet.context-path}${server.servlet.initial-query}
 Database endpoint:    ${spring.datasource.url}

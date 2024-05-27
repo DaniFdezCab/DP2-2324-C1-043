@@ -15,3 +15,4 @@ user-account-client-01,true,"UserIdentity{name: 'Alvaro', surname: 'Client', ema
 user-account-client-02,true,"UserIdentity{name: 'Alvaro', surname: 'Client', email: 'alvaro@acme.com'}",client2,client2
 user-account-developer-01,true,"UserIdentity{name: 'Pablo', surname: 'Bermudez', email: 'pabberima@acme.com'}",developer1,developer1
 user-account-developer-02,true,"UserIdentity{name: 'Ester', surname: 'Exposito', email: 'ester@acme.com'}",developer2,developer2
+user-account-developer-03,true,"UserIdentity{name: 'Luis', surname: 'Enrique', email: 'luisEnrique@acme.com'}",developer3,developer3

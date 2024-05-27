@@ -48,7 +48,7 @@ public class AuditorCodeAuditsUpdateService extends AbstractService<Auditor, Cod
 		codeAuditId = super.getRequest().getData("id", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
 		auditor = super.getRequest().getPrincipal().getActiveRoleId();
-		status = auditor == codeAudit.getAuditor().getId() && codeAudit.isPublished() == false;
+		status = auditor == codeAudit.getAuditor().getId() && !codeAudit.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -81,7 +81,7 @@ public class AuditorCodeAuditsUpdateService extends AbstractService<Auditor, Cod
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("published"))
-			super.state(object.isPublished() == false, "published", "validation.codeaudit.published");
+			super.state(!object.isPublished(), "published", "validation.codeaudit.published");
 	}
 
 	@Override
