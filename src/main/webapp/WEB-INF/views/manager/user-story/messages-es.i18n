@@ -1,0 +1,41 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+manager.user-story.form.title = Formulario de Historia de Usuario
+manager.user-story.list.title = Historias de Usuario del proyecto
+
+manager.userStory.list.label.title = Título
+manager.userStory.list.label.description = Descripción
+manager.userStory.list.label.estimatedCost = Coste estimado
+manager.userStory.list.label.priority = Prioridad
+
+manager.userStory.list.button.create-form = Crear Historia de Usuario
+manager.userStory.list.button.add-form = Añadir Historia de usuario
+
+# FORM 
+
+manager.userStory.form.label.title = Título:
+manager.userStory.form.label.description = Descripción:
+manager.userStory.form.label.estimatedCost = Coste estimado:
+manager.userStory.form.label.priority = Prioridad: 
+manager.userStory.form.label.acceptanceCriteria = Criterios de aceptación:
+manager.userStory.form.label.url = Enlace:
+
+manager.userStory.form.button.update = Actualizar
+manager.userStory.form.button.delete = Borrar
+manager.userStory.form.button.publish.true = Despublicar
+manager.userStory.form.button.publish.false = Publicar
+manager.userStory.form.button.create = Crear
+
+# Errors
+
+manager.userStory.form.error.duplicated = Este código ya está en uso
+manager.userStory.form.error.fatalErrors = El proyecto no debe contener errores fatales
+manager.userStory.form.error.negative-cost = El coste no debe ser negativo

@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-module.list.title = Listing of my training modules:
+
+developer.training-module.form.title = Details of the training module:
+
+developer.training-module.list.label.code = Code
+developer.training-module.list.label.details = Details
+
+developer.training-module.form.label.code = Code
+developer.training-module.form.label.details = Details
+developer.training-module.form.label.creationMoment = Creation moment
+developer.training-module.form.label.link = URL
+developer.training-module.form.label.totalTime = Total time
+developer.training-module.form.label.difficultyLevel = Difficulty Level
+developer.training-module.form.label.project = Project
+developer.training-module.label.projectId = Project
+
+developer.training-module.form.button.training-sessions = Sessions
+
+developer.training-module.list.button.create = Create
+developer.training-module.form.button.create = Create
+developer.training-module.form.button.update = Update
+developer.training-module.form.button.delete = Delete
+developer.training-module.form.button.publish = Publish
+
+
+developer.training-module.form.error.not-sessions-found = At least one Training Session is required
+developer.training-module.form.error.negative-totalTime = Total time has to be a positive integer
+developer.training-module.form.error.duplicated = This code already exist
