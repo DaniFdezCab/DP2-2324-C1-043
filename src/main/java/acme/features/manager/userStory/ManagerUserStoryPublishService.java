@@ -71,7 +71,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
-		object.setPublished(!object.isPublished());
+		object.setPublished(false);
 
 		this.repository.save(object);
 	}

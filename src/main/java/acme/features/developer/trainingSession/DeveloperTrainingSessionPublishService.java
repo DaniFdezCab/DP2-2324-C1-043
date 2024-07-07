@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
+import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
-import acme.entities.trainings.TrainingModule;
 import acme.entities.trainings.TrainingSession;
 import acme.roles.Developer;
 
@@ -24,15 +24,13 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	@Override
 	public void authorise() {
 		boolean status;
-		int sessionId;
-		TrainingModule module;
+		int id;
 		TrainingSession session;
 
-		sessionId = super.getRequest().getData("id", int.class);
-		module = this.repository.findOneTrainingModuleByTrainingSessionId(sessionId);
-		session = this.repository.findOneTrainingSessionById(sessionId);
+		id = super.getRequest().getData("id", int.class);
+		session = this.repository.findOneTrainingSessionById(id);
 
-		status = session != null && session.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
+		status = session != null && session.getNotPublished() && super.getRequest().getPrincipal().hasRole(session.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,10 +51,13 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 		assert object != null;
 
 		super.bind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
+		object.setNotPublished(object.getNotPublished());
 	}
 
 	@Override
 	public void validate(final TrainingSession object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingSession existing;
 
@@ -86,7 +87,7 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void perform(final TrainingSession object) {
 		assert object != null;
 
-		object.setNotPublished(false);
+		object.setNotPublished(!object.getNotPublished());
 		this.repository.save(object);
 	}
 
@@ -96,10 +97,16 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
+		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
 		dataset.put("masterId", object.getTrainingModule().getId());
-
+		dataset.put("notPublished", object.getNotPublished());
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void onSuccess() {
+		if (super.getRequest().getMethod().equals("POST"))
+			PrincipalHelper.handleUpdate();
 	}
 
 }

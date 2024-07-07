@@ -52,12 +52,19 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void bind(final TrainingSession object) {
 		assert object != null;
 
+		//int sessionId = super.getRequest().getData("id", int.class);
+		//TrainingModule module = this.repository.findOneTrainingModuleByTrainingSessionId(sessionId);
+
 		super.bind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
+		//object.setTrainingModule(module);
+		object.setNotPublished(object.getNotPublished());
 
 	}
 
 	@Override
 	public void validate(final TrainingSession object) {
+		assert object != null;
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingSession existing;
 
@@ -97,8 +104,7 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-		dataset.put("trainingModule", object.getTrainingModule());
+		dataset.put("masterId", object.getTrainingModule().getId());
 		dataset.put("notPublished", object.getNotPublished());
 
 		super.getResponse().addData(dataset);

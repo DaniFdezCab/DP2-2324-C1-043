@@ -22,10 +22,12 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 		boolean status;
 		int trSessionId;
 		TrainingModule module;
+		TrainingSession session;
 
 		trSessionId = super.getRequest().getData("id", int.class);
 		module = this.repository.findOneTrainingModuleByTrainingSessionId(trSessionId);
-		status = module != null && (!module.getNotPublished() || super.getRequest().getPrincipal().hasRole(module.getDeveloper()));
+		session = this.repository.findOneTrainingSessionById(trSessionId);
+		status = module != null && session != null && super.getRequest().getPrincipal().hasRole(session.getTrainingModule().getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -47,9 +49,8 @@ public class DeveloperTrainingSessionShowService extends AbstractService<Develop
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link");
+		dataset = super.unbind(object, "code", "location", "instructor", "startMoment", "endMoment", "email", "link", "notPublished");
 		dataset.put("masterId", object.getTrainingModule().getId());
-		dataset.put("notPublished", object.getTrainingModule().getNotPublished());
 
 		super.getResponse().addData(dataset);
 	}

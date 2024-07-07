@@ -60,7 +60,6 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-	@NotNull
 	private Boolean				notPublished;
 
 	// Relationships ----------------------------------------------------------

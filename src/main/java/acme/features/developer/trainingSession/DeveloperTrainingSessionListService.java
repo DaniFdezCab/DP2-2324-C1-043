@@ -27,8 +27,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		module = this.repository.findOneTrainingModuleById(masterId);
-		status = module != null && (!module.getNotPublished() || super.getRequest().getPrincipal().hasRole(module.getDeveloper()));
-
+		status = module != null && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -48,8 +47,9 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		assert object != null;
 
 		Dataset dataset;
-
+		Developer developer = object.getTrainingModule().getDeveloper();
 		dataset = super.unbind(object, "code", "location");
+		dataset.put("developer", developer);
 
 		super.getResponse().addData(dataset);
 	}
@@ -66,7 +66,6 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		module = this.repository.findOneTrainingModuleById(masterId);
 		showCreate = module.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
-		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 
