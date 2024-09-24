@@ -16,7 +16,7 @@ import acme.entities.banners.Banner;
 @Repository
 public interface BannerRepository extends AbstractRepository {
 
-	@Query("select count(b) from Banner b")
+	@Query("select count(b) from Banner b where b.displayStart < NOW() and b.displayEnd > NOW()")
 	int countBanners();
 
 	@Query("select b from Banner b where b.displayStart < NOW() and b.displayEnd > NOW()")

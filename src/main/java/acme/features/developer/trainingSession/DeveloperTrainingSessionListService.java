@@ -66,6 +66,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 		module = this.repository.findOneTrainingModuleById(masterId);
 		showCreate = module.getNotPublished() && super.getRequest().getPrincipal().hasRole(module.getDeveloper());
 
+		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

@@ -35,8 +35,8 @@ administrator.banner.form.label.link = Web url:
 
 administrator.banner.list.button.create-form = Create banner
 administrator.banner.form.button.create = Create
-administrator.banner.list.button.update = Update
-administrator.banner.list.button.delete = Delete
+administrator.banner.form.button.update = Update
+administrator.banner.form.button.delete = Delete
 
 
 
